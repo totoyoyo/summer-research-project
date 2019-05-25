@@ -1,0 +1,83 @@
+\documentclass[11pt,reqno,oneside,a4paper]{article}
+
+
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{verbatim}
+\usepackage{eucal}
+\usepackage{mathrsfs}
+\usepackage[hmargin = 1in,vmargin=1in]{geometry}
+\usepackage[parfill]{parskip}
+
+
+
+\setlength{\parskip}{2ex}
+\pagestyle{fancy}
+
+\author{Peeranat (ToTo) Tokaeo}
+
+\lhead{Locker Theorem 1}
+
+\rhead{Peeranat (ToTo) Tokaeo}
+\newtheorem{theorem}{Theorem}
+
+
+\begin{document}
+	
+	\subsection*{Locker Theorem 1}
+	\begin{theorem}
+		The adjoint operator $L^*$ is the multipoint differential operator defined by
+		$$\mathcal{D}(L^*) = \{f\in H^n(\pi) | B_i^*(f) = 0 ,i = 1, \dots, 2mn-k\}, L^*f = \tau^*f
+		$$
+	\end{theorem}
+	\begin{proof}
+		First, we will define $L_0$ to be what we think is the adjoint of $L$. That is, let $L_0$ be the linear operator in $S$ whose domain consists of all functions $f \in H^n(\pi)$ satisfying $B_i^*(f) = 0$ for $i = 1, \dots, 2mn-k$ with $L_0 = \tau^*f$. We want to show that $L_0 = L^*$. First, we show that $\mathcal{D}(L_0) \subseteqq \mathcal{D}(L^*)$.
+		
+		Let $g \in \mathcal{D}(L_0)$ and set $g^* = L_0g = \tau^*g$. Then, let $f \in \mathcal{D}(L)$. Now, we want to show that $\langle Lf,g\rangle = \langle f,L_0g\rangle = \langle f,g^*\rangle$. Recall that the numbers 
+		$$x_{jl} = f_l^{(j)}(x_{l-1}), \quad y_{jl} = f_l^{(j)}(x_{l}), $$
+		form the solutions to the system
+		$$\sum_{l=1}^{m}\sum_{j=0}^{n-1}[\alpha_{ijl}x_{jl} + \beta_{ijl}y_{jl}]=0 ,\quad i = 1,\dots,k.$$
+		Also recall that as defined earlier, $[x_{ijl},y_{ijl}], i=1,\dots,2mn-k$ is the set of solutions of the above system which form a basis for the solution space. 
+		So, by definition of a basis, there exist constants $c_1,\dots, c_{2mn-k}$ such that
+		$$f_l^{(j)}(x_{l-1}) = \sum_{i=1}^{2mn-k} c_ix_{ijl} \text{ and } 
+		f_l^{(j)}(x_{l}) = \sum_{i=1}^{2mn-k} c_iy_{ijl}.$$
+		Now, we can applying Green's formula and get
+		\begin{align*}
+			\langle Lf,g\rangle - \langle f,g^*\rangle &= \langle \tau f,g\rangle - \langle f,\tau^*g\rangle\\
+			&= \sum_{l=1}^{m}\sum_{p,q=0}^{n-1}[F_{x_l}^{p\,q}(\tau)f_l^{(p)}(x_l)g_l^{(q)}(x_l)
+			   - F_{x_{l-1}}^{p\,q}(\tau)f_l^{(p)}(x_{l-1})g_l^{(q)}(x_{l-1})]\\
+		(\text{Substitute for the } f_l^{(j)})\quad	&= \sum_{l=1}^{m}\sum_{p,q=0}^{n-1}\sum_{i=1}^{2mn-k}c_i[F_{x_l}^{p\,q}(\tau)y_{ipl}g_l^{(q)}(x_l)
+			- F_{x_{l-1}}^{p\,q}(\tau)x_{ipl}g_l^{(q)}(x_{l-1})]\\
+		(\text{Substitute in } \alpha^*, \beta^*)\qquad 	& = \sum_{i=1}^{2mn-k}c_i\sum_{l=1}^{m}\sum_{q=0}^{n-1}[\beta_{iql}^*g_l^{(q)}(x_l) + \alpha_{iql}^*g_l^{(q)}(x_{l-1})]\\
+		& = \sum_{i=1}^{2mn-k}c_iB^*_i(g)\\
+		 & = 0 \quad (\text{by definition of } g)
+		\end{align*}
+		Since $f \in \mathcal{D}(L)$ is arbitrary, and $\langle Lf,g\rangle = \langle f,L_0g\rangle = \langle f,g^*\rangle$, we can conclude that $g \in \mathcal{D}(L^*)$, which implies $\mathcal{D}(L_0) \subseteqq \mathcal{D}(L^*)$.
+		
+		To complete the proof, it is sufficient to show that $\mathcal{D}(L^*) \subseteqq \mathcal{D}(L_0)$. Let $g \in \mathcal{D}(L^*)$. Now, we want to show that $g \in H^n(\pi)$ and that $B_i^*(g) = 0$, which would imply that $g \in \mathcal{D}(L_0)$ by definition of $L_0$. Fix an integer $l$ with $1 \leq l \leq m$, and let $\bar{g}$ denote the restriction of g to the interval $[x_{l-1}, x_l].$ Let $\bar{f}$ be any function in $H^n[x_{l-1},x_l]$ having its its support in the open interval $(x_{l-1},x_l)$. 
+		Then, we can extend $\bar{f}$ to $f$ defined on $[a,b]$ by making it 0 outside of $[x_{l-1},x_l]$. The extension of $f$ belongs in $\mathcal{D}(L^*)$ because $f \in H^n(\pi)$, and $B_i(f) = 0$ (because it is 0 at all the boundaries). Then,
+		$$ 0 = \langle Lf,g\rangle - \langle f, L^*g\rangle = \int_{x_{l-1}}^{x_l}(\tau\bar{f})\bar{g} - \int_{x_{l-1}}^{x_l}\bar{f}(L^*g).$$
+		By Theorem 10 of [2, p. 1294], the above implies that $\bar{g}$ is equal a.e to a function in $H^n[x_{l-1},x_l]$ and that $L^* = \tau^*\bar{g}$ a.e. on $[x_{l-1},x_l]$. Since this holds for all $l$, we can conclude $g\in H^n(\pi)$ and $L^*g=\tau^*g$. 
+		
+		Next, we want to show that $B_i^*(g) = 0$. Fix in integer $i$ with $1\leq i \leq 2mn-k$ and choose a function $\sigma = (\sigma_1,\dots, \sigma_m) \in H^n(\pi)$ such that $\sigma_l^{(j)}(x_{l-1}) = x_{ijl}$ and $\sigma_l^{(j)}(x_{l}) = y_{ijl}$. That is, evaluating $\sigma$ at each boundary point yields the set of solutions that form the basis for the solution space. Clearly, $\sigma \in \mathcal{D}(L)$, and from Green's formula
+		\begin{align*}
+		     0 &= \langle L\sigma,g\rangle - \langle \sigma, L^*g\rangle\\
+		     &= \langle \tau\sigma,g\rangle - \langle \sigma, \tau^*g\rangle\\
+		     &= \sum_{l=1}^{m}\sum_{p,q=0}^{n-1}[F_{x_l}^{p\,q}(\tau)\sigma_l^{(p)}(x_l)g_l^{(q)}(x_l)
+		     - F_{x_{l-1}}^{p\,q}(\tau)\sigma_l^{(p)}(x_{l-1})g_l^{(q)}(x_{l-1})]\\
+		     &= \sum_{l=1}^{m}\sum_{p,q=0}^{n-1}[F_{x_l}^{p\,q}(\tau)y_{ipl}g_l^{(q)}(x_l)
+		     - F_{x_{l-1}}^{p\,q}(\tau)x_{ipl}g_l^{(q)}(x_{l-1})]\\
+		     &= \sum_{l=1}^{m}\sum_{q=0}^{n-1}[\beta_{iql}^*g_l^{(q)}(x_l) + \alpha_{iql}^*g_l^{(q)}(x_{l-1})]\\
+		     &= B_i^*(g) 
+		\end{align*}
+		So, we have shown that if given $g \in \mathcal{D}(L^*)$, we know $B_i^*(g) = 0$. That together with $g \in H^n(\pi)$ proven earlier implies that $g \in \mathcal{D}(L_0)$. So $L_0 = L^*$.
+	\end{proof}
+
+
+\end{document}
