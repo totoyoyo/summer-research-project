@@ -108,7 +108,7 @@ We refer to $B^{*}_i$ as \emph{adjoint} multipoint boundary values. In the follo
 		To complete the proof, it remains to show that $\mathcal{D}(L^*) \subseteqq \mathcal{D}(L_0)$. Let $g \in \mathcal{D}(L^*)$. Now, we want to show that $g \in H^n(\pi)$ and that $B_i^*(g) = 0$, which would imply that $g \in \mathcal{D}(L_0)$ by definition of $L_0$. Fix an integer $l$ with $1 \leq l \leq m$, and let $\bar{g}$ denote the restriction of $g$ to the interval $[x_{l-1}, x_l].$ Let $\bar{f}$ be any function in $H^n[x_{l-1},x_l]$ having its support in the open interval $(x_{l-1},x_l)$. 
 		Then, we can extend $\bar{f}$ to $f$ defined on $[a,b]$ by making it 0 outside of $[x_{l-1},x_l]$. The extension of $f$ belongs in $\mathcal{D}(L^*)$ because $f \in H^n(\pi)$, and $B_i(f) = 0$ (because it is 0 at all boundary points). Then,
 		$$ 0 = \langle Lf,g\rangle - \langle f, L^*g\rangle = \int_{x_{l-1}}^{x_l}(\tau\bar{f})\bar{g} - \int_{x_{l-1}}^{x_l}\bar{f}(L^*g).$$
-		By Theorem 10 of [2, p. 1294], the above implies that $\bar{g}$ is equal a.e to a function in $H^n[x_{l-1},x_l]$ and that $L^*g = \tau^*\bar{g}$ a.e. on $[x_{l-1},x_l]$. Since this holds for all $l$, we can conclude $g\in H^n(\pi)$ and $L^*g=\tau^*g$. 
+		By Theorem 10 of [1, p. 1294], the above implies that $\bar{g}$ is equal a.e to a function in $H^n[x_{l-1},x_l]$ and that $L^*g = \tau^*\bar{g}$ a.e. on $[x_{l-1},x_l]$. Since this holds for all $l$, we can conclude $g\in H^n(\pi)$ and $L^*g=\tau^*g$. 
 		
 		Next, we want to show that $B_i^*(g) = 0$. Fix an integer $i$ with $1\leq i \leq 2mn-k$ and choose a function $\sigma = (\sigma_1,\dots, \sigma_m) \in H^n(\pi)$ such that $\sigma_l^{(j)}(x_{l-1}) = x_{ijl}$ and $\sigma_l^{(j)}(x_{l}) = y_{ijl}$. That is, evaluating $\sigma$ at each boundary point yields the set of solutions that form the basis for the solution space. Clearly, $\sigma \in \mathcal{D}(L)$, and from Green's formula
 		\begin{align*}
@@ -124,5 +124,6 @@ We refer to $B^{*}_i$ as \emph{adjoint} multipoint boundary values. In the follo
 		So, we have shown that if given $g \in \mathcal{D}(L^*), B_i^*(g) = 0$. That together with $g \in H^n(\pi)$ proven earlier implies that $g \in \mathcal{D}(L_0)$. Thus, $L_0 = L^*$.
 	\end{proof}
 
+    \bibliography{Lo1973}
 
 \end{document}
