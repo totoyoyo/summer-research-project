@@ -1,0 +1,128 @@
+\documentclass[11pt,reqno,oneside,a4paper]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{verbatim}
+\usepackage{eucal}
+\usepackage{mathrsfs}
+\usepackage[hmargin = 1in,vmargin=1in]{geometry}
+\usepackage[parfill]{parskip}
+
+
+
+\setlength{\parskip}{2ex}
+\pagestyle{fancy}
+
+\lhead{Summary of Lo1973}
+
+\newtheorem{theorem}{Theorem}
+
+
+\begin{document}
+	
+\section*{Summary of Locker's Self-Adjointness For Multipoint Differential Operators}
+The set-up is as follows: given a closed interval $[a,b],$ fix $n\in\mathbb{N},$ so that the differential operator is given by 
+\[ 
+\tau  := \sum^n_{k=0} a_k(t)\left( \frac{d}{dt}\right)^k, \mbox{ where } a_k(t) \in C^{\infty}[a,b] \mbox{ and } a_n(t) \neq 0~ \forall t \in [a,b].
+\]
+Let $S := L^2[a,b]$ with the standard inner product, and let $H^n[a,b]$ be a subspace of $S$ consisting of $f\in C^{n-1}[a,b],$ with $f^{(n-1)}$ absolutely continuous (i.e. differentiable almost everywhere), and $f^{(n)} \in S.$ Fix $m \in \mathbb{N},$ and let $\pi = \{ a = x_0 < x_1 < \ldots < x_m = b \}$ be a partition of $[a,b].$ Finally, let $H^n(\pi)$ be a collection of $f \in S$ such that 
+\begin{enumerate}
+\item On each subinterval $[x_{l-1}, x_l], f(t)$ possesses right-hand and left-hand limits at the endpoints $x_{l-1}$ and $x_{l}$ respectively. Moreover, let $f_l$ denote the function $f$ on subinterval $(x_{l-1}, x_l),$ and let $f_l(x_{l-1}) = f(x_{l-1}^+)$ and $f_l(x_{l}) = f(x_{l}^-).$ We call $f_1, \ldots, f_m$ the components of $f$ and denote this by writing $f = (f_1, \ldots ,f_m).$
+\item For $l = 1, \ldots, m, f_l \in H^n[x_{l-1}, x_l].$  
+\end{enumerate}
+
+We define a \emph{multipoint boundary value} (MBV) to be a linear functional $B$ on $H^n(\pi)$ of the form
+\[ 
+B(f) = \sum^{m}_{l=1} \sum^{n-1}_{j=0}[\alpha_{jl} f_l^{(j)}(x_{l-1}) + \beta{jl} f_l^{(j)}(x_{l})]
+\]
+where $f = (f_1, \ldots ,f_m),$ and $\alpha_{jl}, \beta_{jl} \in \mathbb{R}.$ Note that since every boundary value consists of a double sum, and for all $l,j$ we expect that $f_l^{(j)}(x_{l-1})$ and $f_l^{(j)}(x_{l})$ to be linearly independent, the space of all boundary values has dimension $2mn.$
+
+Now, suppose we are given a set of $k$ linearly independent MBVs 
+\[ 
+B_i(f) = \sum^{m}_{l=1} \sum^{n-1}_{j=0}[\alpha_{ijl} f_l^{(j)}(x_{l-1}) + \beta{ijl} f_l^{(j)}(x_{l})], \qquad i \in \{ 1, \ldots, k \}.
+\]
+Let $L$ be an operator given by $Lf = \tau f,$ whose domain is 
+\[ 
+\mathcal{D}(L) = \{ f \in H^n(\pi) \mid B_i(f) = 0,  i = 1, \ldots, k \}.
+\]
+Then $L$ is a \emph{multipoint differential operator}. Observe that density of $\mathcal{D}(L)$ in $S$ ensures that $L$ has a well-defined adjoint $L^{*}.$ Our goal is to obtain an explicit formula for $L^{*}$ and its domain. First, recall the Green's formula from Dunford \& Schwartz: given $f,g \in H^n(\pi),$
+\[ 
+\langle \tau f,g\rangle - \langle f, \tau^*g\rangle = \sum_{l=1}^{m}\sum_{p,q=0}^{n-1}[F_{x_l}^{p\,q}(\tau) f_l^{(p)}(x_l)g_l^{(q)}(x_l) - F_{x_{l-1}}^{p\,q}(\tau) f_l^{(p)}(x_{l-1})g_l^{(q)}(x_{l-1})],
+\]
+where $F_t$ denotes an n$\times$n boundary matrix for $\tau$ at the point $t \in [a,b].$ From Dunford \& Schwartz, the entries of $F_t$ are given by
+\begin{equation*}
+\begin{aligned}
+F_{t}^{p\,q}(\tau) &= \sum^{n-p-1}_{k = j} (-1)^k \binom{k}{j} \left( \frac{d}{dt}\right)^{k-j} a_{p+k+1}(t), &&\qquad p + q< n - 1\\
+F_{t}^{p\,q}(\tau) &= (-1)^q  a_{n}(t), &&\qquad p + q= n - 1\\
+F_{t}^{p\,q}(\tau) &= 0, &&\qquad p + q > n - 1.
+\end{aligned}
+\end{equation*}
+Consider a linear system of equations 
+\[ \sum_{l=1}^{m}\sum_{j=0}^{n-1}[\alpha_{ijl}x_{jl} + \beta_{ijl}y_{jl}]=0 ,\quad i = 1,\dots,k. \]
+Since the list $\{ B_i\}_{i=1}^k$ is linearly independent, the above system has rank $k,$ and so $\mathrm{dim}~\mathrm{range}\{ B_i\}_{i=1}^k = k.$ Now, since the system is homogeneous, the solution space must have the same dimension as the null space of the system. Since $\mathrm{dim} \{ B_i\}_{i=1}^k =2mn,$ it follows by the fundamental theorem of linear maps that 
+\[ 
+\mathrm{dim}~ \mathrm{null}\{ B_i\}_{i=1}^k = \mathrm{dim} \{ B_i\}_{i=1}^k - \mathrm{dim}~\mathrm{range}\{ B_i\}_{i=1}^k = 2mn - k.
+\] 
+Thus, let  $[x_{ijl},y_{ijl}], i=1,\dots,2mn-k$ be the set of solutions of the above system that also form a basis for the solution space. Define
+\[ 
+\alpha^{*}_{ijl} = - \sum^{n-1}_{p=0} x_{ipl} F_{x_{l-1}}^{p,\ q}(\tau) \qquad \mbox{and} \qquad \beta^{*}_{ijl} = \sum^{n-1}_{p=0} y_{ipl} F_{x_{l}}^{p,\ q}(\tau),
+\]
+where $i = 1, \ldots, 2mn-k, j = 0, \ldots, n-1, l = 1, \ldots, m.$ Finally, let 
+\[ 
+B_i^{*}(f) = \sum^{m}_{l=1} \sum^{n-1}_{j=0}[\alpha_{ijl}^{*} f_l^{(j)}(x_{l-1}) + \beta{ijl}^{*} f_l^{(j)}(x_{l})], \qquad i \in \{ 1, \ldots, 2mn-k \}.
+\]
+We refer to $B^{*}_i$ as \emph{adjoint} multipoint boundary values. In the following theorem, we prove that the above construction is valid.
+
+\begin{theorem}
+	The adjoint operator $L^*$ is the multipoint differential operator defined by
+	$$\mathcal{D}(L^*) = \{f\in H^n(\pi) \mid B_i^*(f) = 0 ,i = 1, \dots, 2mn-k\}, L^*f = \tau^*f.
+	$$
+\end{theorem}
+	\begin{proof}
+		First, we will define $L_0$ to be what we think is the adjoint of $L$. That is, let $L_0$ be the linear operator in $S$ whose domain consists of all functions $f \in H^n(\pi)$ satisfying $B_i^*(f) = 0$ for $i = 1, \dots, 2mn-k$ with $L_0f = \tau^*f$. We want to show that $L_0 = L^*$. First, we show that $\mathcal{D}(L_0) \subseteqq \mathcal{D}(L^*)$.
+		
+		Let $g \in \mathcal{D}(L_0)$ and set $g^* = L_0g = \tau^*g$. Then, let $f \in \mathcal{D}(L)$. Now, we want to show that $\langle Lf,g\rangle = \langle f,L_0g\rangle = \langle f,g^*\rangle $. Recall that the numbers 
+	$$x_{jl} = f_l^{(j)}(x_{l-1}), \quad y_{jl} = f_l^{(j)}(x_{l}), $$
+	form the solutions to the system
+	$$\sum_{l=1}^{m}\sum_{j=0}^{n-1}[\alpha_{ijl}x_{jl} + \beta_{ijl}y_{jl}]=0 ,\quad i = 1,\dots,k.$$
+	Also recall that as defined earlier, $[x_{ijl},y_{ijl}], i=1,\dots,2mn-k$ is the set of solutions of the above system which form a basis for the solution space. 
+		So, by definition of a basis, there exist constants $c_1,\dots, c_{2mn-k}$ such that
+		$$f_l^{(j)}(x_{l-1}) = \sum_{i=1}^{2mn-k} c_ix_{ijl} \text{ and } 
+		f_l^{(j)}(x_{l}) = \sum_{i=1}^{2mn-k} c_iy_{ijl}.$$
+		Now, we apply Green's formula to obtain
+	\begin{align*}
+			\langle Lf,g\rangle - \langle f,g^*\rangle &= \langle \tau f,g\rangle - \langle f,\tau^*g\rangle\\
+			&= \sum_{l=1}^{m}\sum_{p,q=0}^{n-1}[F_{x_l}^{p\,q}(\tau)f_l^{(p)}(x_l)g_l^{(q)}(x_l) - F_{x_{l-1}}^{p\,q}(\tau)f_l^{(p)}(x_{l-1})g_l^{(q)}(x_{l-1})]\\
+		(\text{Substitute for the } f_l^{(j)})\qquad	&= \sum_{l=1}^{m}\sum_{p,q=0}^{n-1}\sum_{i=1}^{2mn-k}c_i[F_{x_l}^{p\,q}(\tau)y_{ipl}g_l^{(q)}(x_l)
+			- F_{x_{l-1}}^{p\,q}(\tau)x_{ipl}g_l^{(q)}(x_{l-1})]\\
+		(\text{Substitute in } \alpha^*, \beta^*)\qquad &= \sum_{i=1}^{2mn-k}c_i\sum_{l=1}^{m}\sum_{q=0}^{n-1}[\beta_{iql}^*g_l^{(q)}(x_l) + \alpha_{iql}^*g_l^{(q)}(x_{l-1})]\\
+		&= \sum_{i=1}^{2mn-k}c_iB^*_i(g) \\
+		  (\text{By definition of } g)\qquad &= 0 \quad
+		\end{align*}
+		Since $f \in \mathcal{D}(L)$ is arbitrary, and $\langle Lf,g\rangle = \langle f,L_0g\rangle = \langle f,g^*\rangle$, we can conclude that $g \in \mathcal{D}(L^*)$, which implies $\mathcal{D}(L_0) \subseteqq \mathcal{D}(L^*)$.
+		
+		To complete the proof, it remains to show that $\mathcal{D}(L^*) \subseteqq \mathcal{D}(L_0)$. Let $g \in \mathcal{D}(L^*)$. Now, we want to show that $g \in H^n(\pi)$ and that $B_i^*(g) = 0$, which would imply that $g \in \mathcal{D}(L_0)$ by definition of $L_0$. Fix an integer $l$ with $1 \leq l \leq m$, and let $\bar{g}$ denote the restriction of $g$ to the interval $[x_{l-1}, x_l].$ Let $\bar{f}$ be any function in $H^n[x_{l-1},x_l]$ having its support in the open interval $(x_{l-1},x_l)$. 
+		Then, we can extend $\bar{f}$ to $f$ defined on $[a,b]$ by making it 0 outside of $[x_{l-1},x_l]$. The extension of $f$ belongs in $\mathcal{D}(L^*)$ because $f \in H^n(\pi)$, and $B_i(f) = 0$ (because it is 0 at all boundary points). Then,
+		$$ 0 = \langle Lf,g\rangle - \langle f, L^*g\rangle = \int_{x_{l-1}}^{x_l}(\tau\bar{f})\bar{g} - \int_{x_{l-1}}^{x_l}\bar{f}(L^*g).$$
+		By Theorem 10 of [2, p. 1294], the above implies that $\bar{g}$ is equal a.e to a function in $H^n[x_{l-1},x_l]$ and that $L^*g = \tau^*\bar{g}$ a.e. on $[x_{l-1},x_l]$. Since this holds for all $l$, we can conclude $g\in H^n(\pi)$ and $L^*g=\tau^*g$. 
+		
+		Next, we want to show that $B_i^*(g) = 0$. Fix an integer $i$ with $1\leq i \leq 2mn-k$ and choose a function $\sigma = (\sigma_1,\dots, \sigma_m) \in H^n(\pi)$ such that $\sigma_l^{(j)}(x_{l-1}) = x_{ijl}$ and $\sigma_l^{(j)}(x_{l}) = y_{ijl}$. That is, evaluating $\sigma$ at each boundary point yields the set of solutions that form the basis for the solution space. Clearly, $\sigma \in \mathcal{D}(L)$, and from Green's formula
+		\begin{align*}
+		     0 &= \langle L\sigma,g\rangle - \langle \sigma, L^*g\rangle\\
+		     &= \langle \tau\sigma,g\rangle - \langle \sigma, \tau^*g\rangle\\
+		     &= \sum_{l=1}^{m}\sum_{p,q=0}^{n-1}[F_{x_l}^{p\,q}(\tau)\sigma_l^{(p)}(x_l)g_l^{(q)}(x_l)
+		     - F_{x_{l-1}}^{p\,q}(\tau)\sigma_l^{(p)}(x_{l-1})g_l^{(q)}(x_{l-1})]\\
+		     &= \sum_{l=1}^{m}\sum_{p,q=0}^{n-1}[F_{x_l}^{p\,q}(\tau)y_{ipl}g_l^{(q)}(x_l)
+		     - F_{x_{l-1}}^{p\,q}(\tau)x_{ipl}g_l^{(q)}(x_{l-1})]\\
+		     &= \sum_{l=1}^{m}\sum_{q=0}^{n-1}[\beta_{iql}^*g_l^{(q)}(x_l) + \alpha_{iql}^*g_l^{(q)}(x_{l-1})]\\
+		     &= B_i^*(g) 
+		\end{align*}
+		So, we have shown that if given $g \in \mathcal{D}(L^*), B_i^*(g) = 0$. That together with $g \in H^n(\pi)$ proven earlier implies that $g \in \mathcal{D}(L_0)$. Thus, $L_0 = L^*$.
+	\end{proof}
+
+
+\end{document}
