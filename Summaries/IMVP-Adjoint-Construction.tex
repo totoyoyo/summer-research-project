@@ -1,0 +1,411 @@
+\documentclass[11pt,reqno,oneside,a4paper]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{verbatim}
+\usepackage{eucal}
+\usepackage{mathrsfs}
+\usepackage[hmargin = 1in,vmargin=1in]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage{cite}
+
+\setlength{\parskip}{2ex}
+\pagestyle{fancy}
+
+\lhead{Sultan}
+
+\theoremstyle{plain} % default
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+	
+\subsection*{Construction of Adjoint Problem}
+Consider a closed interval $[a,b].$ Fix $n\in\mathbb{N},$ and let the differential operator be defined as
+\[ 
+L  := \sum^n_{k=0} a_k(t)\left( \frac{d}{dt}\right)^k, \mbox{ where } a_k(t) \in C^{\infty}[a,b] \mbox{ and } a_n(t) \neq 0~ \forall t \in [a,b].
+\]
+Fix $k \in \mathbb{N},$ and let $\pi = \{ a = x_0 < x_1 < \ldots < x_k = b\}$ be a partition of $[a,b].$ Consider a homogeneous multipoint BVP of rank $m$
+\[ \pi_m: Lq = 0, \qquad Uq = \vec{0},\]
+where $U = (U_1, \ldots, U_m)$ is a multipoint boundary form with 
+\[ 
+U_i(q) = \sum^{k}_{l=1} \sum^{n-1}_{j=0}[\alpha_{ijl} f_l^{(j)}(x_{l-1}) + \beta_{ijl} f_l^{(j)}(x_{l})], \qquad i \in \{ 1, \ldots, m \}, 
+\]
+where $\alpha_{ijl}, \beta_{ijl} \in \mathbb{R}, q \in H^n(\pi),$ as given in Locker's paper \cite{locker}.
+Our goal is to construct the adjoint multipoint BVP to $\pi_m$
+\[ 
+\pi^+_{2n-m}: L^+ q = 0, \qquad U^+q = \vec{0},
+\] 
+where $L^+$ is the adjoint of $L,$ and $U^+$ is an appropriate multipoint boundary form.
+\subsubsection*{Green's Formula}
+For any $f,g \in H^n(\pi),$ application of Green's formula yields
+\[ \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k}\sum_{p,q=0}^{n-1}[F^{p\,q}(x_l) f_l^{(p)}(x_l)g_l^{(q)}(x_l) - F^{p\,q}(x_{l-1})f_l^{(p)}(x_{l-1})g_l^{(q)}(x_{l-1})], \]
+where $F_t$ denotes an $n\times n$ boundary matrix at the point $t \in [a,b].$ From \cite[p. 1286]{dunford}, the entries of $F_t$ are given by
+\begin{equation*}
+\begin{aligned}
+F^{p\,q}(t) &= \sum^{n-p-1}_{k = j} (-1)^k \binom{k}{j} \left( \frac{d}{dt}\right)^{k-j} a_{p+k+1}(t), &&\qquad p + q< n - 1\\
+F^{p\,q}(t) &= (-1)^q  a_{n}(t), &&\qquad p + q= n - 1\\
+F^{p\,q}(t) &= 0, &&\qquad p + q > n - 1.
+\end{aligned}
+\end{equation*}
+Observe that since $\mathrm{det}F_t = (a_0(t))^n \neq 0,$ the matrix $F_t$ is non-singular. 
+
+We let 
+\[ 
+[fg]_l(t) = \sum_{p,q=0}^{n-1}F^{p\,q}(t)f_l^{(p)}(t)g_l^{(q)}(t),
+\]
+so that the Green's formula can be rewritten as 
+\[ \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}).\]
+Now, we seek another matrix $\widehat{F}_l(t),$ with which we can associate a \emph{semibilinear} form $\mathcal{S}_l$. We derive this matrix in the same way as in Linda's capstone \cite{linfan}. First, observe that 
+\begin{align*}
+[fg]_l(t) = \sum_{p,q=0}^{n-1}F^{p\,q}(t) f_l^{(p)}(t)g_l^{(q)}(t) &= \sum_{p,q=0}^{n-1}\left[F^{p\,q} f_l^{(p)} g_l^{(q)}\right](t)  \\
+&= \sum_{q=0}^{n-1}\left[ \left(\sum_{p=0}^{n-1} F^{p\,q} f_l^{(p)}\right) g_l^{(q)}\right](t) \\
+&= F(t) \vec{f_l}(t) \cdot \vec{g_l}(t), 
+\end{align*}
+where $\vec{f_l} = (f_l, \ldots, f_l^{(n-1)})$ and $\vec{g_l} = (g_l, \ldots, g_l^{(n-1)}).$ We use this to obtain:
+\begin{align*}
+[fg]_l(x_l) - [fg]_l(x_{l-1}) &= F(x_l) \vec{f_l}(x_l) \cdot \vec{g_l}(x_l) - F(x_{l-1}) \vec{f_l}(x_{l-1}) \cdot \vec{g_l}(x_{l-1}) \\
+&= \begin{bmatrix}
+- F(x_{l-1}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{l}) \\
+\end{bmatrix}
+\begin{bmatrix}
+f_l(x_{l-1})  \\
+\vdots \\
+f_l^{(n-1)}(x_{l-1}) \\
+f_l(x_{l})  \\
+\vdots \\
+f_l^{(n-1)}(x_{l}) 
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+g_l(x_{l-1})  \\
+\vdots \\
+g_l^{(n-1)}(x_{l-1}) \\
+g_l(x_{l})  \\
+\vdots \\
+g_l^{(n-1)}(x_{l}) 
+\end{bmatrix} \\
+&=: \widehat{F}_l(x_{l-1}, x_l)  
+\begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l})  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l})  \\
+\end{bmatrix} \\
+&=: \mathcal{S}_l (\vec{f_l}, \vec{g_l})
+\end{align*}
+with $\vec{f_l} = \begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l})  \\
+\end{bmatrix}$ and $\vec{g_l} = \begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l})  \\
+\end{bmatrix}.$
+Note that since $F(t)$ is nonsingular for all $l,$ it follows that $\widehat{F}$ is also non-singular. Finally, with the above in mind, we get
+\[ 
+ \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) =  \sum_{l=1}^{k} \widehat{F}(x_{l-1}, x_l)  
+\begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l})  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l})  \\
+\end{bmatrix} =
+\sum_{l=1}^{k}  \mathcal{S}_l (\vec{f_l}, \vec{g_l}),
+\]
+i.e. we managed to express Green's formula as a sum of semibilinear forms $\mathcal{S}_l.$
+
+\subsubsection*{Boundary-Form Formula}
+We turn to characterising an adjoint multipoint boundary condition using an extension of boundary form formula that Linda derived in her work.
+First, recall that the multipoint boundary conditions are of the form
+\[ 
+Uq = \begin{bmatrix} U_1(q) \\ \vdots \\U_m(q) \end{bmatrix} = \vec{0},
+\]
+with 
+\[ 
+U_i(q) = \sum^{k}_{l=1} \sum^{n-1}_{j=0}[\alpha_{ijl} q_l^{(j)}(x_{l-1}) + \beta_{ijl} q_l^{(j)}(x_{l})], \qquad i \in \{ 1, \ldots, m \}, ~ \alpha_{ijl}, \beta_{ijl} \in \mathbb{R}.
+\]
+Note that $U_1, \ldots, U_m$ are linearly independent when $\sum^m_{i=1} c_i U_i q = 0$ if and only if $c_i = 0.$ When $U_1, \ldots, U_m$ are linearly independent, we say that $U$ has full rank $m.$ For now, suppose that $U$ has full rank, and define 
+\begin{equation*}
+\vec{q_l} = 
+\begin{bmatrix}
+q_l \\
+q'_l \\
+\vdots \\
+ q_l^{(n-1)} 
+\end{bmatrix}, M_l = 
+\begin{bmatrix}
+\alpha_{1~0~l} & \alpha_{1~1~l} & \ldots & \alpha_{1~(n-1)~l} \\
+\alpha_{2~0~l} & \alpha_{2~1~l} & \ldots & \alpha_{2~(n-1)~l} \\
+\vdots & \vdots & \ddots & \vdots \\
+\alpha_{m~0~l} & \alpha_{m~1~l} & \ldots & \alpha_{m~(n-1)~l} \\
+\end{bmatrix}, 
+N_l = 
+\begin{bmatrix}
+\beta_{1~0~l} & \beta_{1~1~l} & \ldots & \beta_{1~(n-1)~l} \\
+\beta_{2~0~l} & \beta_{2~1~l} & \ldots & \beta_{2~(n-1)~l} \\
+\vdots & \vdots & \ddots & \vdots \\
+\beta_{m~0~l} & \beta_{m~1~l} & \ldots & \beta_{m~(n-1)~l} \\
+\end{bmatrix}
+\end{equation*}
+Then, 
+\begin{align*}
+Uq &= \begin{bmatrix} U_1(q) \\ \vdots \\U_m(q) \end{bmatrix} \\&= 
+\sum^k_{l=1} \sum^{n-1}_{j=0} \begin{bmatrix} \alpha_{1~j~l}  \\ \vdots \\\alpha_{m~j~l}\end{bmatrix}  q_l^{(j)}(x_{l-1}) + \begin{bmatrix} \beta_{1~j~l} \\ \vdots \\\beta_{m~j~l}\end{bmatrix} q_l^{(j)}(x_{l}) \\
+&= 
+\sum^k_{l=1} 
+\begin{bmatrix}
+\alpha_{1~0~l}  & \ldots & \alpha_{1~(n-1)~l} \\
+\vdots & \ddots & \vdots \\
+\alpha_{m~0~l} &  \ldots & \alpha_{m~(n-1)~l} \\
+\end{bmatrix}
+\begin{bmatrix}
+q_l(x_{l-1})  \\
+\vdots \\
+ q_l^{(n-1)}(x_{l-1})  
+\end{bmatrix} + 
+\begin{bmatrix}
+\beta_{1~0~l} & \ldots & \beta_{1~(n-1)~l} \\
+\vdots & \ddots & \vdots \\
+\beta_{m~0~l} & \ldots & \beta_{m~(n-1)~l} \\
+\end{bmatrix}
+\begin{bmatrix}
+q_l(x_l)  \\
+\vdots \\
+ q_l^{(n-1)}(x_l)  
+\end{bmatrix} \\
+&= \sum^k_{l=1} M_l \vec{q_l}(x_{l-1}) + N_l \vec{q_l}(x_l),
+\end{align*}
+where $M_l, N_l$ are $m \times n$ matrices. 
+In addition, letting 
+\[ 
+(M_l : N_l) = 
+\begin{bmatrix}
+\alpha_{1~0~l} & \alpha_{1~1~l} & \ldots & \alpha_{1~(n-1)~l} & \beta_{1~0~l} & \beta_{1~1~l} & \ldots & \beta_{1~(n-1)~l} \\
+%\alpha_{2~0~l} & \alpha_{2~1~l} & \ldots & \alpha_{2~(n-1)~l} & \beta_{2~0~l} & \beta_{2~1~l} & \ldots & \beta_{2~(n-1)~l} \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+\alpha_{m~0~l} & \alpha_{m~1~l} & \ldots & \alpha_{m~(n-1)~l} & \beta_{m~0~l} & \beta_{m~1~l} & \ldots & \beta_{m~(n-1)~l}
+\end{bmatrix},
+\]
+we can write 
+\[ Uq = \sum^k_{l=1}(M_l:N_l) 
+\begin{bmatrix}
+\vec{q_l}(x_{l-1})  \\
+\vec{q_l}(x_{l})
+\end{bmatrix}.
+\]
+Thus we have found 2 compact ways of writing the multipoint boundary forms. Next, we extend the notion of a complementary boundary form.
+\newline
+\begin{definition}
+If $U = (U_1, \ldots, U_m)$ is any multipoint boundary form with $\mathrm{rank}(U) = m,$ and $U_c = (U_{m+1}, \ldots, U_{2n})$ is a multipoint boundary form with $\mathrm{rank}(U_c) = 2n-m$ such that $\mathrm{rank}(U_{1}, \ldots, U_{2n}) = 2n,$ then $U$ and $U_c$ are \textbf{complementary multipoint boundary forms}. 
+\end{definition}
+Note that extending $U_1, \ldots, U_m$ to $U_{1}, \ldots, U_{2n}$ is equivalent to embedding the matrix $(M_l :N_l)$ in a $2n \times 2n$ non-singular matrix for all $l = 1, \ldots, 2n,$ i.e. we can write
+\[ 
+\begin{bmatrix}
+Uq \\
+U_c q
+\end{bmatrix} =
+\sum^k_{l=1}
+\begin{bmatrix}
+M_l & N_l \\
+\overline{M}_l & \overline{N}_l 
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{q_l}(x_{l-1})  \\
+\vec{q_l}(x_{l})
+\end{bmatrix} 
+=: 
+\sum^k_{l=1}
+H_l \vec{q_l}
+\]
+where $\mathrm{rank}(H_l) = 2n$ for $l = 1, \ldots, 2n,$ and $\overline{M}_l, \overline{N}_l$ are $2n-m \times n$ matrices. Just like the boundary form formula proven by Linda, the multipoint boundary form formula is motivated by the desire to express Green's formula as a combination of boundary forms $U$ and $U_c.$ Namely, we have:
+\newline
+\begin{theorem}[Multipoint Boundary Form Formula]\label{mbff}
+Given any boundary form $U$ of rank $m,$ and any complementary form $U_c,$ there exist unique boundary forms $U^+_c, U^+$ of rank $m$ and $2n-m,$ respectively, such that
+\[ 
+\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) = Uf\cdot U^+_c g + U_c f \cdot U^+ g.
+\]
+\end{theorem}
+We will use the following proposition from Linda's capstone \cite{linfan} in the proof of Theorem \ref{mbff}:
+\newline
+\begin{proposition}[Prop. 2.12 in Linda's capstone]\label{linfan-2.12}
+Let $\mathcal{S}$ be the semibilinear form associated with a nonsingular matrix $S.$ Suppose $\vec{f} := Ff$ where $F$ is a nonsingular matrix. Then, there exists a unique nonsingular matrix $G$ such that if $\vec{g} =Gg,$ then $\mathcal{S}(f,g) = \vec{f}\cdot \vec{g}$ for all $f,g.$
+\end{proposition}
+\begin{proof}
+We prove Theorem \ref{mbff}. 
+First, we have 
+\[ 
+\begin{bmatrix}
+Uf \\
+U_c f
+\end{bmatrix} = \sum^k_{l=1}
+H_l \vec{f_l}.
+\]
+As shown in the subsection on Green's formula, we can write 
+\[ 
+\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) =  \sum_{l=1}^{k} \widehat{F}(x_{l-1}, x_l) \begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l})  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l})  \\
+\end{bmatrix}   = \sum_{l=1}^{k}  \mathcal{S}_l (\vec{f_l}, \vec{g_l}).
+\]
+Now, by Proposition \ref{linfan-2.12}, for each $l,$ there exists a unique $2n\times 2n$ nonsingular matrix $J_l$ such that $\mathcal{S}_l (\vec{f_l}, \vec{g_l}) = H_l \vec{f_l} \cdot J_l \vec{g_l}.$ Let $U^+, U^+_c$ be such that 
+\[
+\begin{bmatrix}
+U^+_cg \\
+U^+ g
+\end{bmatrix} = \sum^k_{l=1}
+J_l \vec{g_l}.
+\]
+Then, we obtain 
+\begin{align*}
+\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1})  =  \sum_{l=1}^{k}  \mathcal{S}_l (\vec{f_l}, \vec{g_l}) &= \sum_{l=1}^{k}  H_l \vec{f_l} \cdot J_l \vec{g_l} \\
+&= \left( \sum_{l=1}^{k}  H_l \vec{f_l}\right) \cdot \left( \sum_{l=1}^{k}  J_l \vec{g_l} \right) \\
+&= \begin{bmatrix}
+Uf \\
+U_c f
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+U^+_cg \\
+U^+ g
+\end{bmatrix} \\
+&=  Uf\cdot U^+_c g + U_c f \cdot U^+ g,
+\end{align*}
+which completes the proof.
+\end{proof}
+Theorem \ref{mbff} allows us to define an adjoint multipoint boundary form. Namely, 
+\newline
+\begin{definition}
+Suppose $U = (U_1, \ldots, U_m)$ is a multipoint boundary form with $\mathrm{rank}(U) = m,$ along with the condition that $Uq = \vec{0}$ for functions $q \in H^n(\pi).$ If $U^+$ is any boundary form with  $\mathrm{rank}(U^+) = 2n-m,$ determined as in Theorem \ref{mbff}, then the equation 
+\[ 
+U^+q = \vec{0}
+\]
+is an \textbf{adjoint multipoint boundary form} to $Uq = \vec{0}.$
+\end{definition}
+
+In turn, the above lets us define the adjoint multipoint problem:
+\newline
+\begin{definition}
+Suppose $U = (U_1, \ldots, U_m)$ is a multipoint boundary form with $\mathrm{rank}(U) = m.$ Then, the problem of solving 
+\[ \pi_m: Lq = 0, \qquad Uq = \vec{0},\] 
+is called a homogeneous multipoint boundary value problem of rank $m.$ The problem of solving 
+\[ \pi_{2n-m}^+: L^+q = 0, \qquad U^+q = \vec{0},\] 
+is an \textbf{adjoint multipoint boundary value problem} to $\pi_m.$
+\end{definition}
+
+The preceding construction allows us to state the following:
+\newline
+\begin{proposition}
+Let $f,g \in C^n[a,b]$ with $Uf = \vec{0}$ and $U^+g = \vec{0}.$ Then, $\langle Lf, g\rangle = \langle f, L^+g\rangle.$
+\end{proposition}
+\begin{proof}
+We apply Green's formula and multipoint boundary form formula:
+\[ \langle Lf, g\rangle - \langle f, L^+g\rangle = \sum^k_{l=1}  [fg]_l(x_l) - [fg]_l(x_{l-1}) = Uf\cdot U^+_c g + U_c f \cdot U^+ g = \vec{0}\cdot U^+_c g + U_c f \cdot \vec{0} = 0. \qedhere\]
+\end{proof}
+
+Finally, we extend Theorem 2.19 on Linda's Capstone \cite{linfan}. 
+\newline
+\begin{theorem}
+The boundary condition $U^+f = \vec{0}$ is adjoint to $Uf = \vec{0}$ if and only if \[ M_lF^{-1}(x_{l-1})P_l = N_l F^{-1}(x_l)Q_l \] for all $l = 1, \ldots, m,$ where $F(t)$ is the $n\times n$ matrix as given in Green's Formula subsection.  
+\end{theorem}
+Recall that just how $U$ is associated with a collection of $2m$ $m\times n$ matrices $M_l, N_l,$ so is $U^+$ associated with $2m$ $n\times(2n-m)$ matrices $P,Q$ such that $(P^{*}:Q^*)$ has rank $2n-m$ and 
+\[ U^+q = \sum^m_{l=1} P^*_l \vec{q}_l(x_{l-1}) + Q^*_l \vec{q}_l(x_l). \]
+\begin{proof}
+Let $\vec{f_l} = (f_l, \ldots, f_l^{(n-1)})$ and $\vec{g_l} = (g_l, \ldots, g_l^{(n-1)}).$ Suppose that $U^+f = \vec{0}$ is adjoint to $Uf = \vec{0}.$ By definition of adjoint multipoint boundary condition, $U^+$ is determined as in Theorem \ref{mbff}. Thus, in determining $U^+,$ there exist multipoint boundary forms $U_c, U_c^+$ of rank $2n-m$ and $m$ respectively, such that the multipoint boundary form formula holds. As such, let 
+\begin{align*}
+U_c f &= \sum^m_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l), \quad &&\mathrm{rank}(\overline{M}_l : \overline{N}_l) =  2n - m \\
+U_c^+ g &= \sum^m_{l=1} \overline{P}_l^* \vec{g}_l(x_{l-1}) + \overline{Q}_l^*  \vec{g}_l(x_l), \quad &&\mathrm{rank}( \overline{P}_l^* :  \overline{Q}_l^*) = m
+\end{align*}
+First, note that in the context of semibilinear form, we have $S f \cdot g = f \cdot S^* g,$ as given in Proposition 2.11 of Linda's capstone \cite[p.18]{linfan}. We use this to rewrite the multipoint boundary form formula as follows:
+\begin{align*}
+\sum^m_{l=1} [fg]_l(x_l) - [fg]_l(x_{l-1}) &= Uf\cdot U^+_c g + U_c f \cdot U^+ g \\
+&= \left(\sum^m_{l=1} M_l \vec{f_l}(x_{l-1}) + N_l \vec{f_l}(x_l)\right)\cdot \left( \sum^m_{l=1} (\overline{P}_l)^* \vec{g}_l(x_{l-1}) + (\overline{Q}_l)^*  \vec{g}_l(x_l)  \right) \\
+&+ \left(  \sum^m_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l) \right) \cdot \left( \sum^m_{l=1} P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l) \right) \\
+&= \sum^m_{l=1} \Bigg(\left( M_l \vec{f_l}(x_{l-1}) + N_l \vec{f_l}(x_l)\right) \cdot \left( \overline{P}_l^* \vec{g}_l(x_{l-1}) + \overline{Q}_l^*  \vec{g}_l(x_l)  \right) \\
+&+ \left( \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l) \right) \cdot \Big( P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l) \Big) \Bigg).
+\end{align*}
+Thus, expanding the $l$-th term, using that $S f \cdot g = f \cdot S^* g,$ and collecting similar terms, we can write the $l$-th term as
+\begin{equation}\label{eq1}
+\begin{aligned}
+~[fg]_l(x_l) - [fg]_l(x_{l-1}) = (\overline{Q}_l N_l + Q_l \overline{N}_l)  \vec{f}_l(x_l)  \cdot  \vec{g}_l(x_l) &+  (\overline{P}_l N_l  + P_l\overline{N}_l ) \vec{f}_l(x_l)  \cdot  \vec{g}_l(x_{l-1}) \\
++   (\overline{Q}_l  M_l +Q_l \overline{M}_l) \vec{f_l}(x_{l-1}) \cdot\vec{g}_l(x_l) &+  (\overline{P}_l M_l+P_l \overline{M}_l) \vec{f_l}(x_{l-1}) \cdot  \vec{g}_l(x_{l-1}) 
+\end{aligned}
+\end{equation}
+Recall from Green's formula subsection that the $l$-th term of the sum can be written
+\begin{equation}\label{eq2}
+[fg]_l(x_l) - [fg]_l(x_{l-1}) = F(x_l) \vec{f_l}(x_l) \cdot \vec{g_l}(x_l) - F(x_{l-1}) \vec{f_l}(x_{l-1}) \cdot \vec{g_l}(x_{l-1}) 
+\end{equation}
+Term-by-term comparison of \eqref{eq1} and \eqref{eq2} reveals that 
+\begin{align*}
+\overline{P}_l M_l+P_l \overline{M}_l &= - F(x_{l-1}), \qquad &&\overline{P}_l N_l  + P_l\overline{N}_l = 0_{n\times n}, \\
+\overline{Q}_l  M_l +Q_l \overline{M}_l &= 0_{n\times n},  \qquad &&\overline{Q}_l N_l + Q_l \overline{N}_l = F(x_l).
+\end{align*}
+Since the boundary matrix $F$ is nonsingular on $[a,b],$ $F$ is invertible. Thus, we have 
+\begin{align*}
+- F(x_{l-1})^{-1} \overline{P}_l M_l - F(x_{l-1})^{-1} P_l \overline{M}_l &= E_n, \qquad -F(x_{l-1})^{-1}\overline{P}_l N_l  - F(x_{l-1})^{-1} P_l\overline{N}_l &&= 0_{n\times n}, \\
+F(x_l)^{-1}\overline{Q}_l  M_l +F(x_l)^{-1}Q_l \overline{M}_l &= 0_{n\times n},  \qquad F(x_l)^{-1}\overline{Q}_l N_l + F(x_l)^{-1} Q_l \overline{N}_l &&= E_n.
+\end{align*}
+Using the systems notation, we have 
+\[ 
+\begin{bmatrix}
+- F(x_{l-1})^{-1} \overline{P}_l & - F(x_{l-1})^{-1} P_l \\
+F(x_l)^{-1}\overline{Q}_l & F(x_l)^{-1}Q_l 
+\end{bmatrix}
+\begin{bmatrix}
+M_l & N_l \\
+\overline{M}_l & \overline{N}_l
+\end{bmatrix} = 
+\begin{bmatrix}
+E_n & 0_{n\times n} \\
+0_{n\times n} & E_n.
+\end{bmatrix}.
+\]
+Since $\begin{bmatrix}
+M_l & N_l \\
+\overline{M}_l & \overline{N}_l
+\end{bmatrix}$ has full rank, two matrices on the left must be inverses of each other. Thus, we can write
+\[ 
+\begin{bmatrix}
+M_l & N_l \\
+\overline{M}_l & \overline{N}_l
+\end{bmatrix} 
+\begin{bmatrix}
+- F(x_{l-1})^{-1} \overline{P}_l & - F(x_{l-1})^{-1} P_l \\
+F(x_l)^{-1}\overline{Q}_l & F(x_l)^{-1}Q_l
+\end{bmatrix}
+= 
+\begin{bmatrix}
+E_m & 0_{m\times m} \\
+0_{2n-m\times 2n-m} & E_{2n-m\times 2n-m} .
+\end{bmatrix},
+\] 
+which means that 
+\[ 
+-  M_l  F(x_{l-1})^{-1} P_l + N_l F(x_l)^{-1}Q_l   =  0_{m\times m} \implies M_l  F(x_{l-1})^{-1} P_l = N_l F(x_l)^{-1}Q_l.
+\]
+Since $l$ is arbitrary, we conclude that the above holds for all $l = 1, \ldots, m.$
+\end{proof}
+
+\bibliographystyle{plain}
+\bibliography{IMVP-Adjoint-Construction-ref}
+
+
+\end{document}
