@@ -17,6 +17,7 @@
 \pagestyle{fancy}
 
 \lhead{Sultan}
+\rhead{May 31, 2019}
 
 \theoremstyle{plain} % default
 \newtheorem{theorem}{Theorem}
@@ -321,25 +322,27 @@ We apply Green's formula and multipoint boundary form formula:
 \[ \langle Lf, g\rangle - \langle f, L^+g\rangle = \sum^k_{l=1}  [fg]_l(x_l) - [fg]_l(x_{l-1}) = Uf\cdot U^+_c g + U_c f \cdot U^+ g = \vec{0}\cdot U^+_c g + U_c f \cdot \vec{0} = 0. \qedhere\]
 \end{proof}
 
+\subsubsection*{Checking Adjointness}
+
 Finally, we extend Theorem 2.19 on Linda's Capstone \cite{linfan}. 
 \newline
 \begin{theorem}
-The boundary condition $U^+f = \vec{0}$ is adjoint to $Uf = \vec{0}$ if and only if \[ M_lF^{-1}(x_{l-1})P_l = N_l F^{-1}(x_l)Q_l \] for all $l = 1, \ldots, m,$ where $F(t)$ is the $n\times n$ matrix as given in Green's Formula subsection.  
+The boundary condition $U^+f = \vec{0}$ is adjoint to $Uf = \vec{0}$ if and only if \[ M_lF^{-1}(x_{l-1})P_l = N_l F^{-1}(x_l)Q_l \] for all $l = 1, \ldots, k,$ where $F(t)$ is the $n\times n$ matrix as given in Green's Formula subsection.  
 \end{theorem}
 Recall that just how $U$ is associated with a collection of $2m$ $m\times n$ matrices $M_l, N_l,$ so is $U^+$ associated with $2m$ $n\times(2n-m)$ matrices $P,Q$ such that $(P^{*}:Q^*)$ has rank $2n-m$ and 
-\[ U^+q = \sum^m_{l=1} P^*_l \vec{q}_l(x_{l-1}) + Q^*_l \vec{q}_l(x_l). \]
+\[ U^+q = \sum^k_{l=1} P^*_l \vec{q}_l(x_{l-1}) + Q^*_l \vec{q}_l(x_l). \]
 \begin{proof}
 Let $\vec{f_l} = (f_l, \ldots, f_l^{(n-1)})$ and $\vec{g_l} = (g_l, \ldots, g_l^{(n-1)}).$ Suppose that $U^+f = \vec{0}$ is adjoint to $Uf = \vec{0}.$ By definition of adjoint multipoint boundary condition, $U^+$ is determined as in Theorem \ref{mbff}. Thus, in determining $U^+,$ there exist multipoint boundary forms $U_c, U_c^+$ of rank $2n-m$ and $m$ respectively, such that the multipoint boundary form formula holds. As such, let 
 \begin{align*}
-U_c f &= \sum^m_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l), \quad &&\mathrm{rank}(\overline{M}_l : \overline{N}_l) =  2n - m \\
-U_c^+ g &= \sum^m_{l=1} \overline{P}_l^* \vec{g}_l(x_{l-1}) + \overline{Q}_l^*  \vec{g}_l(x_l), \quad &&\mathrm{rank}( \overline{P}_l^* :  \overline{Q}_l^*) = m
+U_c f &= \sum^k_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l), \quad &&\mathrm{rank}(\overline{M}_l : \overline{N}_l) =  2n - m \\
+U_c^+ g &= \sum^k_{l=1} \overline{P}_l^* \vec{g}_l(x_{l-1}) + \overline{Q}_l^*  \vec{g}_l(x_l), \quad &&\mathrm{rank}( \overline{P}_l^* :  \overline{Q}_l^*) = m
 \end{align*}
 First, note that in the context of semibilinear form, we have $S f \cdot g = f \cdot S^* g,$ as given in Proposition 2.11 of Linda's capstone \cite[p.18]{linfan}. We use this to rewrite the multipoint boundary form formula as follows:
 \begin{align*}
-\sum^m_{l=1} [fg]_l(x_l) - [fg]_l(x_{l-1}) &= Uf\cdot U^+_c g + U_c f \cdot U^+ g \\
-&= \left(\sum^m_{l=1} M_l \vec{f_l}(x_{l-1}) + N_l \vec{f_l}(x_l)\right)\cdot \left( \sum^m_{l=1} (\overline{P}_l)^* \vec{g}_l(x_{l-1}) + (\overline{Q}_l)^*  \vec{g}_l(x_l)  \right) \\
-&+ \left(  \sum^m_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l) \right) \cdot \left( \sum^m_{l=1} P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l) \right) \\
-&= \sum^m_{l=1} \Bigg(\left( M_l \vec{f_l}(x_{l-1}) + N_l \vec{f_l}(x_l)\right) \cdot \left( \overline{P}_l^* \vec{g}_l(x_{l-1}) + \overline{Q}_l^*  \vec{g}_l(x_l)  \right) \\
+\sum^k_{l=1} [fg]_l(x_l) - [fg]_l(x_{l-1}) &= Uf\cdot U^+_c g + U_c f \cdot U^+ g \\
+&= \left(\sum^k_{l=1} M_l \vec{f_l}(x_{l-1}) + N_l \vec{f_l}(x_l)\right)\cdot \left( \sum^m_{l=1} (\overline{P}_l)^* \vec{g}_l(x_{l-1}) + (\overline{Q}_l)^*  \vec{g}_l(x_l)  \right) \\
+&+ \left(  \sum^k_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l) \right) \cdot \left( \sum^m_{l=1} P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l) \right) \\
+&= \sum^k_{l=1} \Bigg(\left( M_l \vec{f_l}(x_{l-1}) + N_l \vec{f_l}(x_l)\right) \cdot \left( \overline{P}_l^* \vec{g}_l(x_{l-1}) + \overline{Q}_l^*  \vec{g}_l(x_l)  \right) \\
 &+ \left( \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l) \right) \cdot \Big( P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l) \Big) \Bigg).
 \end{align*}
 Thus, expanding the $l$-th term, using that $S f \cdot g = f \cdot S^* g,$ and collecting similar terms, we can write the $l$-th term as
@@ -393,15 +396,186 @@ F(x_l)^{-1}\overline{Q}_l & F(x_l)^{-1}Q_l
 \end{bmatrix}
 = 
 \begin{bmatrix}
-E_m & 0_{m\times m} \\
-0_{2n-m\times 2n-m} & E_{2n-m\times 2n-m} .
+E_{m\times m} & 0_{m\times 2n-m} \\
+0_{2n-m\times m} & E_{2n-m\times 2n-m} .
 \end{bmatrix},
 \] 
 which means that 
 \[ 
--  M_l  F(x_{l-1})^{-1} P_l + N_l F(x_l)^{-1}Q_l   =  0_{m\times m} \implies M_l  F(x_{l-1})^{-1} P_l = N_l F(x_l)^{-1}Q_l.
+-  M_l  F(x_{l-1})^{-1} P_l + N_l F(x_l)^{-1}Q_l   =  0_{m\times 2n-m} \implies M_l  F(x_{l-1})^{-1} P_l = N_l F(x_l)^{-1}Q_l.
 \]
-Since $l$ is arbitrary, we conclude that the above holds for all $l = 1, \ldots, m.$
+Since $l$ is arbitrary, we conclude that the above holds for all $l = 1, \ldots, k.$
+
+Now, let $U_1^+$ be a multipoint boundary form of rank $2n-m$ such that 
+\[ 
+U_1^+ g = \sum^k_{l=1} (P_1)^*_l \vec{g}_l(x_{l-1}) + (Q_1)^*_l \vec{g}_l(x_l),
+\]
+for an appropriate collection of matrices $(P_1)^*_l, (Q_1)^*_l,$ with 
+\[\mathrm{rank}((P_1)^*_l : (Q_1)^*_l) = 2n-m, \qquad l = 1,\ldots, k.\]
+ Suppose that 
+\[ M_l  F(x_{l-1})^{-1} (P_1)_l = N_l F(x_l)^{-1}(Q_1)_l, \qquad l = 1,\ldots, k \]
+holds. Now, fix $l$ and let $u_l$ be a $2n\times 1$ vector. Then, there exist $2n-m$ linearly independent solutions of the system $(M_l : N_l)_{m\times 2n}u_l = \vec{0}.$ By assumption, we have 
+\[
+-  M_l  F(x_{l-1})^{-1} (P_1)_l + N_l F(x_l)^{-1}(Q_1)_l   =  0_{m\times (2n-m)},
+\]
+so that 
+\begin{equation}\label{system}
+(M_l : N_l)_{m\times 2n} 
+\begin{bmatrix}
+-F(x_{l-1})^{-1} (P_1)_l \\
+F(x_l)^{-1}(Q_1)_l
+\end{bmatrix}_{2n\times(2n-m)} = 0_{m \times(2n-m)}. 
+\end{equation}
+This means that the $2n-m$ columns of the matrix 
+\[ (H_1)_l := \begin{bmatrix}
+-F(x_{l-1})^{-1} (P_1)_l \\
+F(x_l)^{-1}(Q_1)_l
+\end{bmatrix}
+\]
+form the solution space of the system \eqref{system}. Since $\mathrm{rank}((P_1)^*_l : (Q_1)^*_l) = 2n-m,$
+\[ 
+\mathrm{rank}
+\begin{bmatrix}
+(P_1)_l \\
+(Q_1)_l
+\end{bmatrix}
+= 2n-m.
+\] 
+Since $F(x_{l-1}), F(x_{l})$ are non-singular, $\mathrm{rank}(H_1) = 2n - m.$
+Now, if $U^+g = \sum^k_{l=1} P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l) = \vec{0}$ is a multipoint boundary condition adjoint to $Uf = \vec{0},$ then by multipoint boundary form formula we have that 
+\begin{align*}
+\begin{bmatrix}
+Uf \\
+U_c f
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+U^+_cg \\
+U^+ g
+\end{bmatrix} 
+&= 
+\sum^k_{l=1} 
+\begin{bmatrix}
+M_l  \vec{f}_l(x_{l-1}) + N_l \vec{f}_l(x_l) \\
+\overline{M}_l \vec{f}_l(x_{l-1}) +\overline{N}_l \vec{f}_l(x_l) 
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+\overline{P}^*_l \vec{g}_l(x_{l-1}) + \overline{Q}^*_l \vec{g}_l(x_l) \\
+P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l) 
+\end{bmatrix} \\
+&= 
+\sum^k_{l=1} 
+\begin{bmatrix}
+M_l & N_l  \\
+\overline{M}_l & \overline{N}_l 
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{f}_l(x_{l-1}) \\
+\vec{f}_l(x_l) 
+\end{bmatrix}
+\cdot 
+\begin{bmatrix}
+\overline{P}_l & \overline{Q}_l \\
+P_l & Q_l 
+\end{bmatrix}^*
+\begin{bmatrix}
+\vec{g}_l(x_{l-1}) \\
+\vec{g}_l(x_l) 
+\end{bmatrix}\\
+&=
+\sum^k_{l=1} 
+\begin{bmatrix}
+\overline{P}_l & P_l \\
+\overline{Q}_l & Q_l 
+\end{bmatrix} 
+\begin{bmatrix}
+M_l & N_l  \\
+\overline{M}_l & \overline{N}_l 
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{f}_l(x_{l-1}) \\
+\vec{f}_l(x_l) 
+\end{bmatrix}
+\cdot 
+\begin{bmatrix}
+\vec{g}_l(x_{l-1}) \\
+\vec{g}_l(x_l) 
+\end{bmatrix}.
+\end{align*}
+In addition, recall from Green's formula subsection that
+\[ 
+\begin{bmatrix}
+Uf \\
+U_c f
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+U^+_cg \\
+U^+ g
+\end{bmatrix} 
+=
+\sum^k_{l=1} 
+ \begin{bmatrix}
+- F(x_{l-1}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{l}) \\
+\end{bmatrix}
+\begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l})  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l})  \\
+\end{bmatrix}.\]
+Combining the above yields
+\[ 
+\begin{bmatrix}
+- F(x_{l-1}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{l}) \\
+\end{bmatrix} = 
+\begin{bmatrix}
+\overline{P}_l & P_l \\
+\overline{Q}_l & Q_l 
+\end{bmatrix} 
+\begin{bmatrix}
+M_l & N_l  \\
+\overline{M}_l & \overline{N}_l 
+\end{bmatrix},
+\]
+and applying $\begin{bmatrix}
+- F^{-1}(x_{l-1}) & 0_{n\times n} \\
+0_{n\times n} &  F^{-1}(x_{l}) \\
+\end{bmatrix}$ to both sides, we obtain
+\[ 
+E_{2n\times 2n}
+= 
+\begin{bmatrix}
+- F^{-1}(x_{l-1})\overline{P}_l & - F^{-1}(x_{l-1})P_l \\
+F^{-1}(x_{l}) \overline{Q}_l & F^{-1}(x_{l}) Q_l 
+\end{bmatrix} 
+\begin{bmatrix}
+M_l & N_l  \\
+\overline{M}_l & \overline{N}_l 
+\end{bmatrix}
+\]
+Note that the left operand on RHS is invertible, so it has full rank. This means that 
+\[ H_l := \begin{bmatrix}
+-F(x_{l-1})^{-1} P_l \\
+F(x_l)^{-1}Q_l
+\end{bmatrix}_{n \times (2n -m)}
+\]
+has rank $2n -m.$ Thus, columns $H_l$ also form the solution space of the system \eqref{system}, just like $(H_1)_l.$ But this suggests that $(H_1)_l$ and $H_l$ are the same up to a linear transformation, i.e. there exists a non-singular $(2n-m)\times (2n-m)$ matrix $A_l$ such that $(H_1)_l = H_l A,$ i.e.
+\[ 
+\begin{bmatrix}
+-F(x_{l-1})^{-1} (P_1)_l \\
+F(x_l)^{-1}(Q_1)_l
+\end{bmatrix}  = (H_1)_l = H_l A = \begin{bmatrix}
+-F(x_{l-1})^{-1} P_l A\\
+F(x_l)^{-1}Q_l A
+\end{bmatrix},
+\]
+and so $(P_1)_l  = P_l A$ and $(Q_1)_l= Q_l A.$ Since $l$ is arbitrary, this holds for all $l = 1,\ldots, k.$ Therefore,
+\[ U_1^+ g = \sum^k_{l=1} (P_1)^*_l \vec{g}_l(x_{l-1}) + (Q_1)^*_l \vec{g}_l(x_l) =  \sum^k_{l=1} A^*P_l^* \vec{g}_l(x_{l-1}) + A^*Q_l^*  \vec{g}_l(x_l) = A^*U^+ g.\]
+Observe that $U^+ g = \vec{0}$ implies $U_1^+ g = \vec{0}.$ Since $A^*$ is nonsingular, it follows that $U^+ g = \vec{0}$ if and only if $U_1^+ g = \vec{0}.$ Since $U^+ g= \vec{0}$ is adjoint to $Uf= \vec{0}, U^+_1 g= \vec{0}$ is adjoint to $Uf= \vec{0}.$ This completes the proof. 
 \end{proof}
 
 \bibliographystyle{plain}
