@@ -124,6 +124,107 @@ We refer to $B^{*}_i$ as \emph{adjoint} multipoint boundary values. In the follo
 		So, we have shown that if given $g \in \mathcal{D}(L^*), B_i^*(g) = 0$. That together with $g \in H^n(\pi)$ proven earlier implies that $g \in \mathcal{D}(L_0)$. Thus, $L_0 = L^*$.
 	\end{proof}
 
-    \bibliography{Lo1973}
+   \subsection*{Explanation of Example 3}
+   Consider the following. Let $S = L^2[-1,1]$, let $\tau f = f''$, let $\pi = \{-1,0,1\}$, and let
+   \begin{align*}
+   	  B_1(f) &= f(-1) = f_1(-1),\\
+   	  B_2(f) &= f(1) = f_2(1),\\
+   	  B_3(f) &= f(0^-)-f(0^+)=f_1(0) -f_2(0),\\
+   	  B_4(f) &= f(0^-) -f'(0^-) +f'(0^+) = f_1(0) - f'_1(0) + f'_2(0)
+   \end{align*}
+   We want all these $B$ to be equal to 0. Now, all we need to do to find the adjoint multi-point boundary value problem for the problem we just described, is to find the $X$ matrix and the $F$ matrix. Before that, let's rewrite the above problem into a system of linear equations.
+   \begin{align*}
+   1x_{01} + 0x_{11} + 0y_{01} + 0y_{11} + 0x_{02}+ 0x_{12} + 0y_{02} + 0y_{12}  &= 0\\
+   0x_{01} + 0x_{11} + 0y_{01} + 0y_{11} + 0x_{02} +0x_{12} + 1y_{02} + 0y_{12}  &= 0\\
+   0x_{01} + 0x_{11} + 1y_{01} + 0y_{11} - 1x_{02}+ 0x_{12} + 0y_{02} + 0y_{12}  &= 0\\
+   0x_{01} + 0x_{11} + 1y_{01} - 1y_{11} + 0x_{02}+ 1x_{12} + 0y_{02} + 0y_{12}  &= 0
+   \end{align*}
+   Now, the notational conversion from the $f$ form into the $x$ or $y$ form isn't obvious, so I will explain the notation a bit more here. 
+   
+   First, note that we are considering $\pi = \{-1,0,1\}$, so we are concerned with 3 points, and the 2 intervals among those points. These two intervals can be described by two functions seperately, namely $f_1$ and $f_2$. That is why when we talk about the middle point, i.e. the point 0, we need to indicate whether we are talking about the left or right limit. Right limit means we are talking about  $f_2$, and left limit means we are talking about $f_1$.
+   
+   Now, let's talk about this $a_{bc}$ notation.
+   \begin{itemize}
+   	\item $a$ can be $x$ or $y$. $x$ means right limit, and $y$ means left limit.
+   	\item $b$ is a number from $0$ to $n-1$, which tells us something about the $b$th derivative at that point.
+   	\item $c$ tells us which $f$ to use. If $c$ is 1, we are talking about $f_1$. If $c$ is 2, we are talking about $f_2$, etc.
+   \end{itemize}
+   For example, $x_{01}$ means that we are talking about the right limit, 0th derivative, and $f_1$. Since $f_1$ describes the interval between points $-1$ and 0, and we are talking about the right limit, we can deduce that it means we are talking about $f(-1)$.
+   
+   Next, the X given by Locker is 
+   $$ X=\begin{bmatrix} 
+   0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+   0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 \\
+   0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 
+   \end{bmatrix} $$
+   Without bothering too much with the formal definition of $X$, Locker simply describes this matrix as ``the general solution" of the linear system of equations written above, and that it contains a basis for the solution space. This $X$ was not really obvious to me, so I created my own $X'$ from my understanding of the problem.
+   $$ X'=\begin{bmatrix} 
+   0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+   0 & 0 & 1 & 0 & 1 & -1 & 0 & 0 \\
+   0 & 0 & 2 & 1 & 2 & -1 & 0 & 0 \\
+   \end{bmatrix} $$
+   You can test that this works. Just take any row of the $X'$ matrix, and you'll notice that there are 8 columns, which correspond to the values of the $x$ and the $y$ to be substituted into the system of equations. For instance, the first row of $X'$ tells us that setting $x_{11} = 1$ and everything else to 0 is a solution for the system. Note that each row is linearly independent. However, at this point I noticed that you can get the $X$ matrix from $X'$ by doing some row operations. For example the second row of $X$ is simply the fourth row of $X'$ minus the third row of $X'$. 
+   
+   Then, to get the adjoint $X^*$ or in my case $X'^*$, we just need to do multiplication with the matrix $F$.
+   The big $F$ matrix is actually defined by putting smaller $F_t$ matrices together in the following way:
+   $$
+   F = \begin{bmatrix} 
+   -F_{x_0} & 0 & 0 & 0 & \dots & 0 & 0 \\
+   0 & F_{x_1} & 0 & 0 & \dots & 0 & 0 \\
+   0 & 0 & -F_{x_1} & 0 & \dots & 0 & 0 \\
+   0 & 0 & 0 & F_{x_2} & \dots & 0 & 0 \\
+   \vdots & \vdots & \vdots & \vdots & \ddots & 0 & 0 \\
+   0 & 0 & 0 & 0 & 0 & -F_{x_{m-1}} & 0 \\
+   0 & 0 & 0 & 0 & 0 & 0 & F_{x_{m}} \\
+   \end{bmatrix}
+   $$
+   $m$ just tell us the number of points we are concerned with $-1$. So in our example, $m$ is 2, because $3-1 = 2$. The small $F_t$ matrices are defined in Dunford-Schwartz: 
+   \begin{align*}
+   F^{p\,q}_t(\tau) &= \sum^{n-p-1}_{k = q} (-1)^k \binom{k}{q} \left( \frac{d}{dt}\right)^{k-q} a_{p+k+1}(t), &&\qquad p + q\leq n - 1\\
+   F^{p\,q}_t(\tau) &= 0, &&\qquad p + q > n - 1.
+   \end{align*}
+   with $0 \leq p,q \leq n-1$ and $p$ describing the row, and $q$ describing the columns. Also, $n$ is the order of the differential operator. Luckily, the $F_t$ for this problem is rather simple:
+   $$ F_t=\begin{bmatrix} 
+   0 & -1 \\
+   1 & 0 
+   \end{bmatrix} \text{ for all } t\in [-1,1]. $$
+   Now, we can write $F$ out explicitly as
+   $$ F=\begin{bmatrix} 
+   0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+   -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+   0 & 0 & 0 & -1 & 0 & 0 & 0 & 0 \\
+   0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+   0 & 0 & 0 & 0 & -1 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 \\
+   0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 
+   \end{bmatrix}. $$
+   Using the $X$ given in Locker to find $X^*$, we get
+   $$ X^* = XF = \begin{bmatrix} 
+   -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+   0 & 0 & 1 & -1 & 0 & 1 & 0 & 0 \\
+   0 & 0 & 1 & 0 & -1 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 0 & 0 & 0 & 1 & 0
+   \end{bmatrix}. $$
+   But if we were to use my $X'$, we get :
+   $$ X'^*= X'F = \begin{bmatrix} 
+   -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+   0 & 0 & 0 & -1 & 1 & 1 & 0 & 0 \\
+   0 & 0 & 1 & -2 & 1 & 2 & 0 & 0 
+   \end{bmatrix}. $$
+   Again, you can get $X^*$ from $X'^*$ by doing row operations. So, we can now do the conversion like we did earlier and turn this into 4 new boundary values. We can use either $X^*$ or $X'^*$, because they are equivalent, but the one Locker used $X^*$ happens to give out the simplified version. Perhaps this is why he chose a more unintuitive $X$ at the start. Anyway, the equations come out as:
+   \begin{align*}
+   B_1(f) &= -f(-1) = -f_1(-1),\\
+   B_2(f) &= f(0^-) -f'(0^-) +f'(0^+) = f_1(0) - f'_1(0) + f'_2(0)\\
+   B_3(f) &= f(0^-)-f(0^+)=f_1(0) -f_2(0),\\
+   B_4(f) &= f(1) = f_2(1),
+   \end{align*}
+   which is the same system as the one given as the start. So the operator is self-adjoint.
+   \nocite{*}
+   \bibliographystyle{plain}
+   \bibliography{Lo1973}
 
 \end{document}
