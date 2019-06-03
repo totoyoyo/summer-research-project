@@ -48,27 +48,27 @@ Our goal is to construct the adjoint multipoint BVP to $\pi_m$
 where $L^+$ is the adjoint of $L,$ and $U^+$ is an appropriate multipoint boundary form.
 \subsubsection*{Green's Formula}
 For any $f,g \in H^n(\pi),$ application of Green's formula yields
-\[ \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k}\sum_{p,q=0}^{n-1}[F^{p\,q}(x_l) f_l^{(p)}(x_l)g_l^{(q)}(x_l) - F^{p\,q}(x_{l-1})f_l^{(p)}(x_{l-1})g_l^{(q)}(x_{l-1})], \]
-where $F_t$ denotes an $n\times n$ boundary matrix at the point $t \in [a,b].$ From \cite[p. 1286]{dunford}, the entries of $F_t$ are given by
+\[ \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k}\sum_{p,q=0}^{n-1}[F_{p\,q}(x_l) f_l^{(p)}(x_l)g_l^{(q)}(x_l) - F_{p\,q}(x_{l-1})f_l^{(p)}(x_{l-1})g_l^{(q)}(x_{l-1})], \]
+where $F(t)$ denotes an $n\times n$ boundary matrix at the point $t \in [a,b].$ From \cite[p. 1286]{dunford}, the entries of $F(t)$ are given by
 \begin{equation*}
 \begin{aligned}
-F^{p\,q}(t) &= \sum^{n-p-1}_{k = j} (-1)^k \binom{k}{j} \left( \frac{d}{dt}\right)^{k-j} a_{p+k+1}(t), &&\qquad p + q< n - 1\\
-F^{p\,q}(t) &= (-1)^q  a_{n}(t), &&\qquad p + q= n - 1\\
-F^{p\,q}(t) &= 0, &&\qquad p + q > n - 1.
+F_{p\,q}(t) &= \sum^{n-p-1}_{k = j} (-1)^k \binom{k}{j} \left( \frac{d}{dt}\right)^{k-j} a_{p+k+1}(t), &&\qquad p + q< n - 1\\
+F_{p\,q}(t) &= (-1)^q  a_{n}(t), &&\qquad p + q= n - 1\\
+F_{p\,q}(t) &= 0, &&\qquad p + q > n - 1.
 \end{aligned}
 \end{equation*}
-Observe that since $\mathrm{det}F_t = (a_0(t))^n \neq 0,$ the matrix $F_t$ is non-singular. 
+Observe that since $\mathrm{det}F(t) = (a_0(t))^n \neq 0,$ the matrix $F(t)$ is non-singular. 
 
 We let 
 \[ 
-[fg]_l(t) = \sum_{p,q=0}^{n-1}F^{p\,q}(t)f_l^{(p)}(t)g_l^{(q)}(t),
+[fg]_l(t) = \sum_{p,q=0}^{n-1}F_{p\,q}(t)f_l^{(p)}(t)g_l^{(q)}(t),
 \]
 so that the Green's formula can be rewritten as 
 \[ \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}).\]
-Now, we seek another matrix $\widehat{F}_l(t),$ with which we can associate a \emph{semibilinear} form $\mathcal{S}_l$. We derive this matrix in the same way as in Linda's capstone \cite{linfan}. First, observe that 
+Now, we seek another matrix $\widehat{F}_l,$ with which we can associate a \emph{semibilinear} form $\mathcal{S}_l$. We derive this matrix in the same way as in Linda's capstone \cite{linfan}. First, observe that 
 \begin{align*}
-[fg]_l(t) = \sum_{p,q=0}^{n-1}F^{p\,q}(t) f_l^{(p)}(t)g_l^{(q)}(t) &= \sum_{p,q=0}^{n-1}\left[F^{p\,q} f_l^{(p)} g_l^{(q)}\right](t)  \\
-&= \sum_{q=0}^{n-1}\left[ \left(\sum_{p=0}^{n-1} F^{p\,q} f_l^{(p)}\right) g_l^{(q)}\right](t) \\
+[fg]_l(t) = \sum_{p,q=0}^{n-1}F_{p\,q}(t) f_l^{(p)}(t)g_l^{(q)}(t) &= \sum_{p,q=0}^{n-1}\left[F_{p\,q} f_l^{(p)} g_l^{(q)}\right](t)  \\
+&= \sum_{q=0}^{n-1}\left[ \left(\sum_{p=0}^{n-1} F_{p\,q} f_l^{(p)}\right) g_l^{(q)}\right](t) \\
 &= F(t) \vec{f_l}(t) \cdot \vec{g_l}(t), 
 \end{align*}
 where $\vec{f_l} = (f_l, \ldots, f_l^{(n-1)})$ and $\vec{g_l} = (g_l, \ldots, g_l^{(n-1)}).$ We use this to obtain:
@@ -114,9 +114,9 @@ with $\vec{f_l} = \begin{bmatrix}
 \vec{g_l}(x_{l-1})  \\
 \vec{g_l}(x_{l})  \\
 \end{bmatrix}.$
-Note that since $F(t)$ is nonsingular for all $l,$ it follows that $\widehat{F}$ is also non-singular. Finally, with the above in mind, we get
-\[ 
- \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) =  \sum_{l=1}^{k} \widehat{F}(x_{l-1}, x_l)  
+Note that since $F(t)$ is nonsingular for all $x_l,$ it follows that $\widehat{F}_l(x_{l-1}, x_l)$ is also non-singular for all $l$ and $x_l$. Finally, with the above in mind, we get
+\begin{align*}
+ \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) &=  \sum_{l=1}^{k} \widehat{F}(x_{l-1}, x_l)  
 \begin{bmatrix}
 \vec{f_l}(x_{l-1})  \\
 \vec{f_l}(x_{l})  \\
@@ -125,9 +125,12 @@ Note that since $F(t)$ is nonsingular for all $l,$ it follows that $\widehat{F}$
 \begin{bmatrix}
 \vec{g_l}(x_{l-1})  \\
 \vec{g_l}(x_{l})  \\
-\end{bmatrix} =
+\end{bmatrix} \\
+&=
 \sum_{l=1}^{k}  \mathcal{S}_l (\vec{f_l}, \vec{g_l}),
-\]
+\end{align*}
+
+
 i.e. we managed to express Green's formula as a sum of semibilinear forms $\mathcal{S}_l.$
 
 \subsubsection*{Boundary-Form Formula}
@@ -258,7 +261,7 @@ H_l \vec{f_l}.
 \]
 As shown in the subsection on Green's formula, we can write 
 \[ 
-\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) =  \sum_{l=1}^{k} \widehat{F}(x_{l-1}, x_l) \begin{bmatrix}
+\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) =  \sum_{l=1}^{k} \widehat{F}_l(x_{l-1}, x_l) \begin{bmatrix}
 \vec{f_l}(x_{l-1})  \\
 \vec{f_l}(x_{l})  \\
 \end{bmatrix}
