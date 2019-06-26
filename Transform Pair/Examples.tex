@@ -1,0 +1,101 @@
+\documentclass[11pt,reqno,oneside,a4paper]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm, amssymb, amsbsy, amsfonts}
+\usepackage{esint}
+\usepackage{verbatim}
+\usepackage{eucal}
+\usepackage{mathrsfs}
+\usepackage[hmargin = 1in,vmargin=1in]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage{cite}
+
+\setlength{\parskip}{2ex}
+\pagestyle{fancy}
+
+\lhead{Sultan}
+\rhead{June 26, 2019}
+
+\theoremstyle{plain} % default
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+	
+\subsection*{Order $n = 3$ problems}
+\subsubsection*{Problem 1}
+Let $x_0 = 0 < x_1  = 0.5 < x_2 = 1$ be the partition of $[0,1],$ and consider the following problem:
+\begin{align*}
+\partial_t q - \partial_{xxx} q &= 0 &&\text{(PDE)} \\
+q(x, 0) &= f(x) &&\text{(IC)} \\
+Uq = \sum^2_{l=1} R_l \begin{bmatrix} q_l^{(0)}(x_{l-1}) \\ q_l^{(1)}(x_{l-1}) \\ q_l^{(2)}(x_{l-1})  \end{bmatrix} + N_l \begin{bmatrix} q_l^{(0)}(x_{l}) \\ q_l^{(1)}(x_{l}) \\ q_l^{(2)}(x_{l}) \end{bmatrix} &= \vec{0}, &&\text{(BC)} \\
+\end{align*}
+where 
+\begin{equation*}
+\begin{aligned}
+R_1 = \begin{bmatrix} 2 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix} &\quad R_2 = \begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 2 \end{bmatrix} &&\quad R_3 = \begin{bmatrix} 1 & 0 & 0 \\ 0 & -1 & 1 \\ 0 & 0 & 1 \end{bmatrix}; \\
+N_1 = \begin{bmatrix} 0 & 3 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & -2 \end{bmatrix} &\quad N_2 = \begin{bmatrix} 1 & 2 & 0 \\ 1 & 0 & -1 \\ 0 & 0 & 2 \end{bmatrix} &&\quad N_3 = \begin{bmatrix} 1 & 1 & 0 \\ 2 & 0 & -2 \\ 0 & 1 & -2 \end{bmatrix}. 
+\end{aligned}
+\end{equation*}
+
+\subsubsection*{Problem 2}
+Let $x_0 = 0 < x_1  = 0.2 < x_2 = 1$ be the partition of $[0,1],$ and consider the following problem:
+\begin{align*}
+\partial_t q - \partial_{xxx} q &= 0 &&\text{(PDE)} \\
+q(x, 0) &= f(x) &&\text{(IC)} \\
+Uq = \sum^2_{l=1} R_l \begin{bmatrix} q_l^{(0)}(x_{l-1}) \\ q_l^{(1)}(x_{l-1}) \\ q_l^{(2)}(x_{l-1})  \end{bmatrix} + N_l \begin{bmatrix} q_l^{(0)}(x_{l}) \\ q_l^{(1)}(x_{l}) \\ q_l^{(2)}(x_{l}) \end{bmatrix} &= \vec{0}, &&\text{(BC)} \\
+\end{align*}
+where 
+\begin{equation*}
+\begin{aligned}
+R_1 = \begin{bmatrix} 0 & -2 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{bmatrix} &\quad R_2= \begin{bmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{bmatrix} &&\quad R_3 = \begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \\ -2 & 0 & 0 \end{bmatrix}; \\
+N_1 = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix} &\quad N_2 = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & -2 \end{bmatrix} &&\quad N_3 = \begin{bmatrix} 0 & -2 & 0 \\ 3 & 0 & 0 \\ 1 & 0 & -1 \end{bmatrix}. 
+\end{aligned}
+\end{equation*}
+
+\subsection*{Order $n = 2$ problems}
+\subsubsection*{Problem 3}
+Let $x_0 = 0 < x_1  = 0.5 < x_2 = 1$ be the partition of $[0,1],$ and consider the following problem:
+\begin{align*}
+\partial_t q - i \partial_{xx} q &= 0 &&\text{(PDE)} \\
+q(x, 0) &= f(x) &&\text{(IC)} \\
+Uq = \sum^2_{l=1} R_l \begin{bmatrix} q_l^{(0)}(x_{l-1}) \\ q_l^{(1)}(x_{l-1}) \end{bmatrix} + N_l \begin{bmatrix} q_l^{(0)}(x_{l}) \\ q_l^{(1)}(x_{l}) \end{bmatrix} &= \vec{0}, &&\text{(BC)} \\
+\end{align*}
+where 
+\begin{equation*}
+R_1 = \begin{bmatrix} 1 & 0\\ 0 & 1 \end{bmatrix} \quad R_2= \begin{bmatrix} 2 & -2  \\ 1 & 1\end{bmatrix} \quad N_1 = \begin{bmatrix} 1 & 0 \\ -1 & 1 \end{bmatrix} \quad N_2 = \begin{bmatrix} 2 & 0 \\ 0 & -4 \end{bmatrix}.
+\end{equation*}
+
+\subsubsection*{Problem 4}
+Let $x_0 = 0 < x_1  = 0.25 < x_2 = 0.5 < x_3 = 1$ be the partition of $[0,1],$ and consider the following problem:
+\begin{align*}
+\partial_t q - i \partial_{xx} q &= 0 &&\text{(PDE)} \\
+q(x, 0) &= f(x) &&\text{(IC)} \\
+Uq = \sum^3_{l=1} R_l \begin{bmatrix} q_l^{(0)}(x_{l-1}) \\ q_l^{(1)}(x_{l-1}) \end{bmatrix} + N_l \begin{bmatrix} q_l^{(0)}(x_{l}) \\ q_l^{(1)}(x_{l}) \end{bmatrix} &= \vec{0}, &&\text{(BC)} \\
+\end{align*}
+where 
+\begin{equation*}
+\begin{aligned}
+R_1 = \begin{bmatrix} 0 & 1\\ 1 & 0 \end{bmatrix} \quad R_2= \begin{bmatrix} 2 & 0  \\ 0 & 3 \end{bmatrix} \quad R_3 = \begin{bmatrix} 1 & 2 \\ -2 & 3 \end{bmatrix} \quad R_4 = \begin{bmatrix} 4 & 1 \\ -1 & 2 \end{bmatrix}; \\
+N_1 = \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix} \quad N_2= \begin{bmatrix} 0 & -1  \\ 1 & 0 \end{bmatrix} \quad N_3 = \begin{bmatrix} 1 & 2 \\ 1 & 0 \end{bmatrix} \quad N_4 = \begin{bmatrix} -1 & 0 \\ 0 & -4 \end{bmatrix}.
+\end{aligned}
+\end{equation*}
+
+\subsubsection*{Problem 5}
+Let $x_0 = 0 < x_1  = 0.25 < x_2 = 0.5 < x_3 = 1$ be the partition of $[0,1],$ and consider the following problem:
+\begin{align*}
+\partial_t q - i \partial_{xx} q &= 0 &&\text{(PDE)} \\
+q(x, 0) &= f(x) &&\text{(IC)} \\
+Uq = \sum^3_{l=1} R_l \begin{bmatrix} q_l^{(0)}(x_{l-1}) \\ q_l^{(1)}(x_{l-1}) \end{bmatrix} + N_l \begin{bmatrix} q_l^{(0)}(x_{l}) \\ q_l^{(1)}(x_{l}) \end{bmatrix} &= \vec{0}, &&\text{(BC)} \\
+\end{align*}
+where 
+\begin{equation*}
+\begin{aligned}
+R_1 = \begin{bmatrix} 0 & 1\\ 1 & 0 \end{bmatrix} \quad R_2= \begin{bmatrix} 0 & 2  \\ -3 & 0 \end{bmatrix} \quad R_3 = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \quad R_4 = \begin{bmatrix} 2 & 0 \\ 0 & 3 \end{bmatrix}; \\
+N_1 = \begin{bmatrix} 0 & 2 \\ 1 & 0 \end{bmatrix} \quad N_2= \begin{bmatrix} 0 & 3  \\ -3 & 0 \end{bmatrix} \quad N_3 = \begin{bmatrix} -2 & 0 \\ 0 & 2 \end{bmatrix} \quad N_4 = \begin{bmatrix} -1 & 0 \\ 0 & 5 \end{bmatrix}.
+\end{aligned}
+\end{equation*}
+\end{document}
