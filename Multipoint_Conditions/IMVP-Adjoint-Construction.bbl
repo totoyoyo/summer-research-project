@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{dunford}
+Nelson Dunford and Jacob~T. Schwartz.
+\newblock {\em Linear {Operators} {II}}.
+\newblock Interscience, 1963.
+
+\bibitem{locker}
+John Locker.
+\newblock Self-adjointness for multi-point differential operators.
+\newblock {\em Pacific Journal of Mathematics}, 1973.
+
+\bibitem{linfan}
+Linfan Xiao.
+\newblock Algorithmic solution of high order partial differential equations in
+  julia via the fokas transform method, 2018.
+
+\end{thebibliography}
