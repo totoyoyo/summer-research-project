@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: IMVP-Adjoint-Construction.aux
+The style file: plain.bst
+Database file #1: IMVP-Adjoint-Construction-ref.bib
+Warning--entry type for "linfan" isn't style-file defined
+--line 33 of file IMVP-Adjoint-Construction-ref.bib
+You've used 3 entries,
+            2118 wiz_defined-function locations,
+            512 strings with 4386 characters,
+and the built_in function-call counts, 672 in all, are:
+= -- 59
+> -- 27
+< -- 0
++ -- 11
+- -- 8
+* -- 28
+:= -- 124
+add.period$ -- 8
+call.type$ -- 3
+change.case$ -- 12
+chr.to.int$ -- 0
+cite$ -- 3
+duplicate$ -- 29
+empty$ -- 62
+format.name$ -- 8
+if$ -- 138
+int.to.chr$ -- 0
+int.to.str$ -- 3
+missing$ -- 3
+newline$ -- 17
+num.names$ -- 6
+pop$ -- 22
+preamble$ -- 1
+purify$ -- 10
+quote$ -- 0
+skip$ -- 22
+stack$ -- 0
+substring$ -- 15
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 10
+warning$ -- 0
+while$ -- 6
+width$ -- 4
+write$ -- 30
+(There was 1 warning)

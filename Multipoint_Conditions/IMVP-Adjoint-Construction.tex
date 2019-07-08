@@ -43,7 +43,7 @@ U_i(q) = \sum^{k}_{l=1} \sum^{n-1}_{j=0}[\alpha_{ijl} f_l^{(j)}(x_{l-1}) + \beta
 where $\alpha_{ijl}, \beta_{ijl} \in \mathbb{R}, q \in H^n(\pi),$ as given in Locker's paper \cite{locker}.
 Our goal is to construct the adjoint multipoint BVP to $\pi_m$
 \[ 
-\pi^+_{2n-m}: L^+ q = 0, \qquad U^+q = \vec{0},
+\pi^+_{2nk-m}: L^+ q = 0, \qquad U^+q = \vec{0},
 \] 
 where $L^+$ is the adjoint of $L,$ and $U^+$ is an appropriate multipoint boundary form.
 \subsubsection*{Green's Formula}
@@ -98,25 +98,31 @@ g_l^{(n-1)}(x_{l})
 &=: \widehat{F}_l(x_{l-1}, x_l)  
 \begin{bmatrix}
 \vec{f_l}(x_{l-1})  \\
-\vec{f_l}(x_{l})  \\
+\vec{f_l}(x_{l}) 
 \end{bmatrix}
 \cdot
 \begin{bmatrix}
 \vec{g_l}(x_{l-1})  \\
-\vec{g_l}(x_{l})  \\
+\vec{g_l}(x_{l}) 
 \end{bmatrix} \\
-&=: \mathcal{S}_l (\vec{f_l}, \vec{g_l})
 \end{align*}
-with $\vec{f_l} = \begin{bmatrix}
-\vec{f_l}(x_{l-1})  \\
-\vec{f_l}(x_{l})  \\
-\end{bmatrix}$ and $\vec{g_l} = \begin{bmatrix}
-\vec{g_l}(x_{l-1})  \\
-\vec{g_l}(x_{l})  \\
-\end{bmatrix}.$
-Note that since $F(t)$ is nonsingular for all $x_l,$ it follows that $\widehat{F}_l(x_{l-1}, x_l)$ is also non-singular for all $l$ and $x_l$. Finally, with the above in mind, we get
+Note that since $F(x_l)$ is nonsingular for all $x_l,$ it follows that $\widehat{F}_l(x_{l-1}, x_l)$ is also non-singular for all $x_l$. Finally, with the above in mind, we obtain
 \begin{align*}
- \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) &=  \sum_{l=1}^{k} \widehat{F}_l(x_{l-1}, x_l)  
+\langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) &=  \sum_{l=1}^{k} \widehat{F}_l(x_{l-1}, x_l)  
+\begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l})  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l})  \\
+\end{bmatrix} .
+\end{align*}
+Now, expansion of the sum yields
+\begin{equation*}
+\begin{aligned}
+&\sum_{l=1}^{k} \widehat{F}_l(x_{l-1}, x_l) 
 \begin{bmatrix}
 \vec{f_l}(x_{l-1})  \\
 \vec{f_l}(x_{l})  \\
@@ -126,13 +132,71 @@ Note that since $F(t)$ is nonsingular for all $x_l,$ it follows that $\widehat{F
 \vec{g_l}(x_{l-1})  \\
 \vec{g_l}(x_{l})  \\
 \end{bmatrix} \\
-&=
-\sum_{l=1}^{k}  \mathcal{S}_l (\vec{f_l}, \vec{g_l}),
-\end{align*}
-
-
-i.e. we managed to express Green's formula as a sum of semibilinear forms $\mathcal{S}_l.$
-
+&= 
+\widehat{F}_1(x_0, x_1) \begin{bmatrix}
+\vec{f_1}(x_0)  \\
+\vec{f_1}(x_1)  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_1}(x_0)  \\
+\vec{g_1}(x_1)  \\
+\end{bmatrix}
++ \ldots + 
+\widehat{F}_k(x_{k-1}, x_k) \begin{bmatrix}
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)  \\
+\end{bmatrix} \\
+&= \underbrace{
+\begin{bmatrix}
+\widehat{F}_1(x_0, x_1) & 0 & \ldots & 0 & 0 \\
+0 & \widehat{F}_2(x_1, x_2) & \ldots & 0 & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \ldots & \widehat{F}_{k-1}(x_{k-2}, x_{k-1}) & 0 \\
+0 & 0 & \ldots & 0 & \widehat{F}_k(x_{k-1}, x_k)
+\end{bmatrix}}_\text{2nk$\times$2nk}
+\begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vec{f_2}(x_1)  \\
+\vec{f_2}(x_2) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix}
+\cdot 
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vec{g_2}(x_1)  \\
+\vec{g_2}(x_2) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix} \\
+&=: \mathcal{S} \left( \begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix},  
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}
+\right),
+\end{aligned}
+\end{equation*}
+i.e. we managed to express the Green's Formula as in terms of a semibilinear form $\mathcal{S}.$ Observe that the matrix on the second-last line is a block matrix where block matrices are 2n$\times$2n.
 \subsubsection*{Boundary-Form Formula}
 We turn to characterising an adjoint multipoint boundary condition using an extension of boundary form formula that Linda derived in her work.
 First, recall that the multipoint boundary conditions are of the form
@@ -215,14 +279,15 @@ we can write
 Thus we have found 2 compact ways of writing the multipoint boundary forms. Next, we extend the notion of a complementary boundary form.
 \newline
 \begin{definition}
-If $U = (U_1, \ldots, U_m)$ is any multipoint boundary form with $\mathrm{rank}(U) = m,$ and $U_c = (U_{m+1}, \ldots, U_{2n})$ is a multipoint boundary form with $\mathrm{rank}(U_c) = 2n-m$ such that $\mathrm{rank}(U_{1}, \ldots, U_{2n}) = 2n,$ then $U$ and $U_c$ are \textbf{complementary multipoint boundary forms}. 
+If $U = (U_1, \ldots, U_m)$ is any multipoint boundary form with $\mathrm{rank}(U) = m,$ and $U_c = (U_{m+1}, \ldots, U_{2nk})$ is a multipoint boundary form with $\mathrm{rank}(U_c) = 2nk-m$ such that $\mathrm{rank}(U_{1}, \ldots, U_{2nk}) = 2nk,$ then $U$ and $U_c$ are \textbf{complementary multipoint boundary forms}. 
 \end{definition}
-Note that extending $U_1, \ldots, U_m$ to $U_{1}, \ldots, U_{2n}$ is equivalent to embedding the matrix $(M_l :N_l)$ in a $2n \times 2n$ non-singular matrix for all $l = 1, \ldots, 2n,$ i.e. we can write
-\[ 
+Note that extending $U_1, \ldots, U_m$ to $U_{1}, \ldots, U_{2nk}$ is equivalent to embedding the matrices $M_l, N_l$ in a $2nk \times 2nk$ non-singular matrix, i.e. we can write
+\begin{align*}
 \begin{bmatrix}
 Uq \\
 U_c q
-\end{bmatrix} =
+\end{bmatrix} 
+&=
 \sum^k_{l=1}
 \begin{bmatrix}
 M_l & N_l \\
@@ -231,12 +296,62 @@ M_l & N_l \\
 \begin{bmatrix}
 \vec{q_l}(x_{l-1})  \\
 \vec{q_l}(x_{l})
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+M_1 & N_1 \\
+\overline{M}_1 & \overline{N}_1
 \end{bmatrix} 
-=: 
-\sum^k_{l=1}
-H_l \vec{q_l}
-\]
-where $\mathrm{rank}(H_l) = 2n$ for $l = 1, \ldots, 2n,$ and $\overline{M}_l, \overline{N}_l$ are $2n-m \times n$ matrices. Just like the boundary form formula proven by Linda, the multipoint boundary form formula is motivated by the desire to express Green's formula as a combination of boundary forms $U$ and $U_c.$ Namely, we have:
+\begin{bmatrix}
+\vec{q_1}(x_{0})  \\
+\vec{q_1}(x_1)
+\end{bmatrix} 
++ 
+\begin{bmatrix}
+M_2 & N_2 \\
+\overline{M}_2 & \overline{N}_2
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{q_2}(x_1)  \\
+\vec{q_2}(x_2)
+\end{bmatrix} 
++ \ldots +
+\begin{bmatrix}
+M_k & N_k \\
+\overline{M}_k & \overline{N}_k
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{q_k}(x_{k-1})  \\
+\vec{q_k}(x_k)
+\end{bmatrix} \\
+&= 
+\underbrace{
+\begin{bmatrix}
+M_1 & N_1 & M_2 & N_2 & \ldots & M_k & N_k \\
+\overline{M}_1 & \overline{N}_1 & \overline{M}_2 & \overline{N}_2 & \ldots & \overline{M}_k & \overline{N}_k
+\end{bmatrix} }_\text{$2nk \times 2nk$}
+\underbrace{\begin{bmatrix}
+\vec{q_1}(x_{0})  \\
+\vec{q_1}(x_1) \\
+\vec{q_2}(x_1)  \\
+\vec{q_2}(x_2) \\
+\vdots \\
+\vec{q_k}(x_{k-1})  \\
+\vec{q_k}(x_k)
+\end{bmatrix}}_\text{$2nk\times 1$} \\
+&=:
+H
+\begin{bmatrix}
+\vec{q_1}(x_{0})  \\
+\vec{q_1}(x_1) \\
+\vec{q_2}(x_1)  \\
+\vec{q_2}(x_2) \\
+\vdots \\
+\vec{q_k}(x_{k-1})  \\
+\vec{q_k}(x_k)
+\end{bmatrix}.
+\end{align*}
+where $\mathrm{rank}(H) = 2nk$ and $\overline{M}_l, \overline{N}_l$ are $2nk-m \times n$ matrices. Just like the boundary form formula proven by Linda, the multipoint boundary form formula is motivated by the desire to express Green's formula as a combination of boundary forms $U$ and $U_c.$ Namely, we have:
 \newline
 \begin{theorem}[Multipoint Boundary Form Formula]\label{mbff}
 Given any boundary form $U$ of rank $m,$ and any complementary form $U_c,$ there exist unique boundary forms $U^+_c, U^+$ of rank $m$ and $2n-m,$ respectively, such that
@@ -256,12 +371,19 @@ First, we have
 \begin{bmatrix}
 Uf \\
 U_c f
-\end{bmatrix} = \sum^k_{l=1}
-H_l \vec{f_l}.
+\end{bmatrix} = 
+H
+\begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix}.
 \]
 As shown in the subsection on Green's formula, we can write 
-\[ 
-\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) =  \sum_{l=1}^{k} \widehat{F}_l(x_{l-1}, x_l) \begin{bmatrix}
+\begin{align*}
+\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) &= \sum_{l=1}^{k} \widehat{F}_l(x_{l-1}, x_l) \begin{bmatrix}
 \vec{f_l}(x_{l-1})  \\
 \vec{f_l}(x_{l})  \\
 \end{bmatrix}
@@ -269,20 +391,98 @@ As shown in the subsection on Green's formula, we can write
 \begin{bmatrix}
 \vec{g_l}(x_{l-1})  \\
 \vec{g_l}(x_{l})  \\
-\end{bmatrix}   = \sum_{l=1}^{k}  \mathcal{S}_l (\vec{f_l}, \vec{g_l}).
-\]
-Now, by Proposition \ref{linfan-2.12}, for each $l,$ there exists a unique $2n\times 2n$ nonsingular matrix $J_l$ such that $\mathcal{S}_l (\vec{f_l}, \vec{g_l}) = H_l \vec{f_l} \cdot J_l \vec{g_l}.$ Let $U^+, U^+_c$ be such that 
+\end{bmatrix}  \\
+&= \mathcal{S} \left( \begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix},  
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}
+\right),
+\end{align*}
+Now, by Proposition \ref{linfan-2.12}, there exists a unique $2nk \times 2nk $ nonsingular matrix $J$ such that 
+$$\mathcal{S} \left( \begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix},  
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}
+\right)
+= H
+\begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix} \cdot 
+J\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}.$$ Let $U^+, U^+_c$ be such that 
 \[
 \begin{bmatrix}
 U^+_cg \\
 U^+ g
-\end{bmatrix} = \sum^k_{l=1}
-J_l \vec{g_l}.
+\end{bmatrix} = J\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}.
 \]
 Then, we obtain 
 \begin{align*}
-\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1})  =  \sum_{l=1}^{k}  \mathcal{S}_l (\vec{f_l}, \vec{g_l}) &= \sum_{l=1}^{k}  H_l \vec{f_l} \cdot J_l \vec{g_l} \\
-&= \left( \sum_{l=1}^{k}  H_l \vec{f_l}\right) \cdot \left( \sum_{l=1}^{k}  J_l \vec{g_l} \right) \\
+\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1})  = \mathcal{S} \left( \begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix},  
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}
+\right)
+&= H
+\begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix} \cdot 
+J\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix} \\
 &= \begin{bmatrix}
 Uf \\
 U_c f
@@ -298,7 +498,7 @@ which completes the proof.
 Theorem \ref{mbff} allows us to define an adjoint multipoint boundary form. Namely, 
 \newline
 \begin{definition}
-Suppose $U = (U_1, \ldots, U_m)$ is a multipoint boundary form with $\mathrm{rank}(U) = m,$ along with the condition that $Uq = \vec{0}$ for functions $q \in H^n(\pi).$ If $U^+$ is any boundary form with  $\mathrm{rank}(U^+) = 2n-m,$ determined as in Theorem \ref{mbff}, then the equation 
+Suppose $U = (U_1, \ldots, U_m)$ is a multipoint boundary form with $\mathrm{rank}(U) = m,$ along with the condition that $Uq = \vec{0}$ for functions $q \in H^n(\pi).$ If $U^+$ is any boundary form with  $\mathrm{rank}(U^+) = 2nk-m,$ determined as in Theorem \ref{mbff}, then the equation 
 \[ 
 U^+q = \vec{0}
 \]
@@ -311,7 +511,7 @@ In turn, the above lets us define the adjoint multipoint problem:
 Suppose $U = (U_1, \ldots, U_m)$ is a multipoint boundary form with $\mathrm{rank}(U) = m.$ Then, the problem of solving 
 \[ \pi_m: Lq = 0, \qquad Uq = \vec{0},\] 
 is called a homogeneous multipoint boundary value problem of rank $m.$ The problem of solving 
-\[ \pi_{2n-m}^+: L^+q = 0, \qquad U^+q = \vec{0},\] 
+\[ \pi_{2nk-m}^+: L^+q = 0, \qquad U^+q = \vec{0},\] 
 is an \textbf{adjoint multipoint boundary value problem} to $\pi_m.$
 \end{definition}
 
@@ -332,12 +532,12 @@ Finally, we extend Theorem 2.19 on Linda's Capstone \cite{linfan}.
 \begin{theorem}
 The boundary condition $U^+f = \vec{0}$ is adjoint to $Uf = \vec{0}$ if and only if \[ M_lF^{-1}(x_{l-1})P_l = N_l F^{-1}(x_l)Q_l \] for all $l = 1, \ldots, k,$ where $F(t)$ is the $n\times n$ matrix as given in Green's Formula subsection.  
 \end{theorem}
-Recall that just how $U$ is associated with a collection of $2m$ $m\times n$ matrices $M_l, N_l,$ so is $U^+$ associated with $2m$ $n\times(2n-m)$ matrices $P,Q$ such that $(P^{*}:Q^*)$ has rank $2n-m$ and 
+Recall that just how $U$ is associated with a collection of $2k$ $m\times n$ matrices $M_l, N_l,$ so is $U^+$ associated with $2k$ $n\times(2n-m)$ matrices $P,Q$ such that $(P^{*}:Q^*)$ has rank $2n-m$ and 
 \[ U^+q = \sum^k_{l=1} P^*_l \vec{q}_l(x_{l-1}) + Q^*_l \vec{q}_l(x_l). \]
 \begin{proof}
-Let $\vec{f_l} = (f_l, \ldots, f_l^{(n-1)})$ and $\vec{g_l} = (g_l, \ldots, g_l^{(n-1)}).$ Suppose that $U^+f = \vec{0}$ is adjoint to $Uf = \vec{0}.$ By definition of adjoint multipoint boundary condition, $U^+$ is determined as in Theorem \ref{mbff}. Thus, in determining $U^+,$ there exist multipoint boundary forms $U_c, U_c^+$ of rank $2n-m$ and $m$ respectively, such that the multipoint boundary form formula holds. As such, let 
+Let $\vec{f_l} = (f_l, \ldots, f_l^{(n-1)})$ and $\vec{g_l} = (g_l, \ldots, g_l^{(n-1)}).$ Suppose that $U^+f = \vec{0}$ is adjoint to $Uf = \vec{0}.$ By definition of adjoint multipoint boundary condition, $U^+$ is determined as in Theorem \ref{mbff}. Thus, in determining $U^+,$ there exist multipoint boundary forms $U_c, U_c^+$ of rank $2nk-m$ and $m$ respectively, such that the multipoint boundary form formula holds. As such, let 
 \begin{align*}
-U_c f &= \sum^k_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l), \quad &&\mathrm{rank}(\overline{M}_l : \overline{N}_l) =  2n - m \\
+U_c f &= \sum^k_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l), \quad &&\mathrm{rank}(\overline{M}_l : \overline{N}_l) =  2nk - m \\
 U_c^+ g &= \sum^k_{l=1} \overline{P}_l^* \vec{g}_l(x_{l-1}) + \overline{Q}_l^*  \vec{g}_l(x_l), \quad &&\mathrm{rank}( \overline{P}_l^* :  \overline{Q}_l^*) = m
 \end{align*}
 First, note that in the context of semibilinear form, we have $S f \cdot g = f \cdot S^* g,$ as given in Proposition 2.11 of Linda's capstone \cite[p.18]{linfan}. We use this to rewrite the multipoint boundary form formula as follows:
@@ -399,27 +599,27 @@ F(x_l)^{-1}\overline{Q}_l & F(x_l)^{-1}Q_l
 \end{bmatrix}
 = 
 \begin{bmatrix}
-E_{m\times m} & 0_{m\times 2n-m} \\
-0_{2n-m\times m} & E_{2n-m\times 2n-m} .
+E_{m\times m} & 0_{m\times 2nk-m} \\
+0_{2nk-m\times m} & E_{2nk-m\times 2nk-m} .
 \end{bmatrix},
 \] 
 which means that 
 \[ 
--  M_l  F(x_{l-1})^{-1} P_l + N_l F(x_l)^{-1}Q_l   =  0_{m\times 2n-m} \implies M_l  F(x_{l-1})^{-1} P_l = N_l F(x_l)^{-1}Q_l.
+-  M_l  F(x_{l-1})^{-1} P_l + N_l F(x_l)^{-1}Q_l   =  0_{m\times 2nk-m} \implies M_l  F(x_{l-1})^{-1} P_l = N_l F(x_l)^{-1}Q_l.
 \]
 Since $l$ is arbitrary, we conclude that the above holds for all $l = 1, \ldots, k.$
 
-Now, let $U_1^+$ be a multipoint boundary form of rank $2n-m$ such that 
+Now, let $U_1^+$ be a multipoint boundary form of rank $2nk-m$ such that 
 \[ 
 U_1^+ g = \sum^k_{l=1} (P_1)^*_l \vec{g}_l(x_{l-1}) + (Q_1)^*_l \vec{g}_l(x_l),
 \]
 for an appropriate collection of matrices $(P_1)^*_l, (Q_1)^*_l,$ with 
-\[\mathrm{rank}((P_1)^*_l : (Q_1)^*_l) = 2n-m, \qquad l = 1,\ldots, k.\]
+\[\mathrm{rank}((P_1)^*_l : (Q_1)^*_l) = 2nk-m, \qquad l = 1,\ldots, k.\]
  Suppose that 
 \[ M_l  F(x_{l-1})^{-1} (P_1)_l = N_l F(x_l)^{-1}(Q_1)_l, \qquad l = 1,\ldots, k \]
-holds. Now, fix $l$ and let $u_l$ be a $2n\times 1$ vector. Then, there exist $2n-m$ linearly independent solutions of the system $(M_l : N_l)_{m\times 2n}u_l = \vec{0}.$ By assumption, we have 
+holds. Now, fix $l$ and let $u_l$ be a $2n\times 1$ vector. Then, there exist $2nk-m$ linearly independent solutions of the system $(M_l : N_l)_{m\times 2n}u_l = \vec{0}.$ By assumption, we have 
 \[
--  M_l  F(x_{l-1})^{-1} (P_1)_l + N_l F(x_l)^{-1}(Q_1)_l   =  0_{m\times (2n-m)},
+-  M_l  F(x_{l-1})^{-1} (P_1)_l + N_l F(x_l)^{-1}(Q_1)_l   =  0_{m\times (2nk-m)},
 \]
 so that 
 \begin{equation}\label{system}
@@ -427,24 +627,24 @@ so that
 \begin{bmatrix}
 -F(x_{l-1})^{-1} (P_1)_l \\
 F(x_l)^{-1}(Q_1)_l
-\end{bmatrix}_{2n\times(2n-m)} = 0_{m \times(2n-m)}. 
+\end{bmatrix}_{2n\times(2nk-m)} = 0_{m \times(2nk-m)}. 
 \end{equation}
-This means that the $2n-m$ columns of the matrix 
+This means that the $2nk-m$ columns of the matrix 
 \[ (H_1)_l := \begin{bmatrix}
 -F(x_{l-1})^{-1} (P_1)_l \\
 F(x_l)^{-1}(Q_1)_l
 \end{bmatrix}
 \]
-form the solution space of the system \eqref{system}. Since $\mathrm{rank}((P_1)^*_l : (Q_1)^*_l) = 2n-m,$
+form the solution space of the system \eqref{system}. Since $\mathrm{rank}((P_1)^*_l : (Q_1)^*_l) = 2nk-m,$
 \[ 
 \mathrm{rank}
 \begin{bmatrix}
 (P_1)_l \\
 (Q_1)_l
 \end{bmatrix}
-= 2n-m.
+= 2nk-m.
 \] 
-Since $F(x_{l-1}), F(x_{l})$ are non-singular, $\mathrm{rank}(H_1) = 2n - m.$
+Since $F(x_{l-1}), F(x_{l})$ are non-singular, $\mathrm{rank}(H_1) = 2nk - m.$
 Now, if $U^+g = \sum^k_{l=1} P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l) = \vec{0}$ is a multipoint boundary condition adjoint to $Uf = \vec{0},$ then by multipoint boundary form formula we have that 
 \begin{align*}
 \begin{bmatrix}
@@ -564,9 +764,9 @@ Note that the left operand on RHS is invertible, so it has full rank. This means
 \[ H_l := \begin{bmatrix}
 -F(x_{l-1})^{-1} P_l \\
 F(x_l)^{-1}Q_l
-\end{bmatrix}_{n \times (2n -m)}
+\end{bmatrix}_{n \times (2nk -m)}
 \]
-has rank $2n -m.$ Thus, columns $H_l$ also form the solution space of the system \eqref{system}, just like $(H_1)_l.$ But this suggests that $(H_1)_l$ and $H_l$ are the same up to a linear transformation, i.e. there exists a non-singular $(2n-m)\times (2n-m)$ matrix $A_l$ such that $(H_1)_l = H_l A,$ i.e.
+has rank $2nk -m.$ Thus, columns $H_l$ also form the solution space of the system \eqref{system}, just like $(H_1)_l.$ But this suggests that $(H_1)_l$ and $H_l$ are the same up to a linear transformation, i.e. there exists a non-singular $(2nk-m)\times (2nk-m)$ matrix $A_l$ such that $(H_1)_l = H_l A,$ i.e.
 \[ 
 \begin{bmatrix}
 -F(x_{l-1})^{-1} (P_1)_l \\
