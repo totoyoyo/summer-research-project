@@ -1,0 +1,22 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{dunford}
+Nelson Dunford and Jacob~T. Schwartz, \emph{Linear {Operators} {II}},
+  Interscience, 1963.
+
+\bibitem{PS2018}
+Beatrice Pelloni and David~A. Smith, \emph{Nonlocal and multipoint boundary
+  value problems for linear evolution equations}, • (2018).
+
+\bibitem{linfan}
+Linfan Xiao, \emph{Algorithmic solution of high order partial differential
+  equations in julia via the fokas transform method}, 2018.
+
+\end{thebibliography}

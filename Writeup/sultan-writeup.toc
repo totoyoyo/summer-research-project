@@ -1,0 +1,12 @@
+\babel@toc {turkish}{}
+\contentsline {section}{\numberline {1}Adjoint of an ordinary differential operator}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Formulation of the problem}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Green's formula}{2}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Boundary-Form formula}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Checking adjointness}{6}{subsection.1.4}
+\contentsline {section}{\numberline {2}Extension of the work by Pelloni \& Smith}{13}{section.2}
+\contentsline {subsection}{\numberline {2.1}Formulation of the problem}{13}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Global relations}{13}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Multipoint conditions}{16}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}The Dirichlet-to-Neumann map in $\mathcal {B}$ form}{17}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}The Dirichlet-to-Neumann map in $\mathcal {A}$ form}{19}{subsection.2.5}

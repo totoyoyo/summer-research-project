@@ -1,0 +1,101 @@
+% Standard packages
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{xcolor,graphicx}
+\usepackage{verbatim}
+\usepackage{hyperref}
+% To use turkish characters
+\usepackage[utf8]{inputenc}
+% Layout of headers & footers
+\usepackage{titling}
+\usepackage{fancyhdr}
+\pagestyle{fancy} \lhead{{\theauthor}} \chead{} \rhead{{\theshorttitle}} \lfoot{} \cfoot{\thepage} \rfoot{}
+
+% Hyphenation
+\hyphenation{non-zero}
+
+% Theorem definitions in the amsthm standard
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{sublem}[thm]{Sublemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conc}[thm]{Conclusion}
+\newtheorem{conj}[thm]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{cond}[thm]{Condition}
+\newtheorem{asm}[thm]{Assumption}
+\newtheorem{ntn}[thm]{Notation}
+\newtheorem{prob}[thm]{Problem}
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{eg}[thm]{Example}
+\newtheorem*{hint}{Hint}
+
+%% Mathmode shortcuts
+% Number sets
+\newcommand{\NN}{\mathbb N}              % The set of naturals
+\newcommand{\NNzero}{\NN_0}              % The set of naturals including zero
+\newcommand{\NNone}{\NN}                 % The set of naturals excluding zero
+\newcommand{\ZZ}{\mathbb Z}              % The set of integers
+\newcommand{\QQ}{\mathbb Q}              % The set of rationals
+\newcommand{\RR}{\mathbb R}              % The set of reals
+\newcommand{\CC}{\mathbb C}              % The set of complex numbers
+\newcommand{\KK}{\mathbb K}              % An arbitrary field
+% Modern typesetting for the real and imaginary parts of a complex number
+\renewcommand{\Re}{\operatorname*{Re}} \renewcommand{\Im}{\operatorname*{Im}}
+% Upright d for derivatives
+\newcommand{\D}{\ensuremath{\,\mathrm{d}}}
+% Upright i for imaginary unit
+\newcommand{\ri}{\ensuremath{\mathrm{i}}}
+% Upright e for exponentials
+\newcommand{\re}{\ensuremath{\mathrm{e}}}
+% abbreviation for \lambda
+\newcommand{\la}{\ensuremath{\lambda}}
+% Make epsilons look more different from the element symbol
+\renewcommand{\epsilon}{\varepsilon}
+% Always use slanted forms of \leq, \geq
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+% Shorthand for "if and only if" symbol
+\newcommand{\Iff}{\ensuremath{\Leftrightarrow}}
+% Make bold symbols for vectors
+\providecommand{\BVec}[1]{\mathbf{#1}}
+% Hyperbolic functions
+\providecommand{\sech}{\operatorname{sech}}
+\providecommand{\csch}{\operatorname{csch}}
+\providecommand{\ctnh}{\operatorname{ctnh}}
+% sinc function
+\providecommand{\sinc}{\operatorname{sinc}}
+
+% add two sub and superscripts with a space between them
+\newcommand{\Mspacer}{\;} %Spacer for below Matrix display functions
+\newcommand{\M}[3]{#1_{#2\Mspacer#3}} %Print a symbol with two subscripts eg a matrix entry
+\newcommand{\Msup}[4]{#1_{#2\Mspacer#3}^{#4}} %Print a symbol with two subscripts and a superscript eg a matrix entry
+\newcommand{\Msups}[5]{#1_{#2\Mspacer#3}^{#4\Mspacer#5}} %Print a symbol with two subscripts and two superscripts eg a matrix entry
+\newcommand{\MAll}[7]{\prescript{#1}{#2}{#3}_{#4\Mspacer#5}^{#6\Mspacer#7}} %Print a symbol with two subscripts and two superscripts eg a matrix entry
+
+% Make really wide hat for Fourier transforms applied to large functions
+\usepackage{scalerel}
+\usepackage{stackengine}
+\stackMath
+\newcommand\reallywidecheck[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\scalebox{-1}{\tmpbox}}%
+}
+\providecommand{\widecheck}{\reallywidecheck}
+
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}

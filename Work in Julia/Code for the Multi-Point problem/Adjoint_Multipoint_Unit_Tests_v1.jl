@@ -6,8 +6,8 @@
 # Importing packages and modules
 ##########################################################################################################################################################
 # upload the .jl file with the code that constructs the adjoint
-include("/Users/ww/Desktop/SRP/capstone-master/work_in_julia_v1.1.1/Construct_Multipoint_Adjoint_v1.jl")
-# using construct_adjoint
+include("/Users/ww/Desktop/SRP/summer-research-project/Work_in_Julia/Code_for_the_Multipoint_problem/Construct_Multipoint_Adjoint_v1.jl")
+# using Construct_Multipoint_Adjoint_v1
 ##########################################################################################################################################################
 # Helper functions
 ##########################################################################################################################################################
@@ -46,6 +46,41 @@ function generate_symPFunctions(n; random = false, constant = false)
                 symPFunction = sum([pFunctionCoeffs[i+1]*t^(length(pFunctionCoeffs)-1-i) for i in 0:(length(pFunctionCoeffs)-1)])
                 symPFunctions[i] = symPFunction
             end
+        end
+    end
+    return symPFunctions
+end 
+
+function generate_fake_symPFunctions(n; random = false)
+    global t = symbols("t")
+    global r = symbols("r")
+    if random
+        symPFunctions = Array{Number}(undef, 1,n+1)
+        for i = 1:(n+1)
+            seed = rand(0:1)
+            if seed == 0 # constant
+                symPFunctionRe = rand(Uniform(1.0,10.0), 1, 1)[1]
+                symPFunctionIm = rand(Uniform(1.0,10.0), 1, 1)[1]
+                symPFunction = symPFunctionRe + symPFunctionIm*im
+            else # variable
+                coeffsNo = rand(1:5)
+                pFunctionCoeffsRe = rand(Uniform(1.0,10.0), 1, coeffsNo)
+                pFunctionCoeffsIm = rand(Uniform(1.0,10.0), 1,  coeffsNo)
+                pFunctionCoeffs = pFunctionCoeffsRe + pFunctionCoeffsIm*im
+                symPFunction = sum([pFunctionCoeffs[i+1]*t^(length(pFunctionCoeffs)-1-i) for i in 0:(length(pFunctionCoeffs)-1)])
+            end
+            symPFunctions[i] = symPFunction
+        end
+    else
+        symPFunctions = Array{Number}(undef, 1,n+1)
+        for i = 1:(n+1)
+                # Each p_k is a polynomial function with random degree between 0 to 4 and random coefficients between 0 and 10
+            coeffsNo = rand(1:5)
+            pFunctionCoeffsRe = rand(Uniform(1.0,10.0), 1, coeffsNo)
+            pFunctionCoeffsIm = rand(Uniform(1.0,10.0), 1,  coeffsNo)
+            pFunctionCoeffs = pFunctionCoeffsRe + pFunctionCoeffsIm*im
+            symPFunction = sum([pFunctionCoeffs[i+1]*r*t^(length(pFunctionCoeffs)-1-i) for i in 0:(length(pFunctionCoeffs)-1)])
+            symPFunctions[i] = symPFunction
         end
     end
     return symPFunctions
@@ -109,12 +144,12 @@ function generate_pFunctions(n; random = false, constant = false)
             end
         end
     end
-    return pFunctions, pDerivMatrix
+    return pFunctions
 end
 
 function generate_interval(n, a = 0, b = 1)
-    if n == 1 || n == 2
-        n = 3
+    if n == 2
+        return (a, b)
     end
     array = Array{Any}(undef, 1, n)
     t = a
@@ -124,19 +159,18 @@ function generate_interval(n, a = 0, b = 1)
     end
     array[1] = a
     array[n] = b
-    array = prettyRound.(array; digs = 5)
     interval = ntuple(i -> array[i], n)
     return interval
 end
 
-function generate_fake_interval_1(n, a = 0, b = 1)
-    if n == 1 || n == 2
-        n = 3
+function generate_fake_interval_1(n, a = 0, b = 1) # adds a string
+    if n == 2
+        return ("str", b)
     end
     array = Array{Any}(undef, 1, n)
     t = 0
     for j=2:(n-1)
-        array[j] = rand()
+        array[j] = rand(Uniform(t, b))
         t = array[j]
     end
     array[1] = a
@@ -145,9 +179,9 @@ function generate_fake_interval_1(n, a = 0, b = 1)
     return interval
 end
 
-function generate_fake_interval_2(n, a = 0, b = 1)
-    if n == 1 || n == 2
-        n = 4
+function generate_fake_interval_2(n, a = 0, b = 1) # make interval non increasing
+    if n == 2
+        return (b, a)
     end
     array = Array{Any}(undef, 1, n)
     t = 0
@@ -155,15 +189,15 @@ function generate_fake_interval_2(n, a = 0, b = 1)
         array[n-j+1] = rand(Uniform(t, b))
         t = array[n-j+1]
     end
-    array[1] = a
-    array[n] = b
+    array[1] = b
+    array[n] = a
     interval = ntuple(i -> array[i], n)
     return interval
 end
 
 function generate_pFunctionsAndSymPFunctions(n; random = false, constant = false)
     global t = symbols("t")
-    interval = generate_interval(n,)
+    interval = generate_interval(n, 1.0, 10.0)
     if random
         pFunctions = Array{Union{Function, Number}}(undef,1,n+1)
         symPFunctions = Array{Number}(undef, 1,n+1)
@@ -232,31 +266,11 @@ function generate_pFunctionsAndSymPFunctions(n; random = false, constant = false
     end
     return pFunctions, symPFunctions, pDerivMatrix, interval
 end
-
-function rank_def(n)
-    U = rand(Uniform(1.0,10.0), n, n)
-    V = rand(Uniform(1.0,10.0), n, n)
-    Fu = LinearAlgebra.qr(U)
-    Fv = LinearAlgebra.qr(V)
-    
-    diags = rand(Uniform(1.0,10.0), 1, n-2)
-    diag_vals = Array{Number}(undef, 1, n)
-    for i=1:(n-2)
-        diag_vals[i] = diags[i]
-    end
-    diag_vals[n], diag_vals[n-1] = 0, 0
-    S = zeros(n,n)
-    for i=1:n
-        S[i,i] = diag_vals[i]
-    end
-    return Fu.Q*S*Fv.Q
-end
                
 #############################################################################
 # Tests
 #############################################################################
-# Test the algorithm to generate valid adjoint U+
-# Test the algorithm to generate valid adjoint U+
+#
 function test_generate_adjoint(n, k)
     global results = [true]
     global t = symbols("t")
@@ -267,20 +281,20 @@ function test_generate_adjoint(n, k)
         (pFunctions, symPFunctions, pDerivMatrix, interval) = generate_pFunctionsAndSymPFunctions(n; random = false, constant = true)
         symL = SymLinearDifferentialOperator(symPFunctions, interval, t)
         L = LinearDifferentialOperator(pFunctions, interval, symL)
-        m = length(interval) - 1
-        M = Array{Any}(undef, 1, m)
-        N = Array{Any}(undef, 1, m)
-        for i=1:m
-            MCandRe = rand(Uniform(1.0,10.0), n, n)
-            MCandIm = rand(Uniform(1.0,10.0), n, n)
+        m = length(interval)
+        M = Array{Any}(undef, 1, m-1)
+        N = Array{Any}(undef, 1, m-1)
+        for i=1:(m-1)
+            MCandRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            MCandIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             MCand = MCandRe + MCandIm*im
-            NCandRe = rand(Uniform(1.0,10.0), n, n)
-            NCandIm = rand(Uniform(1.0,10.0), n, n)
+            NCandRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            NCandIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             NCand = NCandRe + NCandIm*im
             M[i] = MCand
             N[i] = NCand
         end
-        U = VectorMultiBoundaryForm(M, N)
+        U = VectorMultipointForm(M, N)
         println("Testing: order of L = $n")
         passed = false
         try
@@ -299,20 +313,20 @@ function test_generate_adjoint(n, k)
         (pFunctions, symPFunctions, pDerivMatrix, interval) = generate_pFunctionsAndSymPFunctions(n; random = false, constant = false)
         symL = SymLinearDifferentialOperator(symPFunctions, interval, t)
         L = LinearDifferentialOperator(pFunctions, interval, symL)
-        m = length(interval) - 1
-        M = Array{Any}(undef, 1, m)
-        N = Array{Any}(undef, 1, m)
-        for i=1:m
-            MCandRe = rand(Uniform(1.0,10.0), n, n)
-            MCandIm = rand(Uniform(1.0,10.0), n, n)
+        m = length(interval)
+        M = Array{Any}(undef, 1, m-1)
+        N = Array{Any}(undef, 1, m-1)
+        for i=1:(m-1)
+            MCandRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            MCandIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             MCand = MCandRe + MCandIm*im
-            NCandRe = rand(Uniform(1.0,10.0), n, n)
-            NCandIm = rand(Uniform(1.0,10.0), n, n)
+            NCandRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            NCandIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             NCand = NCandRe + NCandIm*im
             M[i] = MCand
             N[i] = NCand
         end
-        U = VectorMultiBoundaryForm(M, N)
+        U = VectorMultipointForm(M, N)
         println("Testing: order of L = $n")
         try
             adjoint = get_adjointU(L, U, pDerivMatrix)
@@ -330,20 +344,20 @@ function test_generate_adjoint(n, k)
         (pFunctions, symPFunctions, pDerivMatrix, interval) = generate_pFunctionsAndSymPFunctions(n; random = true)
         symL = SymLinearDifferentialOperator(symPFunctions, interval, t)
         L = LinearDifferentialOperator(pFunctions, interval, symL)
-        m = length(interval) - 1
-        M = Array{Any}(undef, 1, m)
-        N = Array{Any}(undef, 1, m)
-        for i=1:m
-            MCandRe = rand(Uniform(1.0,10.0), n, n)
-            MCandIm = rand(Uniform(1.0,10.0), n, n)
+        m = length(interval)
+        M = Array{Any}(undef, 1, m -1)
+        N = Array{Any}(undef, 1, m -1)
+        for i=1:(m-1)
+            MCandRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            MCandIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             MCand = MCandRe + MCandIm*im
-            NCandRe = rand(Uniform(1.0,10.0), n, n)
-            NCandIm = rand(Uniform(1.0,10.0), n, n)
+            NCandRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            NCandIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             NCand = NCandRe + NCandIm*im
             M[i] = MCand
             N[i] = NCand
         end
-        U = VectorMultiBoundaryForm(M, N)
+        U = VectorMultipointForm(M, N)
         println("Testing: order of L = $n")
         try
             adjoint = get_adjointU(L, U, pDerivMatrix)
@@ -360,11 +374,11 @@ function test_generate_adjoint(n, k)
     return all(results)
 end
 
-for n = 1:10
+for n = 2:10
     println(test_generate_adjoint(n, 10))
 end
 
-# Test the SymLinearDifferentialOperator definition
+#
 function test_symLinearDifferentialOperatorDef(n, k)
     global results = [true]
     global t = symbols("t")
@@ -372,11 +386,11 @@ function test_symLinearDifferentialOperatorDef(n, k)
     for counter = 1:k
         println("Test $counter")
         println("Testing definition of SymLinearDifferentialOperator: symP_k are Function")
-        symPFunctions = generate_symPFunctions(n; random = false, constant = false)
-        interval_1 = generate_interval(n)
+        symPFunctions_1 = generate_symPFunctions(n; random = false, constant = false)
+        interval_1 = generate_interval(n, 1, 10)
         passed = false
         try
-            SymLinearDifferentialOperator(symPFunctions, interval_1, t)
+            SymLinearDifferentialOperator(symPFunctions_1, interval_1, t)
             passed = true
         catch err
             println("Failed with $err")
@@ -387,11 +401,11 @@ function test_symLinearDifferentialOperatorDef(n, k)
         append!(results, passed)
 
         println("Testing definition of SymLinearDifferentialOperator: symP_k are constant")
-        symPFunctions = generate_symPFunctions(n; random = false, constant = true)
-        interval_2 = generate_interval(n)
+        symPFunctions_2 = generate_symPFunctions(n; random = false, constant = true)
+        interval_2 = generate_interval(n, 1, 10)
         passed = false
         try
-            SymLinearDifferentialOperator(symPFunctions, interval_2, t)
+            SymLinearDifferentialOperator(symPFunctions_2, interval_2, t)
             passed = true
         catch err
             println("Failed with $err")
@@ -402,11 +416,11 @@ function test_symLinearDifferentialOperatorDef(n, k)
         append!(results, passed)
 
         println("Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number")
-        symPFunctions = generate_symPFunctions(n; random = true)
-        interval_3 = generate_interval(n)
+        symPFunctions_3 = generate_symPFunctions(n; random = true)
+        interval_3 = generate_interval(n, 1, 10)
         passed = false
         try
-            SymLinearDifferentialOperator(symPFunctions, interval_3, t)
+            SymLinearDifferentialOperator(symPFunctions_3, interval_3, t)
             passed = true
         catch err
             println("Failed with $err")
@@ -417,11 +431,11 @@ function test_symLinearDifferentialOperatorDef(n, k)
         append!(results, passed)
 
         println("Testing StructDefinitionError: symP_k should be SymPy.Sym or Number")
-        symPFunctions = hcat(generate_symPFunctions(n-1; random = true), ["str"])
-        interval_4 = generate_interval(n)
+        symPFunctions_4 = hcat(generate_symPFunctions(n-1; random = true), ["str"])
+        interval_4 = generate_interval(n, 1, 10)
         passed = false
         try
-            SymLinearDifferentialOperator(symPFunctions, interval_4, t)
+            SymLinearDifferentialOperator(symPFunctions_4, interval_4, t)
         catch err
             if isa(err,StructDefinitionError) && err.msg == "symP_k should be SymPy.Sym or Number"
                 passed = true
@@ -436,11 +450,11 @@ function test_symLinearDifferentialOperatorDef(n, k)
         append!(results, passed)
 
         println("Testing StructDefinitionError: Only one free symbol is allowed in symP_k")
-        interval_5 = generate_interval(n)
-        r = symbols("r")
+        interval_5 = generate_interval(n, 1, 10)
+        symPFunctions_5 = generate_fake_symPFunctions(n)
         passed = false
         try
-            SymLinearDifferentialOperator([t+1 t+1 r*t+1], interval_5, t)
+            SymLinearDifferentialOperator(symPFunctions_5, interval_5, t)
         catch err
             if isa(err,StructDefinitionError) && err.msg == "Only one free symbol is allowed in symP_k"
                 passed = true
@@ -455,11 +469,11 @@ function test_symLinearDifferentialOperatorDef(n, k)
         append!(results, passed)
             
         println("Testing StructDefinitionError: Interval must consist of numbers")
-        symPFunctions = generate_symPFunctions(n; random = false, constant = false)
+        symPFunctions_6 = generate_symPFunctions(n; random = false, constant = false)
         interval_6 = generate_fake_interval_1(n)
         passed = false
         try
-            SymLinearDifferentialOperator(symPFunctions, interval_6, t)
+            SymLinearDifferentialOperator(symPFunctions_6, interval_6, t)
         catch err
             if isa(err,StructDefinitionError) && err.msg == "Interval must consist of numbers"
                 passed = true
@@ -474,11 +488,11 @@ function test_symLinearDifferentialOperatorDef(n, k)
         append!(results, passed)
     
         println("Testing StructDefinitionError: Terms in interval must be strictly increasing")
-        symPFunctions = generate_symPFunctions(n; random = false, constant = false)
+        symPFunctions_7 = generate_symPFunctions(n; random = false, constant = false)
         interval_7 = generate_fake_interval_2(n)
         passed = false
         try
-            SymLinearDifferentialOperator(symPFunctions, interval_7, t)
+            SymLinearDifferentialOperator(symPFunctions_7, interval_7, t)
         catch err
             if isa(err,StructDefinitionError) && err.msg == "Terms in interval must be strictly increasing"
                 passed = true
@@ -494,11 +508,12 @@ function test_symLinearDifferentialOperatorDef(n, k)
     end
     return all(results)
 end
-
-for n = 1:10
+ 
+for n = 2:10
     println(test_symLinearDifferentialOperatorDef(n, 10))
 end
 
+#
 # Test the LinearDifferentialOperator definition
 function test_LinearDifferentialOperatorDef(n, k)
     global results = [true]
@@ -509,11 +524,11 @@ function test_LinearDifferentialOperatorDef(n, k)
 
         # Variable p_k
         println("Testing definition of LinearDifferentialOperator: p_k are Function")
-        (pFunctions, symPFunctions, pDerivMatrix, interval_1) = generate_pFunctionsAndSymPFunctions(n; random = false, constant = false)
-        symL = SymLinearDifferentialOperator(symPFunctions, interval_1, t)
+        (pFunctions_1, symPFunctions_1, pDerivMatrix_1, interval_1) = generate_pFunctionsAndSymPFunctions(n; random = false, constant = false)
+        symL_1 = SymLinearDifferentialOperator(symPFunctions_1, interval_1, t)
         passed = false
         try
-            L = LinearDifferentialOperator(pFunctions, interval_1, symL)
+            L = LinearDifferentialOperator(pFunctions_1, interval_1, symL_1)
             passed = true
         catch err
             println("Failed with $err")
@@ -525,11 +540,11 @@ function test_LinearDifferentialOperatorDef(n, k)
 
         # Constant coefficients
         println("Testing definition of LinearDifferentialOperator: p_k are Constants")
-        (pFunctions, symPFunctions, pDerivMatrix, interval_2) = generate_pFunctionsAndSymPFunctions(n; random = false, constant = true)
-        symL = SymLinearDifferentialOperator(symPFunctions, interval_2, t)
+        (pFunctions_2, symPFunctions_2, pDerivMatrix_2, interval_2) = generate_pFunctionsAndSymPFunctions(n; random = false, constant = true)
+        symL_2 = SymLinearDifferentialOperator(symPFunctions_2, interval_2, t)
         passed = false
         try
-            LinearDifferentialOperator(pFunctions, interval_2, symL)
+            LinearDifferentialOperator(pFunctions_2, interval_2, symL_2)
             passed = true
         catch err
             println("Failed with $err")
@@ -541,11 +556,11 @@ function test_LinearDifferentialOperatorDef(n, k)
 
         # Mixed coefficients
         println("Testing definition of LinearDifferentialOperator: p_k are mixed")
-        # (pFunctions, symPFunctions, pDerivMatrix) = generate_pFunctionsAndSymPFunctions(n; random = true)
-        symL = SymLinearDifferentialOperator([1 1 t+1], interval_2, t)
+        (pFunctions_3, symPFunctions_3, pDerivMatrix_3, interval_3) = generate_pFunctionsAndSymPFunctions(n; random = false)
+        symL_3 = SymLinearDifferentialOperator(symPFunctions_3, interval_3, t)
         passed = false
         try
-            LinearDifferentialOperator([1 t->1 t->t+1], interval_2, symL)
+            LinearDifferentialOperator(pFunctions_3, interval_3, symL_3)
             passed = true
         catch err
             println("Failed with $err")
@@ -556,10 +571,12 @@ function test_LinearDifferentialOperatorDef(n, k)
         append!(results, passed)
 
         println("Testing StructDefinitionError: p_k should be Function or Number")
-        pFunctions = hcat(generate_pFunctions(n-1; random = true)[1], ["str"])
+        pFunctions_4 = hcat(generate_pFunctions(n-1; random = true)[1], ["str"])
+        interval_4 = interval_3
+        symL_4 = symL_3
         passed = false
         try
-            LinearDifferentialOperator(['s' 1 1], interval_2, symL)
+            LinearDifferentialOperator(['s' 1 1], interval_4, symL_4)
         catch err
             if err.msg == "p_k should be Function or Number" && (isa(err,StructDefinitionError))
                 passed = true
@@ -574,11 +591,15 @@ function test_LinearDifferentialOperatorDef(n, k)
         append!(results, passed)
 
         println("Testing StructDefinitionError: Number of p_k and symP_k do not match")
-        symL = SymLinearDifferentialOperator([1 1 t+1], interval_2, t)
+        interval_5 = interval_4
+        sym_PFunctions_5 = generate_symPFunctions(n; random = false, constant = true)
+        symL_5 = SymLinearDifferentialOperator(sym_PFunctions_5, interval_5, t) 
+        pFunctions_5 = generate_pFunctions(n+1; random = false, constant = true)
         passed = false
         try
-            LinearDifferentialOperator([1 t->1], interval_2, symL)
+            LinearDifferentialOperator(pFunctions_5, interval_5, symL_5)
         catch err
+
             if err.msg == "Number of p_k and symP_k do not match" && (isa(err, StructDefinitionError))
                 passed = true
                 println("Passed!")
@@ -591,12 +612,13 @@ function test_LinearDifferentialOperatorDef(n, k)
         end
         append!(results, passed)
 
-        println("Testing StructDefinitionError: Intervals of L and symL do not match")
-        symL = SymLinearDifferentialOperator([1 1 t+1], interval_2, t)
-        interval_3 = generate_interval(n)
+        println("Testing StructDefinitionError: Intervals of L and symL do not match") # done
+        interval_6 = interval_5
+        symL_6 = SymLinearDifferentialOperator([1 1 t+1], interval_6, t)
+        interval_fake = generate_interval(n, 1, 9)
         passed = false
         try
-            LinearDifferentialOperator([1 t->1 t->t+1], interval_3, symL)
+            LinearDifferentialOperator([1 t->1 t->t+1], interval_fake, symL_6)
         catch err
             if err.msg == "Intervals of L and symL do not match" && (isa(err, StructDefinitionError))
                 passed = true
@@ -609,42 +631,38 @@ function test_LinearDifferentialOperatorDef(n, k)
             println("Failed!")
         end
         append!(results, passed)
-    
     end
     return all(results)
 end
 
-for n = 1:10
+for n = 2:10
     println(test_LinearDifferentialOperatorDef(n, 10))
 end
 
-# Test the VectorBoundaryForm definition
-function test_VectorMultiBoundaryFormDef(n, k)
+#
+function test_VectorMultipointFormDef(n, k)
     global results = [true]
-    if n == 1
-        n = 2
-    end
     for counter = 1:k
         println("Test $counter")
         
-        println("Testing the definition of VectorBoundaryForm")
+        println("Testing the definition of VectorMultipointForm")
         interval_1 = generate_interval(n)
-        m = length(interval_1) - 1
-        M = Array{Any}(undef, 1, m)
-        N = Array{Any}(undef, 1, m)
-        for j=1:m
-            MRe = rand(Uniform(1.0,10.0), n, n)
-            MIm = rand(Uniform(1.0,10.0), n, n)
+        m = length(interval_1)
+        M = Array{Any}(undef, 1, m-1)
+        N = Array{Any}(undef, 1, m-1)
+        for j=1:(m-1)
+            MRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            MIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             M_j = MRe + MIm*im
             M[j] = M_j
-            NRe = rand(Uniform(1.0,10.0), n, n)
-            NIm = rand(Uniform(1.0,10.0), n, n)
+            NRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            NIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             N_j = NRe + NIm*im
             N[j] = N_j
         end
         passed = false
         try
-            VectorMultiBoundaryForm(M, N)
+            VectorMultipointForm(M, N)
             passed = true
         catch err
             println("Failed with $err")
@@ -656,18 +674,18 @@ function test_VectorMultiBoundaryFormDef(n, k)
 
         println("Testing StructDefinitionError: Entries of M_i, N_i should be Number")
         interval_2 = generate_interval(n)
-        m = length(interval_2) - 1
-        M = Array{Any}(undef, 1, m)
-        N = Array{Any}(undef, 1, m)
-        for j=1:m
-            MRe = rand(Uniform(1.0,10.0), n, n)
-            MIm = rand(Uniform(1.0,10.0), n, n)
+        m = length(interval_2) 
+        M = Array{Any}(undef, 1, m-1)
+        N = Array{Any}(undef, 1, m-1)
+        for j=1:(m-1)
+            MRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            MIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             M_j = MRe + MIm*im
             M_j = convert(Array{Any}, M_j)
             M_j[j,j] = "str"
             M[j] = M_j
-            NRe = rand(Uniform(1.0,10.0), n, n)
-            NIm = rand(Uniform(1.0,10.0), n, n)
+            NRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            NIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             N_j = NRe + NIm*im
             N_j = convert(Array{Any}, N_j)
             N_j[j,j] = "str"
@@ -675,7 +693,7 @@ function test_VectorMultiBoundaryFormDef(n, k)
         end
         passed = false
         try
-            VectorMultiBoundaryForm(M, N)
+            VectorMultipointForm(M, N)
         catch err
             if err.msg == "Entries of M_i, N_i should be Number" && isa(err, StructDefinitionError)
                 passed = true
@@ -691,55 +709,24 @@ function test_VectorMultiBoundaryFormDef(n, k)
 
         println("Testing StructDefinitionError: M_i, N_i dimensions do not match")
         interval_3 = generate_interval(n)
-        m = length(interval_3) - 1
-        M = Array{Any}(undef, 1, m)
-        N = Array{Any}(undef, 1, m)
-        for j=1:m
-            MRe = rand(Uniform(1.0,10.0), n, n-1)
-            MIm = rand(Uniform(1.0,10.0), n, n-1)
+        m = length(interval_3) 
+        M = Array{Any}(undef, 1, m-1)
+        N = Array{Any}(undef, 1, m-1)
+        for j=1:(m-1)
+            MRe = rand(Uniform(1.0,10.0), (m-1)*n, n+1)
+            MIm = rand(Uniform(1.0,10.0), (m-1)*n, n+1)
             M_j = MRe + MIm*im
             M[j] = M_j
-            NRe = rand(Uniform(1.0,10.0), n, n)
-            NIm = rand(Uniform(1.0,10.0), n, n)
+            NRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            NIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
             N_j = NRe + NIm*im
             N[j] = N_j
         end
         passed = false
         try
-            VectorMultiBoundaryForm(M, N)
+            VectorMultipointForm(M, N)
         catch err
             if err.msg == "M_i, N_i dimensions do not match" && isa(err,StructDefinitionError)
-                passed = true
-                println("Passed!")
-            else
-                println("Failed with $err")
-            end
-        end
-        if !passed
-            println("Failed!")
-        end
-        append!(results, passed)
-
-        println("Testing StructDefinitionError: M_i, N_i should be square matrices")
-        interval_4 = generate_interval(n)
-        m = length(interval_4) - 1
-        M = Array{Any}(undef, 1, m)
-        N = Array{Any}(undef, 1, m)
-        for j=1:m
-            MRe = rand(Uniform(1.0,10.0), n, n-1)
-            MIm = rand(Uniform(1.0,10.0), n, n-1)
-            M_j = MRe + MIm*im
-            M[j] = M_j
-            NRe = rand(Uniform(1.0,10.0), n, n-1)
-            NIm = rand(Uniform(1.0,10.0), n, n-1)
-            N_j = NRe + NIm*im
-            N[j] = N_j
-        end
-        passed = false
-        try
-            VectorMultiBoundaryForm(M, N)
-        catch err
-            if err.msg == "M_i, N_i should be square matrices" && isa(err,StructDefinitionError)
                 passed = true
                 println("Passed!")
             else
@@ -754,18 +741,26 @@ function test_VectorMultiBoundaryFormDef(n, k)
         println("Testing StructDefinitionError: Boundary operators not linearly independent")
         
         interval_5 = generate_interval(n)
-        m = length(interval_5) - 1
-        M = Array{Any}(undef, 1, m)
-        N = Array{Any}(undef, 1, m)
-        for j=1:m
-            M[j] = rank_def(n)
-            N[j] = M[j]
+        m = length(interval_5)
+        M = Array{Any}(undef, 1, m-1)
+        N = Array{Any}(undef, 1, m-1)
+        for j=1:(m-1)
+            MRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            MIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            M_j = MRe + MIm*im
+            M_j[(m-1)*n, :] = zeros(1,n)
+            M[j] = M_j
+            NRe = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            NIm = rand(Uniform(1.0,10.0), (m-1)*n, n)
+            N_j = NRe + NIm*im
+            N_j[(m-1)*n, :] = zeros(1,n)
+            N[j] = N_j
         end
         passed = false
         try
-            VectorMultiBoundaryForm(M, N)
+            VectorMultipointForm(M, N)
         catch err
-            if err.msg == "Boundary operators not linearly independent" && isa(err,StructDefinitionError)
+            if err.msg == "Boundary operators are not linearly independent" && isa(err,StructDefinitionError)
                 passed = true
                     println("Passed!")
                 else
@@ -780,7 +775,7 @@ function test_VectorMultiBoundaryFormDef(n, k)
 
     return all(results)
 end
-
-for n = 1:10
-    println(test_VectorMultiBoundaryFormDef(n, 10))
+ 
+for n = 2:10
+    println(test_VectorMultipointFormDef(n, 10))
 end

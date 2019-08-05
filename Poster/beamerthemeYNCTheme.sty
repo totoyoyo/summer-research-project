@@ -1,0 +1,95 @@
+\ProvidesPackage{beamerthemeYNCTheme}  
+\usepackage[scale = 0.92]{lato}
+\usepackage{fontspec}
+\newfontfamily\ralewayreg[Ligatures=TeX]{Raleway-Regular.otf}
+\newfontfamily\raleway[Ligatures=TeX]{Raleway-SemiBold.otf}
+
+\mode<presentation>
+\definecolor{suRed}{RGB}{164, 40, 34}
+\definecolor{suYellow}{RGB}{254, 204, 58}
+\definecolor{suSilver}{RGB}{153, 153, 153}
+\definecolor{yncBlue}{RGB}{7, 77, 139}
+
+
+\setbeamercolor{headline}{fg=white, bg = yncBlue}
+\setbeamerfont{footline}{size=\large}
+\setbeamercolor{separation line}{bg=yncBlue}
+\setbeamercolor{title in headline}{bg=yncBlue,fg=white}
+\setbeamercolor{author in headline}{fg=white, bg = yncBlue}
+
+\setbeamercolor{framesubtitle}{fg=suRed, bg=white}
+\setbeamercolor{author in head/foot}{fg=white, bg=suRed}
+\setbeamercolor{title in head/foot}{fg=suRed, bg=suRed}
+
+\setbeamercolor*{normal text}{fg=black, bg=white}
+\setbeamercolor*{block body}{bg=white,fg=black}
+\setbeamercolor*{block title}{fg=yncBlue,bg=white} % used to be white, suRed
+\setbeamerfont*{block title}{size=\huge,series=\bf}
+\setbeamercolor{upper separation line head}{fg=suRed} 
+
+\setbeamercolor*{example body}{fg=suSilver,bg=black}
+\setbeamercolor*{example text}{fg=suSilver,bg=black}
+\setbeamercolor*{example title}{bg=suRed,fg=suSilver}
+
+
+
+
+\setbeamertemplate{navigation symbols}{}  % no navigation on a poster
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{block begin}{
+  \begin{beamercolorbox}[center]{block title}
+ \raleway
+  \fontseries{sb}\selectfont \large{\insertblocktitle} 
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{lower separation line head}
+    \rule{0pt}{1.2pt}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{block body}%
+ \lato\fontseries{l}\selectfont\small% 
+  \vskip1ex
+  }
+  \setbeamertemplate{block end}{
+  \end{beamercolorbox}
+  \vskip3ex
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{  
+  \leavevmode
+ \begin{beamercolorbox}[wd=\paperwidth]{headline}
+\begin{columns}[T]
+    \begin{column}{.07\paperwidth}
+    \end{column}
+      \begin{column}{.14\paperwidth}
+      \vspace*{1.8cm}
+      \begin{flushleft}
+      \hspace{0.5cm}\includegraphics[scale = 0.5]{images/ync-logo}
+            \vspace*{1.8cm}
+                  \end{flushleft}
+      \end{column}
+      \begin{column}{.55\paperwidth}
+        \vskip2ex
+        \centering
+        \usebeamercolor{title in headline}{\vspace*{1.5cm}
+        \raleway
+        					\fontseries{sb}\selectfont 
+        					\huge{{\inserttitle}}
+					\\[0.5ex]} 
+        \usebeamercolor{author in headline}{\color{fg}\ralewayreg
+        \Large{\insertauthor}\\[1ex]}
+        \vspace*{0.5cm}
+      \end{column}
+      \begin{column}{.2\paperwidth}
+      \end{column}
+      \begin{column}{.02\paperwidth}
+      \end{column}
+    \end{columns}
+    %\vskip2ex
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+    \rule{0pt}{3pt}
+  \end{beamercolorbox}
+}
+

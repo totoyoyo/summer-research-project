@@ -1,0 +1,54 @@
+\mode<presentation>{\usetheme{YNCTheme}}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, latexsym}
+\usepackage[orientation=landscape,size=a0,scale=1.3]{beamerposter}
+\usepackage{array,booktabs,tabularx, ragged2e}
+\newcolumntype{Z}{>{\centering\arraybackslash}X} 
+\newcommand{\pphantom}{\textcolor{white}}
+%\listfiles
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{sublem}[thm]{Sublemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conc}[thm]{Conclusion}
+\newtheorem{conj}[thm]{Conjecture}
+%\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{cond}[thm]{Condition}
+\newtheorem{asm}[thm]{Assumption}
+\newtheorem{ntn}[thm]{Notation}
+\newtheorem{prob}[thm]{Problem}
+%\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{eg}[thm]{Example}
+%\newtheorem*{hint}{Hint}
+
+\newlength{\columnheight}
+\setlength{\columnheight}{.78\textheight}
+
+\newcommand{\refPaper}[1]{[\ref{itm:#1}]}
+\newcommand{\startPoster}{
+	\begin{frame}
+	\begin{columns}[t]
+}
+
+\newcommand{\finishPoster}{
+\end{columns}
+\end{frame}
+}
+
+\newcommand{\newColumn}[2]{
+	\begin{column}{#1}
+	\begin{beamercolorbox}[center,wd=\textwidth]{postercolumn}
+	\begin{minipage}[T]{\textwidth} %.95
+	\parbox[t][\columnheight]{\textwidth}{ 
+	#2
+	}\end{minipage}
+	\end{beamercolorbox}
+	\end{column}
+}

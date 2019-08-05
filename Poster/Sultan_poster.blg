@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[1] Config.pm:307> INFO - Logfile is 'Sultan_poster.blg'
+[82] biber-darwin:315> INFO - === Tue Jul 30, 2019, 13:52:44
+[143] Biber.pm:371> INFO - Reading 'Sultan_poster.bcf'
+[378] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[389] Utils.pm:193> WARN - The file 'Sultan_poster.bcf' does not contain any citations!
+[398] bbl.pm:636> INFO - Writing 'Sultan_poster.bbl' with encoding 'UTF-8'
+[398] bbl.pm:739> INFO - Output to Sultan_poster.bbl
+[400] Biber.pm:110> INFO - WARNINGS: 1

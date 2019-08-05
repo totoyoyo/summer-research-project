@@ -2,24 +2,23 @@
 #Date created: June 17, 2019
 #Name: Sultan Aitzhan
 #Description: The relevant code for constructing multipoint adjoint matrices is copypasted here from $\textit{Construct_Multipoint_Adjoint_v1.ipynb}$ and the test functions are updated. ##########################################################################################################################################################
+
 # Importing packages
 ##########################################################################################################################################################
 using SymPy
-# using Roots
 using Distributions
-# using IntervalArithmetic
-# using IntervalRootFinding
 using ApproxFun
 import LinearAlgebra
 ##########################################################################################################################################################
+
 # Global Constants
 TOL = 1e-05
 DIGITS = 3
 INFTY = 10
 ##########################################################################################################################################################
+
 # Helper functions
-##########################################################################################################################################################
-# Check whether all elements in a not necessarily homogeneous array satisfy a given condition.
+
 function check_all(array, condition)
     for x in array
         if !condition(x)
@@ -29,8 +28,7 @@ function check_all(array, condition)
     return true
 end
 
-# Set an appropriate tolerance when checking whether x \approx y
-
+#
 function set_tol(x::Union{Number, Array}, y::Union{Number, Array}; atol = TOL)
     if isa(x, Number) && isa(y, Number)
        return atol * mean([x y])
@@ -47,7 +45,7 @@ function set_tol(x::Union{Number, Array}, y::Union{Number, Array}; atol = TOL)
     end
 end
 
-# Evaluate function on x where the function is Function, SymPy.Sym, or Number.
+#
 function evaluate(func::Union{Function, SymPy.Sym, Number}, a::Number)
     if isa(func, Function)
         funcA = func(a)
@@ -71,7 +69,7 @@ function evaluate(func::Union{Function, SymPy.Sym, Number}, a::Number)
     return funcA
 end
 
-# Generate two-integer partitions of n
+# 
 function partition(n::Int)
     output = []
     for i = 0:n
@@ -81,7 +79,7 @@ function partition(n::Int)
     return output
 end
 
-# Construct the symbolic expression for the kth derivative of u with respect to t
+#
 function get_deriv(u::Union{SymPy.Sym, Number}, k::Int)
     if k < 0
         throw(error("Non-negative k required"))
@@ -114,7 +112,7 @@ function get_deriv(u::Union{SymPy.Sym, Number}, k::Int)
     end
 end
 
-# Function addition (f + g)(x) := f(x) + g(x)
+#
 function add_func(f::Union{Number, Function}, g::Union{Number, Function})
     function h(x)
         if isa(f, Number)
@@ -134,7 +132,7 @@ function add_func(f::Union{Number, Function}, g::Union{Number, Function})
     return h
 end
 
-# Function multiplication (f * g)(x) := f(x) * g(x)
+# 
 function mult_func(f::Union{Number, Function}, g::Union{Number, Function})
     function h(x)
         if isa(f, Number)
@@ -154,6 +152,7 @@ function mult_func(f::Union{Number, Function}, g::Union{Number, Function})
     return h
 end
 
+#
 function sym_to_func(sym::Union{SymPy.Sym, Number})
     try
         freeSymbols = free_symbols(sym)
@@ -179,7 +178,7 @@ function sym_to_func(sym::Union{SymPy.Sym, Number})
 end
 
 
-# Implement a polynomial in the form of Julia function given an array containing coefficients of x^n, x^{n-1},..., x^2, x, 1.
+# 
 function get_polynomial(coeffList::Array)
     polynomial = 0
     n = length(coeffList)-1
@@ -190,7 +189,7 @@ function get_polynomial(coeffList::Array)
     return polynomial
 end
 
-# Get the kth derivative of a polynomial implemented above
+# 
 function get_polynomialDeriv(coeffList::Array, k::Int)
     if k < 0
         throw(error("Only nonnegative degrees are allowed"))
@@ -206,6 +205,7 @@ function get_polynomialDeriv(coeffList::Array, k::Int)
     return get_polynomial(newCoeffList)
 end
 
+#
 function prettyRound(x::Number; digs::Int = DIGITS)
     if isa(x, Int)
         return x
@@ -226,6 +226,7 @@ function prettyRound(x::Number; digs::Int = DIGITS)
     end
 end
 
+#
 function prettyPrint(x::Union{Number, SymPy.Sym})
     expr = x
     if isa(expr, SymPy.Sym)
@@ -245,15 +246,41 @@ function prettyPrint(x::Union{Number, SymPy.Sym})
     return prettyExpr
 end
 
+#
+function array_hcat_helper(matr1, matr2)
+    j = size(matr1[1])[2]
+    k = size(matr1[1])[1]
+    arr = convert(Array{Complex}, Array{Float64}(undef, size(matr1[1])[1], 2k)) # Avoid InexactError
+    t = 0
+    for i=1:length(matr1)
+        arr[1:k, (t*j+1):(t+1)*j] = matr1[i]
+        arr[1:k, ((t+1)*j+1):(t+2)*j] = matr2[i]
+        t +=2
+    end
+    return arr
+end
+
+#
+function checker_matrix(matr1, matr2, tol) 
+    m = size(matr1)[1]
+    n = size(matr1)[2]
+    for i=1:m
+        for j=1:n
+            if isapprox(matr1[i,j], matr2[i,j]; atol = tol) == false
+                return false
+            end
+        end
+    end
+    return true
+end
 ##########################################################################################################################################################
+
 # Structs
-##########################################################################################################################################################
-# A struct definition error type is the class of all errors in a struct definition
 struct StructDefinitionError <: Exception
     msg::String
 end
 
-# A symbolic linear differential operator of order n is encoded by an 1 x (n+1) array of symbolic expressions and an interval [a,b].
+#
 struct SymLinearDifferentialOperator
     # Entries in the array should be SymPy.Sym or Number. SymPy.Sym seems to be a subtype of Number, i.e., Array{Union{Number,SymPy.Sym}} returns Array{Number}. But specifying symPFunctions as Array{Number,2} gives a MethodError when the entries are Sympy.Sym objects.
     symPFunctions::Array
@@ -294,8 +321,7 @@ function check_symLinearDifferentialOperator_input(symL::SymLinearDifferentialOp
 end
 
 
-# A linear differential operator of order n is encoded by an 1 x (n+1) array of functions, an interval [a,b], and its symbolic expression.
-
+# 
 struct LinearDifferentialOperator
     pFunctions::Array # Array of julia functions or numbers representing constant functions
     interval::Tuple
@@ -310,14 +336,10 @@ struct LinearDifferentialOperator
     end
 end
 
-# Assume symFunc has only one free symbol, as required by the definition of SymLinearDifferentialOperator. 
-# That is, assume the input symFunc comes from SymLinearDifferentialOperator.
-function check_func_sym_equal(func::Union{Function,Number}, symFunc, interval::Tuple, t::SymPy.Sym) # symFunc should be Union{SymPy.Sym, Number}, but somehow SymPy.Sym gets ignored
+function check_func_sym_equal(func::Union{Function,Number}, symFunc, interval::Tuple, t::SymPy.Sym)
     a = interval[1]
     b = interval[length(interval)]
-    # Randomly sample 1000 points from (a,b) and check if func and symFunc agree on them
     for i = 1:1000
-        # Check endpoints
         if i == 1
             x = a
         elseif i == 2
@@ -328,9 +350,6 @@ function check_func_sym_equal(func::Union{Function,Number}, symFunc, interval::T
         funcEvalX = evaluate(func, x)
         if isa(symFunc, SymPy.Sym)
             symFuncEvalX = SymPy.N(subs(symFunc,t,x))
-            # N() converts SymPy.Sym to Number
-            # https://docs.sympy.org/latest/modules/evalf.html
-            # subs() works no matter symFunc is Number or SymPy.Sym
         else
             symFuncEvalX = symFunc
         end
@@ -347,52 +366,42 @@ function check_func_sym_equal(func::Union{Function,Number}, symFunc, interval::T
     return true
 end
 
-# Check whether the inputs of L are valid.
 function check_linearDifferentialOperator_input(L::LinearDifferentialOperator)
     pFunctions, interval, symL = L.pFunctions, L.interval, L.symL
     symPFunctions, t = symL.symPFunctions, symL.t
-    # domainC = Complex(a..b, 0..0) # Domain [a,b] represented in the complex plane
     p0 = pFunctions[1]
-    # p0Chebyshev = Fun(p0, a..b) # Chebysev polynomial approximation of p0 on [a,b]
     if !check_all(pFunctions, pFunc -> (isa(pFunc, Function) || isa(pFunc, Number)))
         throw(StructDefinitionError(:"p_k should be Function or Number"))
     elseif length(pFunctions) != length(symPFunctions)
         throw(StructDefinitionError(:"Number of p_k and symP_k do not match"))
     elseif interval != symL.interval
         throw(StructDefinitionError(:"Intervals of L and symL do not match"))
-    # # Assume p_k are in C^{n-k}. Check whether p0 vanishes on [a,b]. 
-    # # roots() in IntervalRootFinding doesn't work if p0 is sth like t*im - 2*im. Neither does find_zero() in Roots.
-    # # ApproxFun.roots() 
-    # elseif (isa(p0, Function) && (!isempty(roots(p0Chebyshev)) || all(x->x>b, roots(p0Chebyshev)) || all(x->x<b, roots(p0Chebyshev)) || p0(a) == 0 || p0(b) == 0)) || p0 == 0 
-    #     throw(StructDefinitionError(:"p0 vanishes on [a,b]"))
     elseif !all(i -> check_func_sym_equal(pFunctions[i], symPFunctions[i], interval, t), 1:length(pFunctions))
-        # throw(StructDefinitionError(:"symP_k does not agree with p_k on [a,b]"))
-        warn("symP_k does not agree with p_k on the interval") # Make this a warning instead of an error because the functionalities of Julia Functions may be more than those of SymPy objects; we do not want to compromise the functionalities of LinearDifferentialOperator because of the restrictions on SymPy.
+        warn("symP_k does not agree with p_k on the interval") 
     else
         return true
     end
 end
 
-# A boundary condition Ux = 0 is encoded by an ordered pair of two matrices (M, N) whose entries are Numbers.
-struct VectorMultiBoundaryForm
+# 
+struct VectorMultipointForm
     MM::Array
     NN::Array
-    VectorMultiBoundaryForm(MM::Array, NN::Array) =
+    VectorMultipointForm(MM::Array, NN::Array) =
     try
         U = new(MM, NN)
-        check_vectorMultiBoundaryForm_input(U)
+        check_vectorMultipointForm_input(U)
         return U
     catch err
         throw(err)
     end
 end
 
-# Check whether the input matrices that characterize U are valid
-function check_vectorMultiBoundaryForm_input(U::VectorMultiBoundaryForm)
+function check_vectorMultipointForm_input(U::VectorMultipointForm)
     # M, N = U.M, U.N
     # Avoid Inexact() error when taking rank()
-    M = U.MM
-    N = U.NN
+    M = copy(U.MM)
+    N = copy(U.NN)
     checker = Array{Bool}(undef, 1, length(M))
     for i = 1:length(M)
         M_i, N_i = M[i], N[i]
@@ -400,13 +409,12 @@ function check_vectorMultiBoundaryForm_input(U::VectorMultiBoundaryForm)
             throw(StructDefinitionError(:"Entries of M_i, N_i should be Number"))
         elseif size(M_i) != size(N_i)
             throw(StructDefinitionError(:"M_i, N_i dimensions do not match"))
-        elseif size(M_i)[1] != size(M_i)[2]
-            throw(StructDefinitionError(:"M_i, N_i should be square matrices"))
-        elseif LinearAlgebra.rank(hcat(convert(Array{Complex}, M[i]), convert(Array{Complex}, N[i]))) != size(convert(Array{Complex}, M[i]))[1] # rank() throws weird "InexactError()" when taking some complex matrices
-            throw(StructDefinitionError(:"Boundary operators not linearly independent"))
         else
             checker[i] = true
         end
+    end
+    if LinearAlgebra.rank(array_hcat_helper(M, N)) != size(M[1])[1]
+        throw(StructDefinitionError(:"Boundary operators are not linearly independent"))
     end
     for x in checker
         if !(x == true)
@@ -417,9 +425,7 @@ function check_vectorMultiBoundaryForm_input(U::VectorMultiBoundaryForm)
 end
 
 ##########################################################################################################################################################
-# Functions
-##########################################################################################################################################################
-# Construct L from symL by turning symPFunctions to Julia Function objects
+# Main Functions
 function get_L(symL::SymLinearDifferentialOperator)
     symPFunctions, interval, t = symL.symPFunctions, symL.interval, symL.t
     if check_all(symPFunctions, x->!isa(x, SymPy.Sym))
@@ -431,9 +437,8 @@ function get_L(symL::SymLinearDifferentialOperator)
     return L
 end
 
-# Calculate the rank of U, i.e., rank(M:N)
-function get_URank(U::VectorMultiBoundaryForm)
-    # Avoid InexactError() when taking hcat() and rank()
+# 
+function get_URank(U::VectorMultipointForm)
     M = U.MM
     N = U.NN
     checker = Array{Int64}(undef, 1, length(M))
@@ -451,29 +456,33 @@ function get_URank(U::VectorMultiBoundaryForm)
 end
 
 # Find Uc, a complementary form of U
-function get_Uc(U::VectorMultiBoundaryForm)
+function get_Uc(U::VectorMultipointForm)
     try
-        check_vectorMultiBoundaryForm_input(U)
+        check_vectorMultipointForm_input(U)
         M, N = copy(U.MM), copy(U.NN)
-        P = convert.(Array{Complex}, M)
-        Q = convert.(Array{Complex}, N)       
-        n = get_URank(U)
-        I = complex(Matrix{Float64}(LinearAlgebra.I, 2n, 2n))
-        for i=1:length(M) 
-            M_i = convert(Array{Complex}, M[i])
-            N_i = convert(Array{Complex}, N[i])
-            mat_i = hcat(M_i, N_i)
-            for k = 1:(2*n)
-                newMat_k = vcat(mat_i, I[k:k,:])
-                if LinearAlgebra.rank(newMat_k) == LinearAlgebra.rank(mat_i) + 1
-                mat_i = newMat_k
+        P = copy(M)
+        Q = copy(N)
+        m = length(M)
+        n = size(M[1])[2]
+        I = complex(Matrix{Float64}(LinearAlgebra.I, 2n*m, 2n*m))
+        H_top = array_hcat_helper(M, N)
+        
+        mat = convert(Array{Complex}, H_top) 
+        for k = 1:(2n*m)
+            newMat = vcat(mat, I[k:k,:])
+            newMat = convert(Array{Complex}, newMat)
+            if LinearAlgebra.rank(newMat) == LinearAlgebra.rank(mat) + 1
+                mat = newMat
             end
         end
-        UcHcat_i = mat_i[(n+1):(2n),:]
-        P[i] = UcHcat_i[:,1:n]
-        Q[i] = UcHcat_i[:,(n+1):(2n)]
+        H_bottom = mat[(size(M[1])[1]+1):2n*m, :]
+        j = 0
+        for i = 1:length(M)
+            P[i] = H_bottom[:, (j*n+1):(j+1)*n]
+            Q[i] = H_bottom[:, ((j+1)*n+1):(j+2)*n]
+            j += 2
         end
-        Uc = VectorMultiBoundaryForm(P, Q)
+        Uc = VectorMultipointForm(P, Q)
         return Uc
     catch err
         return err
@@ -481,18 +490,16 @@ function get_Uc(U::VectorMultiBoundaryForm)
 end
 
 # Construct H from M, N, Mc, Nc
-function get_H(U::VectorMultiBoundaryForm, Uc::VectorMultiBoundaryForm)
+function get_H(U::VectorMultipointForm, Uc::VectorMultipointForm)
     M, N = copy(U.MM), copy(U.NN) # need to use copies of U and Uc, not the actual things
     P, Q = copy(Uc.MM), copy(Uc.NN)
-    H = convert.(Array{Complex}, M)
-    for i=1:length(M)
-        MHcatN = hcat(convert(Array{Complex}, M[i]), convert(Array{Complex}, N[i]))
-        McHcatNc = hcat(convert(Array{Complex}, P[i]), convert(Array{Complex}, Q[i]))
-        H[i] = vcat(MHcatN, McHcatNc)
-    end
+    MHcatN = array_hcat_helper(M, N)
+    McHcatNc = array_hcat_helper(P, Q)
+    H = vcat(MHcatN, McHcatNc)
     return H
 end
 
+#
 function get_pDerivMatrix(L::LinearDifferentialOperator; symbolic = false)
     if symbolic
         symL = L.symL
@@ -527,7 +534,7 @@ function get_pDerivMatrix(L::LinearDifferentialOperator; symbolic = false)
 end
 
 
-# Find Bjk using explicit formula
+# 
 function get_Bjk(L::LinearDifferentialOperator, j::Int, k::Int; symbolic = false, pDerivMatrix = get_pDerivMatrix(L; symbolic = symbolic))
     n = length(L.pFunctions)-1
     if j <= 0 || j > n || k <= 0 || k > n
@@ -549,7 +556,7 @@ function get_Bjk(L::LinearDifferentialOperator, j::Int, k::Int; symbolic = false
     return sum
 end
 
-# Construct the B matrix using explicit formula
+# 
 function get_B(L::LinearDifferentialOperator; symbolic = false, pDerivMatrix = get_pDerivMatrix(L; symbolic = symbolic))
     n = length(L.pFunctions)-1
     B = Array{Union{Function, Number, SymPy.Sym}}(undef, n, n)
@@ -578,40 +585,37 @@ function get_BHat(L::LinearDifferentialOperator, B::Array)
         BHat[(n+1):(2n), 1:n] = zeros(n, n)
         BHats_Array[i] = BHat
     end
-    return BHats_Array
+    BBHat = complex(Matrix{Float64}(LinearAlgebra.I, 2k*n, 2k*n))
+    j = 0
+    for i=1:k
+        BBHat[(j*n+1):(j+2)*n, (j*n+1):(j+2)*n] = BHats_Array[i]
+        j += 2
+    end
+    return BBHat
 end
 
-# Construct J = (B_hat * H^{(-1)})^*, where ^* denotes conjugate transpose
-function get_J(BHat_Array, H_Array)
-    k = length(BHat_Array)
-    J = Array{Any}(undef, 1, k)
-    for i=1:k
-        BHat_i = BHat_Array[i]
-        H_i = H_Array[i] 
-        n = size(H_i)[1]
-        H_i = convert(Array{Complex}, H_i)
-        J_i = (BHat_i * inv(H_i))'
-        J[i] = J_i
-    end
+#
+function get_J(BHat, H)
+    J = (BHat * inv(H))'
     return J
 end
 
-# Construct U+
-function get_adjoint_Candidate(J_Array)
-    PStar = Array{Any}(undef, 1, length(J_Array))
-    QStar = Array{Any}(undef, 1, length(J_Array))
-    for i=1:length(J_Array)
-        J_i = J_Array[i]
-        n = convert(Int, size(J_i)[1]/2)
-        J = convert(Array{Complex}, J_i)
-        PStar[i] = J_i[(n+1):2n,1:n]
-        QStar[i] = J_i[(n+1):2n, (n+1):2n]
+# 
+function get_adjoint_Candidate(J, n, k)
+    PStar = Array{Any}(undef, 1, k)
+    QStar = Array{Any}(undef, 1, k)
+    J = J[(n*k+1):2n*k, :]
+    j = 0
+    for i=1:k
+        PStar[i] = J[:, (j*n+1):(j+1)*n]
+        QStar[i] = J[:, ((j+1)*n+1):(j+2)*n]
+        j += 2
     end
-    adjointU = VectorMultiBoundaryForm(PStar, QStar)
+    adjointU = VectorMultipointForm(PStar, QStar)
     return adjointU
 end
 
-# Construct the symbolic expression of \xi = [x; x'; x''; ...], an n x 1 vector of derivatives of x(t)
+# 
 function get_xi(L::LinearDifferentialOperator; symbolic = true, xSym= nothing)
     if symbolic
         t = L.symL.t
@@ -638,12 +642,13 @@ function get_xi(L::LinearDifferentialOperator; symbolic = true, xSym= nothing)
 end
 
 
-# Get boundary condition Ux = M\xi(a) + N\xi(b)
-function get_Ux(L::LinearDifferentialOperator, U::VectorMultiBoundaryForm, xSym)
+# 
+function get_Ux(L::LinearDifferentialOperator, U::VectorMultipointForm, xSym)
     interval = L.interval
-    k = length(interval)-1
+    n = length(L.pFunctions)-1 # order of the problem
+    k = length(interval)-1 # number of points minus 1
     xi = get_xi(L; symbolic = false, xSym = xSym)
-    summand = zeros(k,1)
+    summand = zeros(n*k, 1)
     M, N = copy(U.MM), copy(U.NN)
     for i=1:k
         xiEvalA = evaluate.(xi, interval[i])
@@ -654,37 +659,36 @@ function get_Ux(L::LinearDifferentialOperator, U::VectorMultiBoundaryForm, xSym)
     return summand
 end
 
-# Check if U+ is valid (only works for homogeneous cases Ux=0)
-function check_adjoint(L::LinearDifferentialOperator, U::VectorMultiBoundaryForm, adjointU::VectorMultiBoundaryForm, B::Array)
+# 
+function check_adjoint(L::LinearDifferentialOperator, U::VectorMultipointForm, adjointU::VectorMultipointForm, B::Array)
     interval = L.interval
-    k = length(interval)-1
-    M, N = U.MM, U.NN
-    P, Q = (adjointU.MM)', (adjointU.NN)'
-    # Avoid InexactError() when taking inv()
+    n = length(L.pFunctions) - 1
+    k = length(interval) - 1
+    M, N = copy(U.MM), copy(U.NN)
+    P, Q = (copy(adjointU.MM)), (copy(adjointU.NN))
     checker = Array{Bool}(undef, 1, k)
+    left = convert(Array{Complex}, Array{Float64, 2}(undef, n*k, n*k))
+    right = convert(Array{Complex}, Array{Float64, 2}(undef, n*k, n*k))
     for i=1:k
         BEvalA = convert(Array{Complex}, evaluate.(B, interval[i]))
         BEvalB = convert(Array{Complex}, evaluate.(B, interval[i+1]))
-        left = M[i] * inv(BEvalA) * P[i]
-        right = N[i] * inv(BEvalB) * Q[i]
-        tol = set_tol(left, right)
-        checker[i] = all(j -> isapprox(left[j], right[j]; atol = tol), 1:length(left)) # Can't use == to deterimine equality because left and right are arrays of floats
+    
+        left += M[i] * inv(BEvalA) * (P[i])'
+        right += N[i] * inv(BEvalB) * (Q[i])'
     end
-    for x in checker
-        if x != true
-            return false
-        end
-        return true
-    end
+    tol = set_tol(left, right)
+    return checker_matrix(left, right, tol) 
 end
 
-function get_adjointU(L::LinearDifferentialOperator, U::VectorMultiBoundaryForm, pDerivMatrix=get_pDerivMatrix(L))
+#
+function get_adjointU(L::LinearDifferentialOperator, U::VectorMultipointForm, pDerivMatrix=get_pDerivMatrix(L))
     B = get_B(L; pDerivMatrix = pDerivMatrix)
     BHat_Arr = get_BHat(L, B)
     Uc = get_Uc(U)
     H_Arr = get_H(U, Uc)
     J_Arr = get_J(BHat_Arr, H_Arr)
-    adjointU = get_adjoint_Candidate(J_Arr)
+    adjointU = get_adjoint_Candidate(J_Arr, length(L.pFunctions) -1, length(L.interval) - 1)
+    return adjointU
     if check_adjoint(L, U, adjointU, B)
         return adjointU
     else

@@ -1,0 +1,1823 @@
+% Preamble
+\documentclass[10pt,reqno,oneside,a4paper]{article}
+\usepackage[a4paper,includeheadfoot,left=25mm,right=25mm,top=00mm,bottom=20mm,headheight=20mm]{geometry}
+\input{texHead}
+\author{Sultan Aitzhan \& Dave Smith}
+\title{Unified Transform Method for Multipoint Problems}
+\newcommand{\theshorttitle}{UTM for Multipoint Problems}
+\date{\today}
+\allowdisplaybreaks
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+%\tableofcontents
+
+\section{Adjoint of an ordinary differential operator}
+
+In this section, we extend the construction of an adjoint problem, mostly following a similar argument as given by Linda in \cite{linfan}.
+\subsection{Formulation of the problem}
+Consider a closed interval $[a,b].$ Fix $n\in\mathbb{N},$ and let the differential operator be defined as
+\[ 
+L  := \sum^n_{k=0} a_k(t)\left( \frac{d}{dt}\right)^k, \mbox{ where } a_k(t) \in C^{\infty}[a,b] \mbox{ and } a_n(t) \neq 0~ \forall t \in [a,b].
+\]
+Fix $k \in \mathbb{N},$ and let $\{ a = x_0 < x_1 < \ldots < x_k = b\}$ be a partition of $[a,b].$ Let the domain of $L$ be given by the function space
+\begin{equation*}
+\begin{aligned}
+C^{n-1}_{\pi}[a,b] = \Big\{ &f: [a,b] \to \mathbb{C} \mbox{ s.t. } \forall l\in \{1, 2, \ldots, k \}, \\
+&f_l := f\big\vert_{(\eta_{l-1}, \eta_l)} \mbox{ admits an extension } g_l \mbox{ to } [\eta_{l-1}, \eta_l] \mbox{ s.t. } g_l \in C^{n-1}[\eta_{l-1}, \eta_l] \Big\}.
+\end{aligned}
+\end{equation*}
+Consider a homogeneous multipoint BVP of rank $m$
+\[ \pi: Lq = 0, \qquad Uq = \vec{0},\]
+where $U = (U_1, \ldots, U_m)$ is a vector multipoint form with 
+\[ 
+U_i(q) = \sum^{k}_{l=1} \sum^{n-1}_{j=0}[\alpha_{ijl} q_l^{(j)}(x_{l-1}) + \beta_{ijl} q_l^{(j)}(x_{l})], \qquad i \in \{ 1, \ldots, m \}, 
+\]
+where $\alpha_{ijl}, \beta_{ijl} \in \mathbb{R}, q \in C^{n-1}_{\pi}[a,b].$ Our goal is to construct an adjoint multipoint value problem (MVP) to $\pi$
+\[ 
+\pi^+: L^+ q = 0, \qquad U^+q = \vec{0},
+\] 
+with 
+\[ 
+L^+  := \sum^n_{k=0} (-1)^k \left(\overline{a_k}(t) \frac{d}{dt}\right)^k, \mbox{ where } \overline{a_k}(t) \mbox{ is the complex conjugate of } a_k(t), ~ k = 0, \ldots, n,
+\]
+and $U^+$ is an appropriate vector multipoint form.
+
+\subsection{Green's formula}
+For any $f,g \in C^{n-1}_{\pi}[a,b],$ application of Green's formula yields
+\[ \langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k}\sum_{p,q=0}^{n-1}[F_{p\,q}(x_l) f_l^{(p)}(x_l)g_l^{(q)}(x_l) - F_{p\,q}(x_{l-1})f_l^{(p)}(x_{l-1})g_l^{(q)}(x_{l-1})], \]
+where $F(t)$ denotes an $n\times n$ boundary matrix at the point $t \in [a,b].$ From \cite[p. 1286]{dunford}, the entries of $F(t)$ are given by
+\begin{equation*}
+\begin{aligned}
+F_{p\,q}(t) &= \sum^{n-p-1}_{k = j} (-1)^k \binom{k}{j} \left( \frac{d}{dt}\right)^{k-j} a_{p+k+1}(t), &&\qquad p + q< n - 1\\
+F_{p\,q}(t) &= (-1)^q  a_{n}(t), &&\qquad p + q= n - 1\\
+F_{p\,q}(t) &= 0, &&\qquad p + q > n - 1.
+\end{aligned}
+\end{equation*}
+Observe that since $\mathrm{det}\left(F(t)\right) = (a_0(t))^n \neq 0,$ the matrix $F(t)$ is non-singular. 
+
+Our goal is to rewrite the Green's formula as a \emph{semibilinear} form $\mathcal{S}.$ First, let $\vec{f_l} := (f_l, \ldots, f_l^{(n-1)}),$ and observe that  
+\begin{align*}
+[fg]_l(t) := \sum_{p,q=0}^{n-1}F_{p\,q}(t) f_l^{(p)}(t)g_l^{(q)}(t) &= \sum_{p,q=0}^{n-1}\left[F_{p\,q} f_l^{(p)} g_l^{(q)}\right](t)  \\
+&= \sum_{q=0}^{n-1}\left[ \left(\sum_{p=0}^{n-1} F_{p\,q} f_l^{(p)}\right) g_l^{(q)}\right](t) \\
+&= F(t) \vec{f_l}(t) \cdot \vec{g_l}(t), 
+\end{align*}
+where $\cdot$ refers to dot product. The Green's formula can then be rewritten as 
+\begin{equation}\label{P2.GF-GreensFormula}
+\langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) =  \sum_{l=1}^{k}  F(x_l) \vec{f_l}(x_l) \cdot \vec{g_l}(x_l) - F(x_{l-1}) \vec{f_l}(x_{l-1}) \cdot \vec{g_l}(x_{l-1}). 
+\end{equation}
+Note that 
+\[
+F(x_l) \vec{f_l}(x_l) \cdot \vec{g_l}(x_l) - F(x_{l-1}) \vec{f_l}(x_{l-1}) \cdot \vec{g_l}(x_{l-1}) = \begin{bmatrix}
+- F(x_{l-1}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{l}) \\
+\end{bmatrix}
+\begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l}) 
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l}) 
+\end{bmatrix},
+\]
+so that we obtain
+\begin{align*}
+\langle Lf,g\rangle - \langle f,L^+ g\rangle = \sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) &=  \sum_{l=1}^{k} 
+\begin{bmatrix}
+- F(x_{l-1}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{l}) \\
+\end{bmatrix}
+\begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l})  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l})  \\
+\end{bmatrix} .
+\end{align*}
+Now, expansion of the sum yields
+\begin{align}
+&\sum_{l=1}^{k} 
+\begin{bmatrix}
+- F(x_{l-1}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{l}) \\
+\end{bmatrix}
+\begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l}) 
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l}) 
+\end{bmatrix} \nonumber \\
+&= 
+\begin{bmatrix}
+- F(x_{0}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{1}) \\
+\end{bmatrix}
+\begin{bmatrix}
+\vec{f_1}(x_0)  \\
+\vec{f_1}(x_1)  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_1}(x_0)  \\
+\vec{g_1}(x_1)  \\
+\end{bmatrix}
++ \ldots + 
+\begin{bmatrix}
+- F(x_{k-1}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{k}) \\
+\end{bmatrix}
+\begin{bmatrix}
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)  \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)  \\
+\end{bmatrix}  \nonumber \\
+&= \underbrace{
+\begin{bmatrix}
+- F(x_{0}) & 0 & \ldots & 0 & 0 \\
+0 & F(x_{1}) & \ldots & 0 & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \ldots & -F(x_{k-1}) & 0 \\
+0 & 0 & \ldots & 0 &  F(x_{k})
+\end{bmatrix}}_\text{$2nk\times 2nk$}
+\begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vec{f_2}(x_1)  \\
+\vec{f_2}(x_2) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix}
+\cdot 
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vec{g_2}(x_1)  \\
+\vec{g_2}(x_2) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix} \nonumber \\
+&=: S \begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix} \cdot
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix} = \mathcal{S} \left( \begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix},  
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}
+\right), \label{P2.GR-Sform}
+\end{align} 
+where the matrix $S$ is associated with the semibilinear form $\mathcal{S}$ and $S$ is a block matrix where each block is $n \times n.$ Further, note that the form $\mathcal{S}$ is the action of applying matrix $S$ to the first argument and taking dot product of this result and the second argument. Thus, we managed to express the Green's Formula as a semibilinear form $\mathcal{S}.$ 
+\subsection{Boundary Form formula}
+We turn to characterising an adjoint multipoint condition using an extension of boundary form formula that Linda derived in her work.
+First, recall that the multipoint condition
+\[ 
+Uq = \begin{bmatrix} U_1(q) \\ \vdots \\U_m(q) \end{bmatrix} = \vec{0},
+\]
+with 
+\[ 
+U_i(q) = \sum^{k}_{l=1} \sum^{n-1}_{j=0}[\alpha_{ijl} q_l^{(j)}(x_{l-1}) + \beta_{ijl} q_l^{(j)}(x_{l})], \qquad i \in \{ 1, \ldots, m \}, ~ \alpha_{ijl}, \beta_{ijl} \in \mathbb{R}.
+\]
+Note that $U_1, \ldots, U_m$ are linearly independent when $\sum^m_{i=1} c_i U_i q = 0$ if and only if $c_i = 0.$ When $U_1, \ldots, U_m$ are linearly independent, we say that $U$ has full rank $m.$ For now, suppose that $U$ has full rank, and define 
+\begin{equation*}
+\vec{q_l} = 
+\begin{bmatrix}
+q_l \\
+q'_l \\
+\vdots \\
+ q_l^{(n-1)} 
+\end{bmatrix}, M_l = 
+\begin{bmatrix}
+\alpha_{1~0~l} & \alpha_{1~1~l} & \ldots & \alpha_{1~(n-1)~l} \\
+\alpha_{2~0~l} & \alpha_{2~1~l} & \ldots & \alpha_{2~(n-1)~l} \\
+\vdots & \vdots & \ddots & \vdots \\
+\alpha_{m~0~l} & \alpha_{m~1~l} & \ldots & \alpha_{m~(n-1)~l} \\
+\end{bmatrix}, 
+N_l = 
+\begin{bmatrix}
+\beta_{1~0~l} & \beta_{1~1~l} & \ldots & \beta_{1~(n-1)~l} \\
+\beta_{2~0~l} & \beta_{2~1~l} & \ldots & \beta_{2~(n-1)~l} \\
+\vdots & \vdots & \ddots & \vdots \\
+\beta_{m~0~l} & \beta_{m~1~l} & \ldots & \beta_{m~(n-1)~l} \\
+\end{bmatrix}
+\end{equation*}
+Then, 
+\begin{align*}
+Uq &= \begin{bmatrix} U_1(q) \\ \vdots \\U_m(q) \end{bmatrix} \\&= 
+\sum^k_{l=1} \sum^{n-1}_{j=0} \begin{bmatrix} \alpha_{1~j~l}  \\ \vdots \\\alpha_{m~j~l}\end{bmatrix}  q_l^{(j)}(x_{l-1}) + \begin{bmatrix} \beta_{1~j~l} \\ \vdots \\\beta_{m~j~l}\end{bmatrix} q_l^{(j)}(x_{l}) \\
+&= 
+\sum^k_{l=1} 
+\begin{bmatrix}
+\alpha_{1~0~l}  & \ldots & \alpha_{1~(n-1)~l} \\
+\vdots & \ddots & \vdots \\
+\alpha_{m~0~l} &  \ldots & \alpha_{m~(n-1)~l} \\
+\end{bmatrix}
+\begin{bmatrix}
+q_l(x_{l-1})  \\
+\vdots \\
+ q_l^{(n-1)}(x_{l-1})  
+\end{bmatrix} + 
+\begin{bmatrix}
+\beta_{1~0~l} & \ldots & \beta_{1~(n-1)~l} \\
+\vdots & \ddots & \vdots \\
+\beta_{m~0~l} & \ldots & \beta_{m~(n-1)~l} \\
+\end{bmatrix}
+\begin{bmatrix}
+q_l(x_l)  \\
+\vdots \\
+ q_l^{(n-1)}(x_l)  
+\end{bmatrix} \\
+&= \sum^k_{l=1} M_l \vec{q_l}(x_{l-1}) + N_l \vec{q_l}(x_l), \tag{$\dagger$}
+\end{align*}
+where $M_l, N_l$ are $m \times n$ matrices. In addition, letting 
+\[ 
+\begin{bmatrix}
+M_l : N_l 
+\end{bmatrix}
+=
+\begin{bmatrix}
+\alpha_{1~0~l}  & \ldots & \alpha_{1~(n-1)~l} & \beta_{1~0~l} & \ldots & \beta_{1~(n-1)~l} \\
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+\alpha_{m~0~l} &  \ldots & \alpha_{m~(n-1)~l}  & \beta_{m~0~l} & \ldots & \beta_{m~(n-1)~l} \\
+\end{bmatrix},
+\]
+we can write 
+\[ Uq = \sum^k_{l=1}\begin{bmatrix} M_l : N_l \end{bmatrix}
+\begin{bmatrix}
+\vec{q_l}(x_{l-1})  \\
+\vec{q_l}(x_{l})
+\end{bmatrix} = 
+\begin{bmatrix} M_1 : N_1 :~ \ldots ~: M_k : N_k \end{bmatrix} 
+\begin{bmatrix}
+\vec{q_1}(x_{0})  \\
+\vec{q_1}(x_{1}) \\
+\vdots \\
+\vec{q_k}(x_{k-1})  \\
+\vec{q_k}(x_{k})
+\end{bmatrix}. \tag{$\star$}
+\]
+Thus we have found two compact ways to write the vector multipoint form, namely $(\dagger)$ and $(\star).$ Next, we extend the notion of a complementary boundary form.
+\begin{defn}
+If $U = (U_1, \ldots, U_m)$ is any vector multipoint form with $\mathrm{rank}(U) = m,$ and $U_c = (U_{m+1}, \ldots, U_{2nk})$ is a vector multipoint form with $\mathrm{rank}(U_c) = 2nk-m$ such that $\mathrm{rank}(U_{1}, \ldots, U_{2nk}) = 2nk,$ then $U$ and $U_c$ are \textbf{complementary vector multipoint forms}. 
+\end{defn}
+Note that extending $U_1, \ldots, U_m$ to $U_{1}, \ldots, U_{2nk}$ is equivalent to embedding the matrices $M_l, N_l$ in a $2nk \times 2nk$ non-singular matrix, i.e. we can write
+\begin{align}
+\begin{bmatrix}
+Uq \\
+U_c q
+\end{bmatrix} 
+&=
+\sum^k_{l=1}
+\begin{bmatrix}
+M_l & N_l \\
+\overline{M}_l & \overline{N}_l 
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{q_l}(x_{l-1})  \\
+\vec{q_l}(x_{l})
+\end{bmatrix} \nonumber \\
+&= 
+\begin{bmatrix}
+M_1 & N_1 \\
+\overline{M}_1 & \overline{N}_1
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{q_1}(x_{0})  \\
+\vec{q_1}(x_1)
+\end{bmatrix} 
++ 
+\begin{bmatrix}
+M_2 & N_2 \\
+\overline{M}_2 & \overline{N}_2
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{q_2}(x_1)  \\
+\vec{q_2}(x_2)
+\end{bmatrix} 
++ \ldots +
+\begin{bmatrix}
+M_k & N_k \\
+\overline{M}_k & \overline{N}_k
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{q_k}(x_{k-1})  \\
+\vec{q_k}(x_k)
+\end{bmatrix} \nonumber \\
+&= 
+\underbrace{
+\begin{bmatrix}
+M_1 & N_1 & M_2 & N_2 & \ldots & M_k & N_k \\
+\overline{M}_1 & \overline{N}_1 & \overline{M}_2 & \overline{N}_2 & \ldots & \overline{M}_k & \overline{N}_k
+\end{bmatrix} }_\text{$2nk \times 2nk$}
+\underbrace{\begin{bmatrix}
+\vec{q_1}(x_{0})  \\
+\vec{q_1}(x_1) \\
+\vec{q_2}(x_1)  \\
+\vec{q_2}(x_2) \\
+\vdots \\
+\vec{q_k}(x_{k-1})  \\
+\vec{q_k}(x_k)
+\end{bmatrix}}_\text{$2nk\times 1$} \nonumber \\
+&=:
+H
+\begin{bmatrix}
+\vec{q_1}(x_{0})  \\
+\vec{q_1}(x_1) \\
+\vec{q_2}(x_1)  \\
+\vec{q_2}(x_2) \\
+\vdots \\
+\vec{q_k}(x_{k-1})  \\
+\vec{q_k}(x_k)
+\end{bmatrix}. \label{P2.BFF-H}
+\end{align}
+where $\mathrm{rank}(H) = 2nk$ and $\overline{M}_l, \overline{N}_l$ are $(2nk-m) \times n$ matrices. Just like the boundary form formula proven by Linda, the multipoint form formula is motivated by the desire to express Green's formula as a combination of vector boundary forms $U$ and $U_c.$ Namely, we have:
+
+\begin{thm}[Multipoint Form Formula]\label{P2.BFF-theorem}
+Given any vector multipoint form $U$ of rank $m,$ and any complementary vector form $U_c,$ there exist unique vector multipoint forms $U^+_c, U^+$ of rank $m$ and $2nk-m,$ respectively, such that
+\begin{equation}\label{P2.BFF-eqn}
+\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) = Uf\cdot U^+_c g + U_c f \cdot U^+ g.
+\end{equation}
+\end{thm}
+
+We will use the following proposition from Linda's capstone \cite{linfan} in the proof of Theorem \ref{P2.BFF-theorem}:
+\begin{prop}[Prop. 2.12 in Linda's capstone]\label{P2.BFF-linfan-2.12}
+Let $\mathcal{S}$ be the semibilinear form associated with a nonsingular matrix $S.$ Suppose $\vec{f} := Ff$ where $F$ is a nonsingular matrix. Then, there exists a unique nonsingular matrix $G$ such that if $\vec{g} =Gg,$ then $\mathcal{S}(f,g) = \vec{f}\cdot \vec{g}$ for all $f,g.$
+\end{prop}
+\begin{proof}[Proof of Theorem \ref{P2.BFF-theorem}]
+First, we have 
+\[ 
+\begin{bmatrix}
+Uf \\
+U_c f
+\end{bmatrix} = 
+H
+\begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix}.
+\]
+From equation \eqref{P2.GR-Sform}, we can write 
+\[
+\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1}) = \mathcal{S} \left( \begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix},  
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}
+\right).
+\]
+By Proposition \ref{P2.BFF-linfan-2.12}, there exists a unique $2nk \times 2nk $ nonsingular matrix $J$ such that 
+$$\mathcal{S} \left( \begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix},  
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}
+\right)
+= H
+\begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix} \cdot 
+J\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}.$$ Note that if $S$ is the matrix associated with $\mathcal{S},$ then by Proposition \ref{P2.BFF-linfan-2.12}, $J = (SH^{-1})^*,$ where $A^*$ refers to the conjugate transpose of matrix $A.$
+
+Let $U^+, U^+_c$ be such that 
+\[
+\begin{bmatrix}
+U^+_cg \\
+U^+ g
+\end{bmatrix} = J\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}.
+\]
+Now, we obtain 
+\begin{align*}
+\sum_{l=1}^{k} [fg]_l(x_l) - [fg]_l(x_{l-1})  = \mathcal{S} \left( \begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix},  
+\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix}
+\right)
+&= H
+\begin{bmatrix}
+\vec{f_1}(x_{0})  \\
+\vec{f_1}(x_1) \\
+\vdots \\
+\vec{f_k}(x_{k-1})  \\
+\vec{f_k}(x_k)
+\end{bmatrix} \cdot 
+J\begin{bmatrix}
+\vec{g_1}(x_{0})  \\
+\vec{g_1}(x_1) \\
+\vdots \\
+\vec{g_k}(x_{k-1})  \\
+\vec{g_k}(x_k)
+\end{bmatrix} \\
+&= \begin{bmatrix}
+Uf \\
+U_c f
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+U^+_cg \\
+U^+ g
+\end{bmatrix} \\
+&=  Uf\cdot U^+_c g + U_c f \cdot U^+ g,
+\end{align*}
+which completes the proof.
+\end{proof}
+Theorem \ref{P2.BFF-theorem} allows us to define an adjoint multipoint condition. Namely, 
+
+\begin{defn}
+Suppose $U = (U_1, \ldots, U_m)$ is a vector multipoint form with $\mathrm{rank}(U) = m,$ along with the condition that $Uq = \vec{0}$ for functions $q \in C^{n-1}_{\pi}[a,b].$ If $U^+$ is any vector multipoint form with $\mathrm{rank}(U^+) = 2nk-m,$ determined as in Theorem \ref{P2.BFF-theorem}, then the equation 
+\[ 
+U^+q = \vec{0}
+\]
+is an \textbf{adjoint multipoint condition} to $Uq = \vec{0}.$
+\end{defn}
+In turn, the above lets us define the adjoint multipoint problem:
+
+\begin{defn}
+Suppose $U = (U_1, \ldots, U_m)$ is a vector multipoint form with $\mathrm{rank}(U) = m.$ Then, the problem of solving 
+\[ \pi: Lq = 0, \qquad Uq = \vec{0},\] 
+is called a homogeneous multipoint value problem of rank $m.$ The problem of solving 
+\[ \pi^+: L^+q = 0, \qquad U^+q = \vec{0},\] 
+is an \textbf{adjoint multipoint value problem} to $\pi.$
+\end{defn}
+The preceding construction allows us to state the following:
+
+\begin{prop}
+Let $f,g \in C^{n-1}_{\pi}[a,b]$ with $Uf = \vec{0}$ and $U^+g = \vec{0}.$ Then, $\langle Lf, g\rangle = \langle f, L^+g\rangle.$
+\end{prop}
+\begin{proof}
+We apply the multipoint form formula \eqref{P2.BFF-eqn}
+\[ \langle Lf, g\rangle - \langle f, L^+g\rangle = Uf\cdot U^+_c g + U_c f \cdot U^+ g = \vec{0}\cdot U^+_c g + U_c f \cdot \vec{0} = 0,\]
+which completes the proof.
+\end{proof}
+\subsection{Checking adjointness}
+Finally, we extend Theorem 2.19 on Linda's Capstone \cite{linfan}. 
+
+\begin{thm}\label{P2.CA-theorem}
+The multipoint condition $U^+g = \vec{0}$ is adjoint to $Uf = \vec{0}$ if and only if \[ \sum^k_{l=1} M_lF^{-1}(x_{l-1})P_l = \sum^k_{l=1} N_l F^{-1}(x_l)Q_l, \] where $F(t)$ is the $n\times n$ matrix as given in Green's formula subsection.  
+\end{thm}
+Recall that just how $U$ is associated with a collection of $m\times n$ matrices $M_l, N_l,$ such that 
+\begin{align}
+Uf &= \sum^k_{l=1} M_l \vec{f}_l(x_{l-1}) + N_l  \vec{f}_l(x_l), \quad &&\mathrm{rank}\begin{bmatrix} M_1 : N_1 :~ \ldots ~: M_k : N_k \end{bmatrix} = m, \label{P2.CA-U} 
+\end{align}
+so is $U^+$ associated with $n\times(2nk-m)$ matrices $P_l, Q_l,$ for  $l =1 ,\ldots, k,$ such that 
+\begin{align}
+U^+g = \sum^k_{l=1} P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l), \qquad \mathrm{rank}\begin{bmatrix} P^*_1 : Q^*_1 :~ \ldots ~: P^*_k : Q^*_k \end{bmatrix} = 2nk-m. \label{P2.CA-U+}
+\end{align} 
+\begin{proof}[Proof of Theorem \ref{P2.CA-theorem}]
+Suppose that $U^+f = \vec{0}$ is adjoint to $Uf = \vec{0}.$ By definition of adjoint multipoint condition, $U^+$ is determined as in Theorem \ref{P2.BFF-theorem}. Thus, in determining $U^+,$ there exist vector multipoint forms $U_c, U_c^+$ of rank $2nk-m$ and $m$ respectively, such that the multipoint form formula \eqref{P2.BFF-eqn} holds. As such, let matrices $\overline{M}_l, \overline{N}_l, \overline{P}_l,\overline{Q}_l$ be such that
+\begin{align}
+U_c f &= \sum^k_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l), \quad &&\mathrm{rank}\begin{bmatrix} \overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k \end{bmatrix} =  2nk - m \label{P2.CA-Uc}\\
+U_c^+ g &= \sum^k_{l=1} \overline{P}_l^* \vec{g}_l(x_{l-1}) + \overline{Q}_l^*  \vec{g}_l(x_l), \quad&& \mathrm{rank}\begin{bmatrix} \overline{P}^*_1 :  \overline{Q}^*_1 :~ \ldots ~: \overline{P}^*_k :  \overline{Q}^*_k \end{bmatrix} = m \label{P2.CA-Uc+}
+\end{align}
+First, note that in the context of semibilinear form, we have $\mathcal{S}(f,g) = S f \cdot g = f \cdot S^* g,$ as given in Proposition 2.11 of Linda's capstone \cite[p.18]{linfan}. We use this to rewrite the multipoint form formula \eqref{P2.BFF-eqn} as follows:
+\begin{align*}
+\sum^k_{l=1} [fg]_l(x_l) &- [fg]_l(x_{l-1}) = Uf\cdot U^+_c g + U_c f \cdot U^+ g \\
+&= \left(\sum^k_{l=1} M_l \vec{f_l}(x_{l-1}) + N_l \vec{f_l}(x_l)\right)\cdot \left( \sum^k_{i=1} (\overline{P}_i)^* \vec{g}_i(x_{i-1}) + (\overline{Q}_i)^*  \vec{g}_i(x_i)  \right) \\
+&+ \left(  \sum^k_{l=1} \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l) \right) \cdot \left( \sum^k_{i=1} P^*_i \vec{g}_i(x_{i-1}) + Q^*_i \vec{g}_i(x_i) \right) &\text{(by equations \eqref{P2.CA-U}, \eqref{P2.CA-U+}, \eqref{P2.CA-Uc}, \eqref{P2.CA-Uc+})} \\
+&= \sum^k_{l=1}  \sum^k_{i=1} \Bigg(\left( M_l \vec{f_l}(x_{l-1}) + N_l \vec{f_l}(x_l)\right) \cdot \left( \overline{P}_i^* \vec{g}_i(x_{i-1}) + \overline{Q}_i^*  \vec{g}_i(x_i)  \right) \\
+&+ \left( \overline{M}_l \vec{f}_l(x_{l-1}) + \overline{N}_l  \vec{f}_l(x_l) \right) \cdot \Big( P^*_i \vec{g}_i(x_{i-1}) + Q^*_l \vec{g}_i(x_i) \Big) \Bigg),
+\end{align*}
+where taking out the sum upfront follows due to distributivity and associativity of inner product. Moreover, using additivity of inner product and that $S f \cdot g = f \cdot S^* g,$ we write the above as
+\begin{equation}\label{P2.CA-eq1}
+\begin{aligned}
+\sum^k_{l=1} \sum^k_{i=1} (\overline{Q}_i N_l + Q_i \overline{N}_l)  \vec{f}_l(x_l)  \cdot  \vec{g}_i(x_i) &+  (\overline{P}_i N_l  + P_i\overline{N}_l ) \vec{f}_l(x_l)  \cdot  \vec{g}_i(x_{i-1}) \\
++   (\overline{Q}_i  M_l +Q_i \overline{M}_l) \vec{f_l}(x_{l-1}) \cdot\vec{g}_i(x_i) &+  (\overline{P}_i M_l+P_i \overline{M}_l) \vec{f_l}(x_{l-1}) \cdot  \vec{g}_i(x_{i-1}). 
+\end{aligned}
+\end{equation}
+From Green's formula \eqref{P2.GF-GreensFormula}, we have
+\begin{equation}\label{P2.CA-eq2}
+\sum^k_{l=1}  [fg]_l(x_l) - [fg]_l(x_{l-1}) = \sum^k_{l=1}  F(x_l) \vec{f_l}(x_l) \cdot \vec{g_l}(x_l) - F(x_{l-1}) \vec{f_l}(x_{l-1}) \cdot \vec{g_l}(x_{l-1}). 
+\end{equation}
+Note that equations \eqref{P2.CA-eq1} and \eqref{P2.CA-eq2} must be equal, and so, comparison of coefficients of inner product reveals that 
+\begin{align*}
+\overline{Q}_i N_l + Q_i \overline{N}_l &= \begin{cases} F(x_l) &\mbox{ if } i = l  \\ 0 &\mbox{ otherwise} \end{cases}; && \overline{P}_i M_l+ P_i \overline{M}_l = \begin{cases} -F(x_{l-1}) &\mbox{ if } i = l  \\ 0 &\mbox{ otherwise} \end{cases}; \\
+\overline{P}_i N_l  + P_i\overline{N}_l & = \quad 0 \qquad \forall i; && \overline{Q}_i M_l +Q_i \overline{M}_l = \quad 0 \qquad \forall i. 
+\end{align*}
+Thus, we have 
+\begin{equation}\label{P2.CA-eq3}
+\begin{aligned}
+&\begin{bmatrix} 
+- F(x_0) & 0 & 0 & \ldots & 0 & 0 & 0 \\
+0 & F(x_1) & 0 & \ldots & 0 & 0 & 0 \\
+0 &  0 & -F(x_1) & \ldots & 0 & 0 & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots  \\
+0 &  0 & 0 & \ldots & F(x_{k-1}) & 0 & 0 \\
+0 &  0 & 0 & \ldots & 0 & -F(x_{k-1}) & 0 \\
+0 &  0 & 0 & \ldots & 0 & 0 & F(x_{k}) 
+\end{bmatrix} \\
+&= 
+\begin{bmatrix} 
+\overline{P}_1M_1 + P_1\overline{M}_1 & 0 & \ldots & 0 & 0 \\
+0 & \overline{Q}_1 N_1 + Q_1\overline{N}_1 & \ldots & 0 & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots  \\
+0 &  0 & \ldots & \overline{P}_k M_k + P_k \overline{M}_k & 0 \\
+0 &  0 & \ldots & 0 & \overline{Q}_k N_k + Q_k\overline{N}_k 
+\end{bmatrix}.
+\end{aligned}
+\end{equation}
+Since the boundary matrix $F$ is nonsingular on $[a,b],$ $F$ is invertible, and so the block diagonal matrix on LHS of \eqref{P2.CA-eq3} must also be invertible. Premultiplying on both sides by the inverse of LHS of block diagonal matrix yields 
+\begin{align}
+E_{2nk\times2nk} &= 
+\begin{bmatrix} 
+- F^{-1}(x_0)(\overline{P}_1M_1 + P_1\overline{M}_1) & 0 & \ldots & 0 \\
+0 & F^{-1}(x_1)(\overline{Q}_1N_1 + Q_1 \overline{N}_1) & \ldots & 0 \\
+\vdots & \vdots & \ddots & \vdots  \\
+0 & 0 & \ldots & F^{-1}(x_{k})(\overline{Q}_k N_k + Q_k\overline{N}_k)
+\end{bmatrix} \nonumber \\
+&= 
+\begin{bmatrix} 
+- F^{-1}(x_0)\overline{P}_1M_1 - F^{-1}(x_0) P_1\overline{M}_1 & 0 & \ldots & 0 \\
+0 & F^{-1}(x_1)\overline{Q}_1N_1 + F^{-1}(x_1) Q_1 \overline{N}_1 & \ldots & 0\\
+\vdots & \vdots & \ddots & \vdots  \\
+0 & 0 & \ldots & F^{-1}(x_{k})\overline{Q}_k N_k + F^{-1}(x_{k})Q_k\overline{N}_k
+\end{bmatrix} \nonumber \\
+&= 
+\begin{bmatrix} 
+- F^{-1}(x_0)\overline{P}_1 & - F^{-1}(x_0) P_1 \\
+F^{-1}(x_1)\overline{Q}_1 & F^{-1}(x_1) Q_1 \\
+\vdots & \vdots  \\
+-F^{-1}(x_{k-1})\overline{P}_k & -F^{-1}(x_{k-1})P_k \\
+F^{-1}(x_{k})\overline{Q}_k & F^{-1}(x_{k})Q_k
+\end{bmatrix}
+\begin{bmatrix}
+M_1 & N_1 & \ldots & M_k & N_k \\
+\overline{M}_1  & \overline{N}_1  & \ldots & \overline{M}_k  & \overline{N}_k
+\end{bmatrix}, \label{P2.CA-ast} \tag{$\ast$}
+\end{align}
+where $E_{j\times j}$ is the identity matrix of dimension $j.$
+Since the two matrices in $\eqref{P2.CA-ast}$ are full rank, they are inverse to each other, and so we have
+\[
+\begin{bmatrix}
+E_{m \times m} & 0_{m \times (2nk-m)} \\
+0_{(2nk-m) \times m} & E_{(2nk-m) \times (2nk-m)} 
+\end{bmatrix}
+= 
+\begin{bmatrix}
+M_1 & N_1 & \ldots & M_k & N_k \\
+\overline{M}_1  & \overline{N}_1  & \ldots & \overline{M}_k  & \overline{N}_k
+\end{bmatrix}
+\begin{bmatrix} 
+- F^{-1}(x_0)\overline{P}_1 & - F^{-1}(x_0) P_1 \\
+F^{-1}(x_1)\overline{Q}_1 & F^{-1}(x_1) Q_1 \\
+\vdots & \vdots  \\
+-F^{-1}(x_{k-1})\overline{P}_k & -F^{-1}(x_{k-1})P_k \\
+F^{-1}(x_{k})\overline{Q}_k & F^{-1}(x_{k})Q_k
+\end{bmatrix},
+\]
+which implies that 
+\begin{align*}
+- M_1 F^{-1}(x_0) P_1 + &N_1  F^{-1}(x_1) Q_1 + \ldots - M_k F^{-1}(x_{k-1})P_k + N_k F^{-1}(x_{k})Q_k = 0_{m \times (2nk-m)} \\
+&\implies  \sum^k_{l=1} M_lF^{-1}(x_{l-1})P_l = \sum^k_{l=1} N_l F^{-1}(x_l)Q_l.
+\end{align*}
+Now, we prove the ``if" direction. Let $\mathcal{U}^+$ be a multipoint form of rank $2nk-m$ such that
+\[ 
+\mathcal{U}^+ g = \sum^k_{l=1} \mathcal{P}^*_l \vec{g}_l(x_{l-1}) + \mathcal{Q}^*_l \vec{g}_l(x_l),
+\]
+for an appropriate collection of matrices $\mathcal{P}^*_l, \mathcal{Q}^*_l,$ with 
+\[ \mathrm{rank}\begin{bmatrix} \mathcal{P}^*_1 : \mathcal{Q}^*_1 :~ \ldots ~: \mathcal{P}^*_k : \mathcal{Q}^*_k \end{bmatrix} = 2nk-m \]
+Suppose that 
+\[  \sum^k_{l=1} M_lF^{-1}(x_{l-1})\mathcal{P}_l = \sum^k_{l=1} N_l F^{-1}(x_l)\mathcal{Q}_l \]
+holds. Now, let $\textbf{u}$ be a $2nk\times 1$ vector. Then, there exist $2nk-m$ linearly independent solutions of the system 
+\[ 
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k
+\end{bmatrix}_{m\times 2nk}
+\textbf{u}= \vec{0}.
+\]
+By assumption, we have 
+\[
+\sum^{k}_{l=1} -M_l  F(x_{l-1})^{-1} \mathcal{P}_l+ N_l F(x_l)^{-1} \mathcal{Q}_l   =   0_{m \times (2nk-m)} ,
+\]
+so that 
+\begin{equation}\label{P2.CA-system1}
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k
+\end{bmatrix}_{m\times 2nk}
+\begin{bmatrix}
+-F(x_{0})^{-1} \mathcal{P}_1 \\
+F(x_1)^{-1} \mathcal{Q}_1 \\
+\vdots \\
+-F(x_{k-1})^{-1} \mathcal{P}_k \\
+F(x_k)^{-1} \mathcal{Q}_k
+\end{bmatrix}_{2nk \times(2nk-m)} = 0_{m \times(2nk-m)}. 
+\end{equation}
+This means that the $2nk-m$ columns of the matrix 
+\[ \mathcal{H} := 
+\begin{bmatrix}
+-F(x_{0})^{-1} \mathcal{P}_1 \\
+F(x_1)^{-1}\mathcal{Q}_1 \\
+\vdots \\
+-F(x_{k-1})^{-1} \mathcal{P}_k \\
+F(x_k)^{-1}\mathcal{Q}_k 
+\end{bmatrix}
+\]
+form the solution space of the system \eqref{P2.CA-system1}. Since $\mathrm{rank}\begin{bmatrix} \mathcal{P}^*_1 : \mathcal{Q}^*_1 :~ \ldots ~: \mathcal{P}^*_k : \mathcal{Q}^*_k \end{bmatrix} = 2nk-m,$
+\[ 
+\mathrm{rank}
+\begin{bmatrix}
+\mathcal{P}_1 \\
+\mathcal{Q}_1\\
+\vdots \\
+\mathcal{P}_k \\
+\mathcal{Q}_k
+\end{bmatrix}
+= 2nk-m.
+\] 
+Since $F(x_{l-1}), F(x_{l})$ are non-singular, $\mathrm{rank}(\mathcal{H}) = 2nk - m.$
+
+Now, if $U^+g = \sum^k_{l=1} P^*_l \vec{g}_l(x_{l-1}) + Q^*_l \vec{g}_l(x_l) = \vec{0}$ is a multipoint condition adjoint to $Uf = \vec{0},$ then by multipoint form formula we have that 
+\begin{align}
+\begin{bmatrix}
+Uf \\
+U_c f
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+U^+_cg \\
+U^+ g
+\end{bmatrix} 
+&= 
+\sum^k_{l=1} \sum^k_{i=1} 
+\begin{bmatrix}
+M_l  \vec{f}_l(x_{l-1}) + N_l \vec{f}_l(x_l) \\
+\overline{M}_l \vec{f}_l(x_{l-1}) +\overline{N}_l \vec{f}_l(x_l) 
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+\overline{P}^*_i \vec{g}_i(x_{i-1}) + \overline{Q}^*_i \vec{g}_i(x_i) \\
+P^*_i \vec{g}_i(x_{i-1}) + Q^*_i \vec{g}_i(x_i) 
+\end{bmatrix} \nonumber \\
+&= 
+\sum^k_{l=1} \sum^k_{i=1} \left(
+\begin{bmatrix}
+M_l & N_l  \\
+\overline{M}_l & \overline{N}_l 
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{f}_l(x_{l-1}) \\
+\vec{f}_l(x_l) 
+\end{bmatrix} 
+\right)
+\cdot 
+\left(
+\begin{bmatrix}
+\overline{P}_i & P_i \\
+\overline{Q}_i & Q_i
+\end{bmatrix}^*
+\begin{bmatrix}
+\vec{g}_i(x_{i-1}) \\
+\vec{g}_i(x_i) 
+\end{bmatrix}\right) \nonumber \\
+&=
+\sum^k_{l=1} \sum^k_{i=1} 
+\begin{bmatrix}
+\overline{P}_i & P_i \\
+\overline{Q}_i & Q_i
+\end{bmatrix} 
+\begin{bmatrix}
+M_l & N_l  \\
+\overline{M}_l & \overline{N}_l 
+\end{bmatrix} 
+\begin{bmatrix}
+\vec{f}_l(x_{l-1}) \\
+\vec{f}_l(x_l) 
+\end{bmatrix} 
+\cdot 
+\begin{bmatrix}
+\vec{g}_i(x_{i-1}) \\
+\vec{g}_i(x_i) 
+\end{bmatrix}. \label{P2.CA-eq4}
+\end{align}
+In addition, by Green's formula \eqref{P2.GF-GreensFormula}, we have
+\begin{align}
+\begin{bmatrix}
+Uf \\
+U_c f
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+U^+_cg \\
+U^+ g
+\end{bmatrix} 
+=
+\sum^k_{l=1} 
+ \begin{bmatrix}
+- F(x_{l-1}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{l}) \\
+\end{bmatrix}
+\begin{bmatrix}
+\vec{f_l}(x_{l-1})  \\
+\vec{f_l}(x_{l}) 
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\vec{g_l}(x_{l-1})  \\
+\vec{g_l}(x_{l}) 
+\end{bmatrix}. \label{P2.CA-eq5}
+\end{align}
+Since equations \eqref{P2.CA-eq4} and \eqref{P2.CA-eq5} are equal, comparison of coefficients shows that we have 
+\begin{align*}
+\begin{bmatrix}
+\overline{P}_i & P_i \\
+\overline{Q}_i & Q_i
+\end{bmatrix} 
+\begin{bmatrix}
+M_l & N_l  \\
+\overline{M}_l & \overline{N}_l 
+\end{bmatrix}  = \begin{cases}  \begin{bmatrix}
+- F(x_{l-1}) & 0_{n\times n} \\
+0_{n\times n} &  F(x_{l}) \\
+\end{bmatrix}  & \text{if } i = l, \\ \hspace{1.25cm} 0_{2n\times 2n} & \text{otherwise. }\end{cases}
+\end{align*}
+Using the above relation, we obtain the equality
+\begin{align}\label{P2.CA-system2}
+\begin{bmatrix}
+\begin{bmatrix}
+-F(x_0) & 0 \\
+0 & F(x_1) 
+\end{bmatrix} & & 0 \\
+& \ddots & \\
+0 & & \begin{bmatrix}
+-F(x_{k-1}) & 0 \\
+0 & F(x_k) 
+\end{bmatrix}
+\end{bmatrix} =
+\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0 & & \begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix}.
+\end{align}
+Since the matrix on LHS of \eqref{P2.CA-system2} is invertible, we can premultiply both sides by this inverse to obtain
+\begin{align}
+E_{2nk\times 2nk}
+&= 
+\begin{bmatrix}
+\begin{bmatrix}
+-F(x_0) & 0 \\
+0 & F(x_1) 
+\end{bmatrix} & & 0 \\
+& \ddots & \\
+0 & & \begin{bmatrix}
+-F(x_{k-1}) & 0 \\
+0 & F(x_k) 
+\end{bmatrix}
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0  & & 
+\begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix} \nonumber \\
+\intertext{By Lemma \ref{P2.CA-lemma}:}
+&=
+\begin{bmatrix}
+\begin{bmatrix}
+-F(x_0) & 0 \\
+0 & F(x_1)
+\end{bmatrix}^{-1} & & 0 \\
+& \ddots & \\
+0 & & \begin{bmatrix}
+-F(x_{k-1}) & 0 \\
+0 & F(x_k)
+\end{bmatrix}^{-1}
+\end{bmatrix} \begin{bmatrix}
+\overline{P}_1 : P_1 \\
+\overline{Q}_1 : Q_1 \\
+\vdots \\
+\overline{P}_k : P_k \\
+\overline{Q}_k : Q_k 
+\end{bmatrix}
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix}
+\nonumber \\
+&=
+\begin{bmatrix}
+\begin{bmatrix}
+-F(x_0) & 0 \\
+0 & F(x_1)
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} & & 0 \\
+& \ddots & \\
+0 & & \begin{bmatrix}
+-F(x_{k-1}) & 0 \\
+0 & F(x_k) ^{-1}
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\end{bmatrix} 
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix}
+\nonumber \\
+&= 
+\underbrace{\begin{bmatrix}
+-F^{-1}(x_0) \overline{P}_1 & -F^{-1}(x_0) P_1 \\
+F^{-1}(x_1)\overline{Q}_1 & F^{-1}(x_1)Q_1  \\
+\vdots & \vdots \\
+-F^{-1}(x_{k-1})\overline{P}_k & -F^{-1}(x_{k-1})P_k \\
+F^{-1}(x_k)\overline{Q}_k & F^{-1}(x_k)Q_k 
+\end{bmatrix}}_\text{$\displaystyle \Lambda$}
+\underbrace{\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix}}_\text{$\displaystyle \Xi$}. \label{P2.CA-system3}
+\end{align}
+Note that the two matrices in \eqref{P2.CA-system3} are square, and that the matrix $\Xi$ is full-rank. So, the matrix $\Lambda$ must be the inverse of $\Xi.$ In other words, the following holds:
+\[
+\begin{bmatrix} 
+E_{m \times m} & 0_{m \times (2nk-m)} \\ 0_{(2nk-m) \times m} & E_{(2nk-m) \times (2nk-m)}
+\end{bmatrix} 
+=
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix}
+\begin{bmatrix}
+-F^{-1}(x_0) \overline{P}_1 & -F^{-1}(x_0) P_1 \\
+F^{-1}(x_1)\overline{Q}_1 & F^{-1}(x_1)Q_1  \\
+\vdots & \vdots \\
+-F^{-1}(x_{k-1})\overline{P}_k & -F^{-1}(x_{k-1})P_k \\
+F^{-1}(x_k)\overline{Q}_k & F^{-1}(x_k)Q_k 
+\end{bmatrix}. 
+\]
+Thus, we have 
+\[ 
+\begin{bmatrix} M_1 : N_1 :~ \ldots ~: M_k : N_k \end{bmatrix}
+\begin{bmatrix} 
+-F^{-1}(x_0) P_1 \\
+F^{-1}(x_1)Q_1  \\
+\vdots \\
+-F^{-1}(x_{k-1})P_k \\
+F^{-1}(x_k)Q_k 
+\end{bmatrix} 
+= 0_{m \times (2nk-m)}.
+\]
+Now, observe that 
+\[ H := \begin{bmatrix} 
+-F^{-1}(x_0) P_1 \\
+F^{-1}(x_1)Q_1  \\
+\vdots \\
+-F^{-1}(x_{k-1})P_k \\
+F^{-1}(x_k)Q_k 
+\end{bmatrix} _{2nk \times (2nk -m)}
+\]
+has rank $2nk -m.$ Thus, columns $H$ also form the solution space of the system \eqref{P2.CA-system1}, just like $\mathcal{H}$ does. But this suggests that $\mathcal{H}$ and $H$ are the same up to a linear transformation, i.e. there exists a non-singular matrix $A$ of size $(2nk-m)\times (2nk-m)$ such that
+\begin{align*}
+\mathcal{H} = 
+\begin{bmatrix}
+-F(x_{0})^{-1} \mathcal{P}_1 \\
+F(x_1)^{-1}\mathcal{Q}_1 \\
+\vdots \\
+-F(x_{k-1})^{-1} \mathcal{P}_k \\
+F(x_k)^{-1}\mathcal{Q}_k 
+\end{bmatrix}
+= HA = 
+\begin{bmatrix} 
+-F^{-1}(x_0) P_1 \\
+F^{-1}(x_1)Q_1  \\
+\vdots \\
+-F^{-1}(x_{k-1})P_k \\
+F^{-1}(x_k)Q_k 
+\end{bmatrix}  
+A = 
+\begin{bmatrix} 
+-F^{-1}(x_0) P_1A \\
+F^{-1}(x_1)Q_1A \\
+\vdots \\
+-F^{-1}(x_{k-1})P_kA \\
+F^{-1}(x_k)Q_k A
+\end{bmatrix}  ,
+\end{align*}
+and so $P_lA  = \mathcal{P}_l $ and $Q_l  A = \mathcal{Q}_l$ for all $l = 1,\ldots, k.$ Therefore,
+\[ \mathcal{U}^+ g = \sum^k_{l=1} \mathcal{P}^*_l \vec{g}_l(x_{l-1}) + \mathcal{Q}^*_l \vec{g}_l(x_l) =  \sum^k_{l=1} A^*P_l^* \vec{g}_l(x_{l-1}) + A^*Q_l^*  \vec{g}_l(x_l) = A^*U^+ g.\]
+Observe that $U^+ g = \vec{0}$ implies $\mathcal{U}^+ g = \vec{0}.$ Since $A^*$ is nonsingular, it follows that $U^+ g = \vec{0}$ if and only if $\mathcal{U}^+ g = \vec{0}.$ Since $U^+ g= \vec{0}$ is adjoint to $Uf= \vec{0}, \mathcal{U}^+ g= \vec{0}$ is adjoint to $Uf= \vec{0}.$ This completes the proof. 
+\end{proof}
+
+\begin{lem}\label{P2.CA-lemma}
+For the relevant matrices $P_l, Q_l, \overline{P}_l, \overline{Q}_l, M_l, N_l, \overline{M}_l, \overline{N}_l,$ we have
+\begin{equation*}
+\begin{aligned}
+\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0 & & \begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix}_{2nk\times 2nk}& \\
+=
+\begin{bmatrix}
+\overline{P}_1 : P_1 \\
+\overline{Q}_1 : Q_1 \\
+\vdots \\
+\overline{P}_k : P_k \\
+\overline{Q}_k : Q_k 
+\end{bmatrix}_{2nk \times 2nk}
+&
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix}_{2nk \times 2nk}.
+\end{aligned}
+\end{equation*}
+\end{lem}
+\begin{proof}
+First, observe that we can write 
+\begin{equation}\label{P2.CA-lemma-eq1}
+\begin{aligned}
+\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0 & & \begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix} \\
+= 
+\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+ & & 0 \\
+ & \ddots & \\
+0 & & \begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\end{bmatrix}_{2nk \times 2nk^2}&
+\begin{bmatrix}
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0 & & 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix}_{2nk^2 \times 2nk}.
+\end{aligned}
+\end{equation}
+Now, let $\mathcal{V}$ and $\mathcal{W}$ be matrices given by:
+\begin{align}
+\mathcal{V}_{2nk^2\times 2nk} &= \begin{bmatrix}
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0 & & 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix}
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix}^{-1};
+ \\
+\mathcal{W}_{2nk \times 2nk^2 } &= \begin{bmatrix}
+\overline{P}_1 : P_1 \\
+\overline{Q}_1 : Q_1 \\
+\vdots \\
+\overline{P}_k : P_k \\
+\overline{Q}_k : Q_k 
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+ & & 0 \\
+ & \ddots & \\
+0 & & \begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\end{bmatrix}. 
+\end{align}
+Observe that 
+\begin{align}
+\mathcal{W} \mathcal{V} &= \begin{bmatrix}
+\overline{P}_1 : P_1 \\
+\overline{Q}_1 : Q_1 \\
+\vdots \\
+\overline{P}_k : P_k \\
+\overline{Q}_k : Q_k 
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+ & & 0 \\
+ & \ddots & \\
+0 & & \begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\end{bmatrix}  
+\begin{bmatrix}
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0 & & 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix}
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix}^{-1} \nonumber \\
+\intertext{Substitute \eqref{P2.CA-lemma-eq1}:}
+&= \begin{bmatrix}
+\overline{P}_1 : P_1 \\
+\overline{Q}_1 : Q_1 \\
+\vdots \\
+\overline{P}_k : P_k \\
+\overline{Q}_k : Q_k 
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0 & & \begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix}
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix}^{-1} \nonumber \\
+\intertext{Recall \eqref{P2.CA-system2}:}
+&= \begin{bmatrix}
+\overline{P}_1 : P_1 \\
+\overline{Q}_1 : Q_1 \\
+\vdots \\
+\overline{P}_k : P_k \\
+\overline{Q}_k : Q_k 
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+\begin{bmatrix}
+-F(x_0) & 0 \\
+0 & F(x_1) 
+\end{bmatrix} & & 0 \\
+& \ddots & \\
+0 & & \begin{bmatrix}
+-F(x_{k-1}) & 0 \\
+0 & F(x_k) 
+\end{bmatrix}
+\end{bmatrix}
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix}^{-1}  \nonumber \\
+\intertext{Recall \eqref{P2.GR-Sform}, \eqref{P2.BFF-H}, and the explicit definition for $J$ as given in the proof of Theorem \ref{P2.BFF-theorem}:}
+&= (J^*)^{-1} SH^{-1} =  (J^*)^{-1}J^* = E_{2nk \times 2nk}. \nonumber
+\end{align}
+Thus, \eqref{P2.CA-lemma-eq1} can be rewritten as:
+\begin{align*}
+&\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0 & & \begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+\begin{bmatrix}
+\overline{P}_1 & P_1 \\
+\overline{Q}_1 & Q_1 
+\end{bmatrix} 
+ & & 0 \\
+ & \ddots & \\
+0 & & \begin{bmatrix}
+\overline{P}_k & P_k \\
+\overline{Q}_k & Q_k 
+\end{bmatrix} 
+\end{bmatrix}_{2nk \times 2nk^2}
+\begin{bmatrix}
+\begin{bmatrix}
+M_1 & N_1  \\
+\overline{M}_1 & \overline{N}_1 
+\end{bmatrix} & & 0 \\
+ & \ddots & \\
+0 & & 
+\begin{bmatrix}
+M_k & N_k  \\
+\overline{M}_k & \overline{N}_k 
+\end{bmatrix}
+\end{bmatrix}_{2nk^2 \times 2nk} \\
+&= 
+\begin{bmatrix}
+\overline{P}_1 : P_1 \\
+\overline{Q}_1 : Q_1 \\
+\vdots \\
+\overline{P}_k : P_k \\
+\overline{Q}_k : Q_k 
+\end{bmatrix}
+\mathcal{W}_{2nk \times 2nk^2}
+\mathcal{V}_{2nk^2 \times 2nk}
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix} \\
+&= \begin{bmatrix}
+\overline{P}_1 : P_1 \\
+\overline{Q}_1 : Q_1 \\
+\vdots \\
+\overline{P}_k : P_k \\
+\overline{Q}_k : Q_k 
+\end{bmatrix} E_{2nk \times 2nk}
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k
+\end{bmatrix} =\begin{bmatrix}
+\overline{P}_1 : P_1 \\
+\overline{Q}_1 : Q_1 \\
+\vdots \\
+\overline{P}_k : P_k \\
+\overline{Q}_k : Q_k 
+\end{bmatrix}
+\begin{bmatrix}
+M_1 : N_1 :~ \ldots ~: M_k : N_k \\
+\overline{M}_1 : \overline{N}_1 :~ \ldots ~: \overline{M}_k : \overline{N}_k 
+\end{bmatrix},
+\end{align*}
+which completes the proof.
+\end{proof}
+
+\section{Extension of the work by Pelloni \& Smith}
+In this section, we extend the system that Pelloni \& Smith derived in \cite{PS2018}. 
+
+\subsection{Formulation of the problem}
+Let $m, n \in \mathbb{N}$ be independent, let 
+\[ 
+\pi = \{ 0 = \eta_0 < \eta_1 < \ldots < \eta_m = 1 \}
+\]
+be a partition of a closed interval $[0,1],$ and 
+let 
+\begin{align*}
+\textup{\c{c}}_{k j}^r, \textup{\c{d}}_{kj}^r \in \CC,  \quad \mbox{for } j \in \{ 0, 1, \ldots, mn-1\}, \quad k \in \{ 0, 1, \ldots, n-1\}, \quad r \in {0, \ldots, m}.
+\end{align*} 
+Further, let 
+\begin{equation*}
+\begin{aligned}
+C^{n-1}_{\pi}[a,b] = \Big\{ &f: [a,b] \to \mathbb{C} \mbox{ s.t. } \forall r \in \{1, 2, \ldots,m \}, \\
+&f_r := f\big\vert_{(\eta_{r-1}, \eta_r)} \mbox{ admits an extension } g_r \mbox{ to } [\eta_{r-1}, \eta_r] \mbox{ s.t. } g_r \in C^{n-1}[\eta_{r-1}, \eta_r] \Big\}.
+\end{aligned}
+\end{equation*}
+be the relevant function space.
+Consider the following \emph{initial-multipoint value problem}:
+\begin{subequations} \label{eqn:uProblem}
+\begin{align}
+    \label{eqn:uProblem.PDE}
+    [\partial_t + a(-i\partial_x)^n]q(x,t) &= 0 & (x,t) &\in \RR\times(0,T), \\
+    \label{eqn:uProblem.InC}
+    q(x,0) &= q_0(x) & x &\in\RR, \\
+    \label{eqn:uProblem.MC}
+    \sum^{m}_{r=1} \sum^{n-1}_{k=0} \textup{\c{c}}_{k j}^r  \partial_x^{(k)} q(\eta_{r-1}, t) + \textup{\c{d}}_{kj}^r  \partial_x^{(k)} q(\eta_{r}, t) &= v_j(t) & t &\in [0,T], \quad j \in \{ 0, 1, \ldots, mn-1\},
+\end{align}
+\end{subequations}
+where $q(x, \cdot) \in C^{n-1}_{\pi}[0,1], q_0\in C^n[0,1], v_j \in C^{\infty}[0,T],$ with $T>0$ a fixed constant.
+
+\subsection{Global relations}
+First, we derive the relevant global relation. Fix $r \in \{ 1, 2, \ldots, m\},$ let $\phi_r$ denote the restriction of function $\phi$ to interval $[ \eta_{r-1}, \eta_r],$ and observe the action of Fourier transform on the derivative operator:
+\begin{align}
+\reallywidehat{(-i \partial_x)^n \phi_r}(\lambda) &= \int^{\eta_r}_{\eta_{r-1}} e^{-i\lambda x} (- i \partial_x)^n \phi_r \D x \nonumber \\
+&= e^{-i\lambda x} \sum^{n-1}_{j=1} (-i)^{n+1-j} \lambda^{j-1} \phi_r^{(n-j)}(x) \big\vert^{x = \eta_r}_{x = \eta_{r-1}} + \lambda^n  \int^{\eta_r}_{\eta_{r-1}} e^{-i\lambda x} \phi_r \D x \label{GR-TabIntegration} \\
+&= e^{-i\lambda x} \sum^{n-1}_{k=0} (-i)^{k+1} \lambda^{n-k-1} \phi_r^{(k)}(x) \big\vert^{x = \eta_r}_{x = \eta_{r-1}} + \lambda^n \reallywidehat{\phi_r}(\lambda) \label{GR-Indices},
+\end{align}
+where we performed integration by parts in \eqref{GR-TabIntegration} and relabeled indices as $k = n - j$ in \eqref{GR-Indices}. Applying the Fourier transform on the PDE \eqref{eqn:uProblem.PDE} on $[ \eta_{r-1}, \eta_r]$ yields
+\begin{align}
+0 &= \reallywidehat{[\partial_t + a(-i\partial_x)^n]q_r}(\lambda, t) \nonumber \\
+&= [\partial_t + \lambda^n]\reallywidehat{q_r}(\lambda, t)  + a \sum^{n-1}_{k=0} e^{-i\lambda x}  (-i)^{k+1} \lambda^{n-k-1} \partial_x^{(k)}q_r(x, t) \big\vert^{x = \eta_r}_{x = \eta_{r-1}}. \label{GR-PDE}
+\end{align}
+Multiplying \eqref{GR-PDE} by $e^{a\lambda^n t}$ and integrating the result in time, we obtain
+\[
+0 = e^{ a \lambda^n t} \reallywidehat{q_r}(\lambda; t) - \reallywidehat{q_r}(\lambda; 0) +\sum^{n-1}_{k=0} a (-i)^{k+1} \lambda^{n-k-1} e^{-i\lambda x} \int^t_0  e^{ a \lambda^n s} \partial_x^{k}q_r(x, s) \big\vert^{x = \eta_r}_{x = \eta_{r-1}} \D s, \]
+so that the we obtain the expression for the \emph{global relation}
+\begin{align}
+\reallywidehat{q_r}(\lambda; 0) &- e^{ a \lambda^n t} \reallywidehat{q_r}(\lambda; t) \nonumber \\
+&= \sum^{n-1}_{k=0} a (-i)^{k+1} \lambda^{n-k-1} \left( e^{-i\lambda \eta_r} \int^t_0  e^{ a \lambda^n s} \partial_x^{k}q_r(\eta_r, s) \D s - e^{-i\lambda \eta_{r-1}} \int^t_0  e^{ a \lambda^n s} \partial_x^{k}q_r(\eta_{r-1}, s) \D s \right), \label{GR-t}
+\end{align}
+valid for $t \in [0,T], \lambda \in \CC, x \in [\eta_{r-1}, \eta_r].$ Evaluating \eqref{GR-t} at $\tau \in [0, T],$ we obtain the global relation at $\tau:$
+\begin{align}
+\reallywidehat{q_r}(\lambda; 0) &- e^{ a \lambda^n \tau} \reallywidehat{q_r}(\lambda; \tau) \nonumber \\
+&= \sum^{n-1}_{k=0} a (-i)^{k+1} \lambda^{n-k-1} \left( e^{-i\lambda \eta_r} \int^\tau_0  e^{ a \lambda^n s} \partial_x^{k}q_r(\eta_r, s) \D s - e^{-i\lambda \eta_{r-1}} \int^\tau_0  e^{ a \lambda^n s} \partial_x^{k}q_r(\eta_{r-1}, s) \D s \right). \label{GR-tau}
+\end{align}
+Now, we adopt the following notation: for $\lambda \in \CC$ and $k \in \{ 0, \ldots, n-1\},$ denote a primitive $n^{\text{th}}$ root of unity 
+\begin{align*}
+\alpha &= e^{2 \pi i/n},
+\intertext{an exponential function}
+E_r(\lambda) &= e^{- i\lambda \eta_r}, \\
+\intertext{coefficients}
+c_k(\lambda) &= i a \lambda^{n-k-1}(-i)^k, \\
+\intertext{a time transform of the value $\partial_x^k q$ at $x = \eta_r$ as} 
+g^r_k(\lambda) &= g^r_k(\lambda, \tau) = c_k(\lambda) \int^\tau_0  e^{ a \lambda^n s} \partial_x^{k}q_r(\eta_r, s) \D s, & r \in \{ 1, \ldots, m\}, \\
+\intertext{a time transform of the value $\partial_x^k q$ at $x = \eta_{r-1}$ as}
+f^r_k(\lambda) &= f^r_k(\lambda, \tau) = c_k(\lambda) \int^\tau_0  e^{ a \lambda^n s} \partial_x^{k}q_r(\eta_{r-1}, s) \D s, & r \in \{ 1, \ldots, m\} \\
+\intertext{the Fourier transform of the initial datum, restricted to $(\eta_{r-1}, \eta_r)$ as}
+\reallywidehat{q^r_0}(\lambda) &= \int^{\eta_r}_{\eta_{r-1}}  e^{- i \lambda x} q_0(x) \D x, \\
+\intertext{and the Fourier transform of the solution at time $\tau$, restricted to $(\eta_{r-1}, \eta_r)$ as}
+\reallywidehat{q^r_{\tau}}(\lambda) &= \int^{\eta_r}_{\eta_{r-1}}  e^{- i \lambda x} q(x, \tau) \D x. 
+\end{align*}
+Using this notation, we can simplify the global relation \eqref{GR-tau} to 
+\begin{equation}\label{GR-Simplified}
+\reallywidehat{q^r_0}(\lambda) - e^{ a \lambda^n \tau} \reallywidehat{q^r_{\tau}}(\lambda)  =  \sum^{n-1}_{k=0}\left[E_{r-1}(\lambda) f^r_k(\lambda) - E_r(\lambda) g^r_k(\lambda) \right].
+\end{equation}
+Now, we create the system of global relations. Consider the global relation in each of the rectangles $(x, t) \in [\eta_{r-1}, \eta_r] \times [0, \tau], r \in \{ 1, \ldots, m\},$ and $\lambda \in \CC.$ This yields a set of $m$ global relations. Evaluating each relation at $\alpha, \alpha\lambda, \ldots, \alpha^{n-1}\lambda,$ and using the fact that $f^r_k(\alpha^p \lambda) = \alpha^{(n-1-k)p} f^r_k(\lambda), g^r_k(\alpha^p \lambda) = \alpha^{(n-1-k)p} g^r_k(\lambda)$ we obtain the following system of $mn$ equations 
+\begin{equation}\label{GR-SetOfEquations1}
+\sum^{n-1}_{k=0} \alpha^{(n-1-k)p} \left[E_{r-1}(\alpha^p\lambda) f^r_k(\lambda) - E_r(\alpha^p\lambda) g^r_k(\lambda) \right] =\reallywidehat{q^r_0}(\alpha^p\lambda) - e^{ a \lambda^n \tau} \reallywidehat{q^r_\tau}(\alpha^p \lambda), \qquad p \in \{0, 1, \ldots, n-1\}.
+\end{equation}
+Now, we would like to write equations in \eqref{GR-SetOfEquations1} in a system form. Note 
+\begin{align}
+\sum^{n-1}_{k=0} &\alpha^{(n-1-k)p} \left[E_{r-1}(\alpha^p\lambda) f^r_k(\lambda) - E_r(\alpha^p\lambda) g^r_k(\lambda) \right]  \nonumber \\
+&= \sum^{n-1}_{k=0} \alpha^{(n-1-k)p} E_{r-1}(\alpha^p\lambda) f^r_k(\lambda) - \sum^{n-1}_{k=0} \alpha^{(n-1-k)p} E_{r}(\alpha^p\lambda) g^r_k(\lambda) \nonumber  \\
+&= \left[  \alpha^{(n-1)p} E_{r-1}(\alpha^p\lambda) f^r_0(\lambda) +  \alpha^{(n-2)p} E_{r-1}(\alpha^p\lambda) f^r_1(\lambda) + \ldots +  \alpha^{0} E_{r-1}(\alpha^p\lambda) f^r_{n-1}(\lambda)\right] \nonumber  \\
+&- \left[ \alpha^{(n-1)p} E_{r}(\alpha^p\lambda) g^r_0(\lambda) + \alpha^{(n-2)p} E_{r}(\alpha^p\lambda) g^r_1(\lambda) + \ldots + \alpha^{0} E_{r}(\alpha^p\lambda) g^r_{n-1}(\lambda)\right] \nonumber  \\
+&= \begin{bmatrix}  \alpha^{(n-1)p} E_{r-1}(\alpha^p\lambda) & \ldots & \alpha^{0} E_{r-1}(\alpha^p\lambda) & \alpha^{(n-1)p} E_{r}(\alpha^p\lambda) & \ldots & \alpha^{0} E_{r}(\alpha^p\lambda) \end{bmatrix} \begin{bmatrix} f^r_0(\lambda) \\ \vdots \\ f^r_{n-1}(\lambda) \\ g^r_0(\lambda) \\ \vdots \\ g^r_{n-1}(\lambda) \end{bmatrix}. \label{GR-SetOfEquations2}
+\end{align}
+Evaluating \eqref{GR-SetOfEquations2} at $p = 0, 1, \ldots, n-1$ yields the following system:
+\begin{align}
+\begin{bmatrix}  
+\alpha^{(n-1)0} E_{r-1}(\alpha^0\lambda) & \ldots & \alpha^{0} E_{r-1}(\alpha^0\lambda) & \alpha^{(n-1)0} E_{r}(\alpha^p\lambda) & \ldots & \alpha^{0} E_{r}(\alpha^0\lambda)  \\
+\alpha^{(n-1)} E_{r-1}(\alpha\lambda) & \ldots & \alpha^{0} E_{r-1}(\alpha\lambda) & \alpha^{(n-1)} E_{r}(\alpha\lambda) & \ldots & \alpha^{0} E_{r}(\alpha\lambda)  \\
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+\alpha^{(n-1)(n-1)} E_{r-1}(\alpha^{(n-1)}\lambda) & \ldots & \alpha^{0} E_{r-1}(\alpha^{(n-1)}\lambda) & \alpha^{(n-1)(n-1)} E_{r}(\alpha^p\lambda) & \ldots & \alpha^{0} E_{r}(\alpha^{(n-1)}\lambda)  \\
+\end{bmatrix} &\begin{bmatrix} f^r_0(\lambda) \\ \vdots \\ f^r_{n-1}(\lambda) \\ g^r_0(\lambda) \\ \vdots \\ g^r_{n-1}(\lambda) \end{bmatrix} \nonumber \\
+= \begin{bmatrix} \reallywidehat{q^r_0}(\alpha^0\lambda) \\ \vdots \\ \reallywidehat{q^r_0}(\alpha^{(n-1)}\lambda)\end{bmatrix} - e^{a\lambda^n \tau} \begin{bmatrix} \reallywidehat{q^r_\tau}(\alpha^0\lambda) \\ \vdots \\ \reallywidehat{q^r_\tau}(\alpha^{(n-1)}\lambda)\end{bmatrix}&.
+\label{GR-System1}
+\end{align}
+For notational convenience, let 
+\begin{align*}
+\vec{f^r}(\lambda) &= \begin{bmatrix} f^r_0(\lambda) \\ \vdots \\ f^r_{n-1}(\lambda) \end{bmatrix},  \quad \vec{g^r}(\lambda) = \begin{bmatrix} g^r_0(\lambda) \\ \vdots \\ g^r_{n-1}(\lambda) \end{bmatrix} \quad \vec{\reallywidehat{q^r_0}}(\lambda) = \begin{bmatrix} \reallywidehat{q^r_0}(\alpha^0\lambda) \\ \vdots \\ \reallywidehat{q^r_0}(\alpha^{(n-1)}\lambda)\end{bmatrix}, \quad \vec{\reallywidehat{q^r_\tau}}(\lambda) = \begin{bmatrix} \reallywidehat{q^r_\tau}(\alpha^0\lambda) \\ \vdots \\ \reallywidehat{q^r_\tau}(\alpha^{(n-1)}\lambda)\end{bmatrix},\\
+e_r &= \begin{bmatrix} 
+E_r(\lambda) & E_r(\alpha \lambda)\alpha^{(n-1)} & \ldots & E_r(\alpha^{(n-1)} \lambda) \alpha^{(n-1)(n-1)} \\
+E_r(\lambda) & E_r(\alpha \lambda)\alpha^{(n-2)} & \ldots & E_r(\alpha^{(n-1)} \lambda) \alpha^{(n-1)(n-2)} \\
+\vdots & \vdots & \ddots & \vdots \\
+E_r(\lambda) & E_r(\alpha \lambda) & \ldots & E_r(\alpha^{(n-1)} \lambda) \\
+\end{bmatrix} 
+\end{align*}
+for $r \in \{ 0, 1, \ldots, m \},$ and $e_r$ are $n\times n$ matrices. Then, we can write \eqref{GR-System1} in a more compact form:
+\begin{equation}\label{GR-System2}
+\begin{bmatrix} e_{r-1}^T: -e_r^T \end{bmatrix} \begin{bmatrix} \vec{f^r}(\lambda) \\ \vec{g^r}(\lambda) \end{bmatrix} = \vec{\reallywidehat{q^r_0}}(\lambda) - e^{(a\lambda^n \tau)}\vec{\reallywidehat{q^r_\tau}}(\lambda), \qquad r \in \{ 1, \ldots,m \},
+\end{equation}
+where 
+\[ 
+\begin{bmatrix} e_{r-1}^T: -e_r^T \end{bmatrix} = 
+\begin{bmatrix} 
+(e_{r-1}^T)_{1 ~ 1} & \ldots & (e_{r-1}^T)_{1 ~ n}  & -(e_r^T)_{1 ~ 1} & \ldots & -(e_r^T)_{1 ~ n} \\
+\vdots &\ddots & \vdots & \vdots & \ddots & \vdots \\
+(e_{r-1}^T)_{n ~ 1} & \ldots & (e_{r-1}^T)_{n ~ n}  & -(e_r^T)_{n ~ 1} & \ldots & -(e_r^T)_{n ~ n}
+\end{bmatrix}.
+\]
+\subsection{Multipoint conditions}
+We would also like to rewrite the multipoint conditions
+\begin{equation*}
+\sum^{m}_{r=1} \sum^{n-1}_{k=0} \textup{\c{c}}_{k j}^r  \partial_x^{k} q(\eta_{r-1}, t) + \textup{\c{d}}_{kj}^r  \partial_x^{k} q(\eta_{r}, t) = v_j(t),
+\end{equation*}
+where $t \in [0,T], j \in \{ 0, 1, \ldots, mn-1\}.$  Multiplying by  $c_k$ and $e^{a\lambda^n t},$ and applying the time transform at time $\tau \in [0,T]$ yields
+\begin{equation*}
+\begin{aligned}
+\sum^{m}_{r=1} \sum^{n-1}_{k=0} \textup{\c{c}}_{k j}^r  \frac{(-a)}{i^n c_k(\lambda)} c_k(\lambda) \int^\tau_0 e^{a \lambda^n s} \partial_x^{k} q(\eta_{r-1}, s) &\D s  \\
++ ~ \textup{\c{d}}_{kj}^r  \frac{(-a)}{i^n c_k(\lambda)}c_k(\lambda) \int^\tau_0 e^{a \lambda^n s} \partial_x^{k} q(\eta_{r}, s) \D s &=  \frac{(-a)}{i^n}\int^\tau_0 e^{a \lambda^n s} v_j(s) \D s := h_j(\lambda),
+\end{aligned}
+\end{equation*}
+so that the conditions become 
+\begin{equation}\label{MC-eqn1}
+\begin{aligned}
+\sum^{m}_{r=1} \sum^{n-1}_{k=0} \textup{\c{c}}_{k j}^r  \frac{(-a)}{i^n c_k(\lambda)} f^r_k(\lambda) +  \textup{\c{d}}_{kj}^r  \frac{(-a)}{i^n c_k(\lambda)} g^r_k(\lambda) = h_j(\lambda).
+\end{aligned}
+\end{equation}
+Now, expand the sum in \eqref{MC-eqn1} over $k:$
+\begin{align}
+h_j(\lambda)= \sum^{m}_{r=1} \sum^{n-1}_{k=0} ~&\textup{\c{c}}_{k j}^r  \frac{(-a)}{i^n c_k(\lambda)} f^r_k(\lambda) + \textup{\c{d}}_{kj}^r  \frac{(-a)}{i^n c_k(\lambda)} g^r_k(\lambda) \nonumber \\
+= \sum^{m}_{r=1} ~&\textup{\c{c}}_{0 j}^r  \frac{(-a)}{i^n c_0(\lambda)} f^r_0(\lambda) + \textup{\c{c}}_{1 j}^r  \frac{(-a)}{i^n c_1(\lambda)} f^r_1(\lambda)  + \ldots + \textup{\c{c}}_{(n-1) j}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)} f^r_{n-1}(\lambda) \nonumber \\
++ ~&\textup{\c{d}}_{0j}^r  \frac{(-a)}{i^n c_0(\lambda)} g^r_0(\lambda) +\textup{\c{d}}_{1j}^r  \frac{(-a)}{i^n c_1(\lambda)} g^r_1(\lambda) +\ldots + \textup{\c{d}}_{(n-1)j}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)} g^r_{n-1}(\lambda) \nonumber \\
+= \sum^{m}_{r=1} ~&\begin{bmatrix} \textup{\c{c}}_{0 j}^r  \frac{(-a)}{i^n c_0(\lambda)} & \ldots & \textup{\c{c}}_{(n-1) j}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)}  & \textup{\c{d}}_{0j}^r  \frac{(-a)}{i^n c_0(\lambda)} & \ldots & \textup{\c{d}}_{(n-1)j}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)} \end{bmatrix} \begin{bmatrix}  \vec{f^r}(\lambda) \\ \vec{g^r}(\lambda) \end{bmatrix}. \label{MC-eqn2}
+\end{align}
+Evaluating \eqref{MC-eqn2} at $j = 0, 1, \ldots, mn-1$ and combining the resultant equations, we obtain:
+\begin{equation}\label{MC-eqn3}
+\begin{aligned}
+\sum^{m}_{r=1} \begin{bmatrix} \textup{\c{c}}_{0 0}^r  \frac{(-a)}{i^n c_0(\lambda)} & \ldots & \textup{\c{c}}_{(n-1) 0}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)}  & \textup{\c{d}}_{0 0}^r  \frac{(-a)}{i^n c_0(\lambda)} & \ldots & \textup{\c{d}}_{(n-1) 0}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)} \\
+\textup{\c{c}}_{0 1}^r  \frac{(-a)}{i^n c_0(\lambda)} & \ldots & \textup{\c{c}}_{(n-1) 1}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)}  & \textup{\c{d}}_{01}^r  \frac{(-a)}{i^n c_0(\lambda)} & \ldots & \textup{\c{d}}_{(n-1)1}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)}  \\
+\vdots & \ddots &\vdots & \vdots & \ddots & \vdots \\
+\textup{\c{c}}_{0 (mn-1)}^r  \frac{(-a)}{i^n c_0(\lambda)} & \ldots & \textup{\c{c}}_{(n-1) (mn-1)}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)}  & \textup{\c{d}}_{0 (mn-1) }^r  \frac{(-a)}{i^n c_0(\lambda)} & \ldots & \textup{\c{d}}_{(n-1)(mn-1)}^r  \frac{(-a)}{i^n c_{n-1}(\lambda)} 
+\end{bmatrix} 
+\begin{bmatrix}  \vec{f^r}(\lambda) \\ \vec{g^r}(\lambda) \end{bmatrix} \\
+=
+\begin{bmatrix} 
+h_0(\lambda) \\ h_1(\lambda) \\ \vdots \\ h_{mn-1}(\lambda)
+\end{bmatrix}.&
+\end{aligned}
+\end{equation}
+For $k = 0, 1, \ldots, m-1,$ define the following matrices 
+\begin{align*}
+\textup{\c{C}}^r_k &= 
+\begin{bmatrix} 
+\textup{\c{c}}_{0 kn}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{c}}_{1 kn}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{c}}_{(n-1) kn}^r   \\
+\textup{\c{c}}_{0 (kn+1)}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{c}}_{1 (kn+1)}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{c}}_{(n-1) (kn+1)}^r   \\
+\vdots & \vdots & \ddots & \vdots \\
+\textup{\c{c}}_{0 ((k+1)n-1)}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{c}}_{1 ((k+1)n-1)}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{c}}_{(n-1) ((k+1)n-1)}^r 
+\end{bmatrix}^T, & n\times n \mbox{ block}; \\
+\textup{\c{D}}^r_k &=
+\begin{bmatrix} 
+\textup{\c{d}}_{0 kn}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{d}}_{1 kn}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{d}}_{(n-1) kn}^r   \\
+\textup{\c{d}}_{0 (kn+1)}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{d}}_{1 (kn+1)}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{d}}_{(n-1) (kn+1)}^r   \\
+\vdots & \vdots & \ddots & \vdots \\
+\textup{\c{d}}_{0 ((k+1)n-1)}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{d}}_{1 ((k+1)n-1)}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{d}}_{(n-1) ((k+1)n-1)}^r 
+\end{bmatrix}^T, & n\times n \mbox{ block}.
+\end{align*}
+Then, we can rewrite the system in \eqref{MC-eqn3} as 
+\begin{align}
+\underbrace{\begin{bmatrix} 
+h_0(\lambda) \\ h_1(\lambda) \\ \vdots \\ h_{mn-1}(\lambda)
+\end{bmatrix}}_\text{$mn \times 1$}
+&= \sum^m_{r=1} \begin{bmatrix} 
+(\textup{\c{C}}^r_0)^T \hspace{0.23cm} : \hspace{0.23cm} (\textup{\c{D}}^r_0)^T \\
+(\textup{\c{C}}^r_1)^T \hspace{0.23cm}  :  \hspace{0.23cm} (\textup{\c{D}}^r_1)^T \\
+\vdots \\
+(\textup{\c{C}}^r_{m-1})^T : (\textup{\c{C}}^r_{m-1})^T 
+\end{bmatrix}
+\begin{bmatrix}  \vec{f^r}(\lambda) \\ \vec{g^r}(\lambda) \end{bmatrix} \nonumber \\
+&= 
+\begin{bmatrix} 
+(\textup{\c{C}}^1_0)^T \hspace{0.23cm} : \hspace{0.23cm} (\textup{\c{D}}^1_0)^T \\
+(\textup{\c{C}}^1_1)^T \hspace{0.23cm} : \hspace{0.23cm} (\textup{\c{D}}^1_1)^T \\
+\vdots \\
+(\textup{\c{C}}^1_{m-1})^T : (\textup{\c{C}}^1_{m-1})^T 
+\end{bmatrix}
+\begin{bmatrix}  \vec{f^1}(\lambda) \\ \vec{g^1}(\lambda) \end{bmatrix} +
+\begin{bmatrix} 
+(\textup{\c{C}}^2_0)^T\hspace{0.23cm}  : \hspace{0.23cm} (\textup{\c{D}}^2_0)^T \\
+(\textup{\c{C}}^2_1)^T \hspace{0.23cm} : \hspace{0.23cm} (\textup{\c{D}}^2_1)^T \\
+\vdots \nonumber \\
+(\textup{\c{C}}^2_{m-1})^T : (\textup{\c{C}}^2_{m-1})^T 
+\end{bmatrix}
+\begin{bmatrix}  \vec{f^2}(\lambda) \\ \vec{g^2}(\lambda) \end{bmatrix} \\
+&\qquad + \hspace{0.23cm}  \ldots  \hspace{0.23cm} +
+\begin{bmatrix} 
+(\textup{\c{C}}^m_0)^T \hspace{0.23cm} : \hspace{0.23cm} (\textup{\c{D}}^m_0)^T \\
+(\textup{\c{C}}^m_1)^T \hspace{0.23cm} : \hspace{0.23cm} (\textup{\c{D}}^m_1)^T \\
+\vdots \\
+(\textup{\c{C}}^m_{m-1})^T : (\textup{\c{C}}^m_{m-1})^T 
+\end{bmatrix}
+\begin{bmatrix}  \vec{f^m}(\lambda) \\ \vec{g^m}(\lambda) \end{bmatrix} \nonumber \\
+&=
+\underbrace{
+\begin{bmatrix}
+\hspace{0.23cm} (\textup{\c{C}}^1_0)^T \hspace{0.23cm} : \hspace{0.23cm}  (\textup{\c{D}}^1_0)^T\hspace{0.23cm}  : \hspace{0.23cm}  (\textup{\c{C}}^2_0)^T \hspace{0.23cm}  : \hspace{0.23cm}  (\textup{\c{D}}^2_0)^T \hspace{0.23cm}  :~ \ldots ~: \hspace{0.23cm}  (\textup{\c{C}}^m_0)^T \hspace{0.23cm} : \hspace{0.23cm}  (\textup{\c{D}}^m_0)^T \\
+\hspace{0.23cm} (\textup{\c{C}}^1_1)^T \hspace{0.23cm} : \hspace{0.23cm}  (\textup{\c{D}}^1_1)^T\hspace{0.23cm}  : \hspace{0.23cm}  (\textup{\c{C}}^2_1)^T \hspace{0.23cm}  : \hspace{0.23cm}  (\textup{\c{D}}^2_1)^T \hspace{0.23cm}  :~ \ldots ~: \hspace{0.23cm}  (\textup{\c{C}}^m_1)^T \hspace{0.23cm} : \hspace{0.23cm}  (\textup{\c{D}}^m_1)^T \\
+\vdots \\
+(\textup{\c{C}}^1_{m-1})^T : (\textup{\c{D}}^1_{m-1})^T : (\textup{\c{C}}^2_{m-1})^T : (\textup{\c{D}}^2_{m-1})^T :~ \ldots ~: (\textup{\c{C}}^m_{m-1})^T : (\textup{\c{D}}^m_{m-1})^T \\
+\end{bmatrix}}_\text{$mn \times 2mn$}
+\underbrace{\begin{bmatrix}  \vec{f^1}(\lambda) \\ \vec{g^1}(\lambda) \\ \vec{f^2}(\lambda) \\ \vec{g^2}(\lambda) \\ \vdots \\ \vec{f^m}(\lambda) \\ \vec{g^m}(\lambda)  \end{bmatrix}}_\text{$2mn \times 1$}.\label{MC-eqn}
+\end{align}
+The equation \eqref{MC-eqn} gives a convenient way to express the multipoint conditions. 
+
+\subsection{The Dirichlet-to-Neumann map in $\mathcal{B}$ form}
+We use the results in the previous two subsections to define a system, whose solution will aid us in finding the Dirichlet-to-Neumann map. First, recall from the Global Relations subsection, we have the equation \eqref{GR-System2}, reproduced below:
+\begin{equation}\label{DtN.B-GRs}
+\begin{bmatrix} e_{r-1}^T: -e_r^T \end{bmatrix} \begin{bmatrix} \vec{f^r}(\lambda) \\ \vec{g^r}(\lambda) \end{bmatrix} = \vec{\reallywidehat{q^r_0}}(\lambda) - e^{a\lambda^n \tau}\vec{\reallywidehat{q^r_\tau}}(\lambda), \qquad r \in \{ 1, \ldots, m \}.
+\end{equation}
+Evaluating the equation in \eqref{DtN.B-GRs} at $r = 1, \ldots, m$ yields
+\begin{equation}\label{DtN.B-GRsSystem1}
+\begin{aligned}
+\begin{bmatrix} e_{0}^T: -e_1^T \end{bmatrix} \begin{bmatrix} \vec{f^1}(\lambda) \\ \vec{g^1}(\lambda) \end{bmatrix} &= \vec{\reallywidehat{q^1_0}}(\lambda) - e^{a\lambda^n \tau}\vec{\reallywidehat{q^1_\tau}}(\lambda) \\
+\begin{bmatrix} e_{1}^T: -e_2^T \end{bmatrix} \begin{bmatrix} \vec{f^2}(\lambda) \\ \vec{g^2}(\lambda) \end{bmatrix} &= \vec{\reallywidehat{q^2_0}}(\lambda) - e^{a\lambda^n \tau}\vec{\reallywidehat{q^2_\tau}}(\lambda) \\
+\vdots \\
+\begin{bmatrix} e_{m-2}^T: -e_{m-1}^T \end{bmatrix} \begin{bmatrix} \vec{f^{m-1}}(\lambda) \\ \vec{g^{m-1}}(\lambda) \end{bmatrix} &= \vec{\reallywidehat{q^{m-1}_0}}(\lambda) - e^{a\lambda^n \tau}\vec{\reallywidehat{q^{m-1}_\tau}}(\lambda) \\
+\begin{bmatrix} e_{m-1}^T: -e_{m}^T \end{bmatrix} \begin{bmatrix} \vec{f^m}(\lambda) \\ \vec{g^m}(\lambda) \end{bmatrix} &= \vec{\reallywidehat{q^m_0}}(\lambda) - e^{a\lambda^n \tau}\vec{\reallywidehat{q^m_\tau}}(\lambda).
+\end{aligned}
+\end{equation}
+Combining the global relations in \eqref{DtN.B-GRsSystem1}, we obtain the following system:
+\begin{equation}\label{DtN.B-GRsSystem2}
+\underbrace{
+\begin{bmatrix}
+e_{0}^T: -e_1^T & 0 & \ldots & 0 & 0 \\
+0 & e_{1}^T: -e_2^T & \ldots & 0 & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \ldots & e_{m-2}^T: -e_{m-1}^T & 0 \\
+0 & 0 & \ldots & 0 & e_{m-1}^T: -e_{m}^T 
+\end{bmatrix}}_\text{$mn\times 2mn$}
+\underbrace{
+\begin{bmatrix}
+\vec{f^1}(\lambda) \\ \vec{g^1}(\lambda) \\
+\vec{f^2}(\lambda) \\ \vec{g^2}(\lambda) \\
+\vdots \\
+\vec{f^{m-1}}(\lambda) \\ \vec{g^{m-1}}(\lambda) \\
+\vec{f^m}(\lambda) \\ \vec{g^m}(\lambda) 
+\end{bmatrix}}_\text{$2mn \times 1$}
+= \underbrace{ \begin{bmatrix} \vec{\reallywidehat{q^1_0}}(\lambda) \\ \vec{\reallywidehat{q^2_0}}(\lambda) \\ \vdots \\  \vec{\reallywidehat{q^{m-1}_0}}(\lambda) \\ \vec{\reallywidehat{q^m_0}}(\lambda) \end{bmatrix}}_\text{$mn \times 1$} -  e^{a\lambda^n \tau} \underbrace{ \begin{bmatrix} \vec{\reallywidehat{q^1_\tau}}(\lambda) \\ \vec{\reallywidehat{q^2_\tau}}(\lambda) \\ \vdots \\ \vec{\reallywidehat{q^{m-1}_\tau}}(\lambda) \\ \vec{\reallywidehat{q^m_\tau}}(\lambda) \end{bmatrix}}_\text{$mn\times 1$}.
+\end{equation}
+Combining \eqref{DtN.B-GRsSystem2} and \eqref{MC-eqn}, we arrive at the following system
+\begin{equation}\label{DtN.B-Bform}
+\begin{aligned}
+\mathcal{B} \underbrace{
+\begin{bmatrix}
+\vec{f^1}(\lambda) \\ \vec{g^1}(\lambda) \\
+\vec{f^2}(\lambda) \\ \vec{g^2}(\lambda) \\
+\vdots \\
+\vec{f^{m-1}}(\lambda) \\ \vec{g^{m-1}}(\lambda) \\
+\vec{f^m}(\lambda) \\ \vec{g^m}(\lambda) 
+\end{bmatrix}}_\text{$2mn \times 1$} 
+= \underbrace{ \begin{bmatrix} h_0(\lambda) \\ \vdots \\ h_{mn-1}(\lambda)\\ \vec{\reallywidehat{q^1_0}}(\lambda) \\ \vec{\reallywidehat{q^2_0}}(\lambda) \\ \vdots \\  \vec{\reallywidehat{q^{m-1}_0}}(\lambda) \\ \vec{\reallywidehat{q^m_0}}(\lambda) \end{bmatrix}}_\text{$2mn \times 1$} -  e^{a\lambda^n \tau} \underbrace{ \begin{bmatrix} 0 \\ \vdots \\ 0 \\ \vec{\reallywidehat{q^1_\tau}}(\lambda) \\ \vec{\reallywidehat{q^2_\tau}}(\lambda) \\ \vdots \\ \vec{\reallywidehat{q^{m-1}_\tau}}(\lambda) \\ \vec{\reallywidehat{q^m_\tau}}(\lambda) \end{bmatrix}}_\text{$2mn\times 1$},
+\end{aligned}
+\end{equation}
+where 
+\[ 
+\mathcal{B} = 
+\underbrace{
+\begin{bmatrix}
+(\textup{\c{C}}^1_0)^T & (\textup{\c{D}}^1_0)^T & (\textup{\c{C}}^2_0)^T & (\textup{\c{D}}^2_0)^T & \ldots & (\textup{\c{C}}^{m-1}_0)^T & (\textup{\c{D}}^{m-1}_0)^T &  (\textup{\c{C}}^m_0)^T & (\textup{\c{D}}^m_0)^T \\
+(\textup{\c{C}}^1_1)^T &  (\textup{\c{D}}^1_1)^T & (\textup{\c{C}}^2_1)^T & (\textup{\c{D}}^2_1)^T & \ldots & (\textup{\c{C}}^{m-1}_1)^T& (\textup{\c{D}}^{m-1}_1)^T &(\textup{\c{C}}^m_1)^T& (\textup{\c{D}}^m_1)^T \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots \\
+(\textup{\c{C}}^1_{m-1})^T & (\textup{\c{D}}^1_{m-1})^T & (\textup{\c{C}}^2_{m-1})^T & (\textup{\c{D}}^2_{m-1})^T & \ldots & (\textup{\c{C}}^{m-1}_{m-1})^T & (\textup{\c{D}}^{m-1}_{m-1})^T & (\textup{\c{C}}^m_{m-1})^T & (\textup{\c{D}}^m_{m-1})^T \\
+e_{0}^T & -e_1^T & 0 & 0 & \ldots & 0 & 0 & 0 & 0 \\
+0 & 0 & e_{1}^T & -e_2^T & \ldots & 0 & 0 & 0 & 0 \\
+\vdots & \vdots & \vdots &  \vdots & \ddots & \vdots & \vdots & \vdots & \vdots\\
+0 & 0 & 0 & 0 & \ldots & e_{m-2}^T & -e_{m-1}^T & 0 & 0 \\
+0 & 0 & 0 & 0 & \ldots & 0 & 0 & e_{m-1}^T & -e_{m}^T 
+\end{bmatrix}}_\text{$2mn \times 2mn$}
+\]
+is a block matrix where each block is $n \times n.$ Solving this system will help obtain the Dirichlet-to-Neumann map. We shall refer to this system as the \emph{D-to-N map in $\mathcal{B}$ form}. 
+\subsection{The Dirichlet-to-Neumann map in $\mathcal{A}$ form}
+We seek to simplify the system \eqref{DtN.B-Bform}. First, recall the matrices
+\begin{align*}
+\textup{\c{C}}^r_k &= 
+\begin{bmatrix} 
+\textup{\c{c}}_{0 kn}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{c}}_{1 kn}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{c}}_{(n-1) kn}^r   \\
+\textup{\c{c}}_{0 (kn+1)}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{c}}_{1 (kn+1)}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{c}}_{(n-1) (kn+1)}^r   \\
+\vdots & \vdots & \ddots & \vdots \\
+\textup{\c{c}}_{0 ((k+1)n-1)}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{c}}_{1 ((k+1)n-1)}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{c}}_{(n-1) ((k+1)n-1)}^r 
+\end{bmatrix}^T, & r =  1, \ldots, m, \\
+\textup{\c{D}}^r_k &=
+\begin{bmatrix} 
+\textup{\c{d}}_{0 kn}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{d}}_{1 kn}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{d}}_{(n-1) kn}^r   \\
+\textup{\c{d}}_{0 (kn+1)}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{d}}_{1 (kn+1)}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{d}}_{(n-1) (kn+1)}^r   \\
+\vdots & \vdots & \ddots & \vdots \\
+\textup{\c{d}}_{0 ((k+1)n-1)}^r  \frac{1}{(i \lambda)^{n-1}} & \textup{\c{d}}_{1 ((k+1)n-1)}^r  \frac{1}{(i \lambda)^{n-2}} & \ldots & \textup{\c{d}}_{(n-1) ((k+1)n-1)}^r 
+\end{bmatrix}^T, & r =  1, \ldots, m, \\
+e_r &= \begin{bmatrix} 
+E_r(\lambda) & E_r(\alpha \lambda)\alpha^{(n-1)} & \ldots & E_r(\alpha^{(n-1)} \lambda) \alpha^{(n-1)(n-1)} \\
+E_r(\lambda) & E_r(\alpha \lambda)\alpha^{(n-2)} & \ldots & E_r(\alpha^{(n-1)} \lambda) \alpha^{(n-1)(n-2)} \\
+\vdots & \vdots & \ddots & \vdots \\
+E_r(\lambda) & E_r(\alpha \lambda) & \ldots & E_r(\alpha^{(n-1)} \lambda) \\
+\end{bmatrix}
+& r = 0, 1, \ldots, m,
+\end{align*}
+where both matrices are $n \times n,$ and $k = 0, \ldots, m-1.$ Now, define the matrices
+\begin{align*}
+\textup{\c{S}}^r_k &= \frac{1}{n}
+\begin{bmatrix}
+E_{r-1}(-\lambda) \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ kn}^r\frac{1}{(i\lambda)^{n-1-j}} & \ldots & E_{r-1}(-\lambda) \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ ((k+1)n-1)}^r\frac{1}{(i\lambda)^{n-1-j}} \\
+E_{r-1}(-\alpha \lambda) \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ kn}^r\frac{\alpha^{(j+1)}}{(i\lambda)^{n-1-j}} & \ldots & E_{r-1}(-\alpha \lambda) \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ ((k+1)n-1)}^r\frac{\alpha^{(j+1)}}{(i\lambda)^{n-1-j}} \\
+\vdots & \ddots & \vdots \\
+E_{r-1}(-\alpha^{n-1} \lambda) \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ kn}^r\frac{\alpha^{(n-1)(j+1)}}{(i\lambda)^{n-1-j}} & \ldots & E_{r-1}(-\alpha^{n-1}  \lambda) \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ ((k+1)n-1)}^r\frac{\alpha^{(n-1)(j+1)}}{(i\lambda)^{n-1-j}}
+\end{bmatrix}; \\
+\textup{\c{T}}^r_k &= 
+\frac{1}{n}
+\begin{bmatrix}
+E_{r}(-\lambda) \sum^{n-1}_{j=0} \textup{\c{d}}_{j~ kn}^r\frac{1}{(i\lambda)^{n-1-j}} & \ldots & E_{r}(-\lambda) \sum^{n-1}_{j=0} \textup{\c{d}}_{j~ ((k+1)n-1)}^r\frac{1}{(i\lambda)^{n-1-j}} \\
+E_{r}(-\alpha \lambda) \sum^{n-1}_{j=0} \textup{\c{d}}_{j~ kn}^r\frac{\alpha^{(j+1)}}{(i\lambda)^{n-1-j}} & \ldots & E_{r}(-\alpha \lambda) \sum^{n-1}_{j=0} \textup{\c{d}}_{j~ ((k+1)n-1)}^r\frac{\alpha^{(j+1)}}{(i\lambda)^{n-1-j}} \\
+\vdots & \ddots & \vdots \\
+E_{r}(-\alpha^{n-1} \lambda) \sum^{n-1}_{j=0} \textup{\c{d}}_{j~ kn}^r\frac{\alpha^{(n-1)(j+1)}}{(i\lambda)^{n-1-j}} & \ldots & E_{r}(-\alpha^{n-1}  \lambda) \sum^{n-1}_{j=0} \textup{\c{d}}_{j~ ((k+1)n-1)}^r\frac{\alpha^{(n-1)(j+1)}}{(i\lambda)^{n-1-j}}
+\end{bmatrix}.
+\end{align*}
+The matrices $\textup{\c{S}}^r_k, \textup{\c{T}}^r_k$ have the following convenient property:
+\begin{lem}\label{DtN.A-lemma}
+For the relevant matrices $e_r, \textup{\c{C}}^r_k, \textup{\c{D}}^r_k, \textup{\c{S}}^r_k, \textup{\c{T}}^r_k,$ we have
+\begin{equation*}
+e_{r-1}\textup{\c{S}}^r_k = \textup{\c{C}}^r_k, \qquad e_{r}\textup{\c{T}}^r_k = \textup{\c{D}}^r_k,
+\end{equation*}
+where $r = 1, \ldots, m$ and $k = 0, \ldots, m-1.$
+\end{lem}
+\begin{proof}
+Fix $r$ and $k,$ and consider the product $e_{r-1}\textup{\c{S}}^r_k.$ Observe that the $(t,s)$-th entry of the product $e_{r-1}\textup{\c{S}}^r_k$ is given by the $t$-th row of $e_{r-1}$ times $s$-th column of $\textup{\c{S}}^r_k.$ Thus, we have:
+\begin{align}
+(e_{r-1}\textup{\c{S}}^r_k)_{(t,s)} &= \frac{1}{n} 
+\begin{bmatrix} E_{r-1}(\lambda) & E_{r-1}(\alpha\lambda)\alpha^{n-t} & \ldots &  E_{r-1}(\alpha^{(n-1)}\lambda)\alpha^{(n-1)(n-t)}
+\end{bmatrix} \nonumber \\
+&\hspace{5cm}
+\begin{bmatrix}
+E_{r-1}(-\lambda) \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ (s-1)}^r\frac{1}{(i\lambda)^{n-1-j}}  \\
+E_{r-1}(-\alpha \lambda) \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ (s-1)}^r\frac{\alpha^{(j+1)}}{(i\lambda)^{n-1-j}} \\
+\vdots \\
+E_{r-1}(-\alpha^{n-1} \lambda) \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ (s-1)}^r\frac{\alpha^{(n-1)(j+1)}}{(i\lambda)^{n-1-j}} 
+\end{bmatrix}\nonumber \\
+&= \frac{1}{n}  \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ (s-1)}^r \frac{1}{(i\lambda)^{n-1-j}} \bigg[ E_{r-1}(\lambda)E_{r-1}(-\lambda) + E_{r-1}(\alpha\lambda)E_{r-1}(-\alpha \lambda)\alpha^{n-t}  \alpha^{j+1} \nonumber\\
+&\hspace{4cm}+ \ldots + E_{r-1}(\alpha^{(n-1)}\lambda)E_{r-1}(-\alpha^{n-1} \lambda)\alpha^{(n-1)(n-t)}\alpha^{(n-1)(j+1)} \bigg] \nonumber \\
+&= \frac{1}{n}  \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ (s-1)}^r \frac{1}{(i\lambda)^{n-1-j}} \bigg[ 1 + \alpha^{n-t}\alpha^{j+1} + \alpha^{2(n-t)}\alpha^{2(j+1)} \nonumber\\
+&\hspace{4cm}+ \ldots + \alpha^{(n-2)(n-t)}\alpha^{(n-2)(j+1)} + \alpha^{(n-1)(n-t)}\alpha^{(n-1)(j+1)}  \bigg]\nonumber\\
+&=  \frac{1}{n}  \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ (s-1)}^r \frac{1}{(i\lambda)^{n-1-j}} \bigg[ 1 + \alpha^{n-t+j+1} + \alpha^{2(n-t+j+1)} \nonumber\\
+&\hspace{4cm}+ \ldots + \alpha^{(n-2)(n-t+j+1)}+ \alpha^{(n-1)(n-t+j+1)}  \bigg]. \label{DtN.A-eqn1}
+\end{align}
+Consider the inner sum in \eqref{DtN.A-eqn1}:
+\begin{description}
+   \item[Case 1: $j = t-1.$]
+   If $j = t-1,$ then
+   \begin{align*}
+   1 + \alpha^{n-t+j+1} + &\alpha^{2(n-t+j+1)}+ \ldots + \alpha^{(n-2)(n-t+j+1)}+ \alpha^{(n-1)(n-t+j+1)}  \\
+    &= 1 + \alpha^{n - t + t -1  + 1} + \alpha^{2(n-t+ t - 1 +1)} + \ldots +\alpha^{(n-2)(n-t+ t - 1 +1)} + \alpha^{(n-1)(n-t+ t - 1+1)}  \\
+    &= 1 + \alpha^{n} + \alpha^{2n} + \ldots +\alpha^{(n-2)n} + \alpha^{(n-1)n} \\
+    &= 1 + 1 + 1 + \ldots + 1 + 1 \\
+    &= n,
+   \end{align*}
+   where the second last equality follows since $\alpha$'s are primitive roots of unity.
+   \item[Case 2: $j \neq t-1.$]
+   If  $j \neq t-1,$ then $\alpha^{n-t+j + 1} \neq 1,$ and so we treat the term $1 + \ldots +  \alpha^{(n-1)(n-t+j+1)}$ as a geometric progression with a common ratio $\alpha^{n-t+j + 1}.$ Thus, by geometric progression formula, 
+   \begin{align*}
+   1 + \alpha^{n-t+j+1} + &\alpha^{2(n-t+j+1)}+ \ldots + \alpha^{(n-2)(n-t+j+1)}+ \alpha^{(n-1)(n-t+j+1)}  \\
+    &= \sum^{n-1}_{k=0} \alpha^{(n-t+j+1)k} \\
+    &= \frac{\alpha^{(n-t+j+1)n} - 1}{\alpha^{n-t+j+1} -1} \\
+    &= 0, 
+   \end{align*}
+   where the last equality follows since since $\alpha^n = 1.$
+\end{description}
+Thus, by the above analysis, we have 
+\begin{align*}
+(e_{r-1}\textup{\c{S}}^r_k)_{(t,s)} &= \frac{1}{n}  \sum^{n-1}_{j=0} \textup{\c{c}}_{j~ (s-1)}^r \frac{1}{(i\lambda)^{n-1-j}} \left[ 1 + \alpha^{n-t+j+1} + \ldots + \alpha^{(n-1)(n-t+j+1)}  \right] \\
+&= \textup{\c{c}}_{(t-1)~ (s-1)}^r \frac{1}{(i\lambda)^{n-t}} + \frac{1}{n}  \sum^{n-1}_{\substack{j=0 \\ j \neq t-1}} \textup{\c{c}}_{j~ (s-1)}^r \frac{1}{(i\lambda)^{n-1-j}} \underbrace{\left[ 1 + \alpha^{n-t+j+1} + \ldots + \alpha^{(n-1)(n-t+j+1)}  \right]}_\text{$=0$} \\
+&= \textup{\c{c}}_{(t-1)~ (s-1)}^r \frac{1}{(i\lambda)^{n-t}}.
+\end{align*}
+But $\displaystyle\textup{\c{c}}_{(t-1)~ (s-1)}^r \frac{1}{(i\lambda)^{n-t}}$ is exactly the $(t,s)$-th entry of $\textup{\c{C}}^r_k,$ and so we have $e_{r-1}\textup{\c{S}}^r_k = \textup{\c{C}}^r_k.$ The proof that $e_{r}\textup{\c{T}}^r_k = \textup{\c{D}}^r_k$ is analogous. The proof is complete.
+\end{proof}
+By lemma \ref{DtN.A-lemma}, we have $(\textup{\c{C}}^r_k)^T =(\textup{\c{S}}^r_k)^T e_{r-1}^T$ and $(\textup{\c{D}}^r_k)^T = (\textup{\c{T}}^r_k)^T e_{r}^T.$ This allows to rewrite the system \eqref{DtN.B-Bform} as follows:
+\begin{align}
+&\underbrace{
+\begin{bmatrix}
+(\textup{\c{C}}^1_0)^T & (\textup{\c{D}}^1_0)^T & (\textup{\c{C}}^2_0)^T & (\textup{\c{D}}^2_0)^T & \ldots &  (\textup{\c{C}}^m_0)^T & (\textup{\c{D}}^m_0)^T \\
+(\textup{\c{C}}^1_1)^T &  (\textup{\c{D}}^1_1)^T & (\textup{\c{C}}^2_1)^T & (\textup{\c{D}}^2_1)^T & \ldots  &(\textup{\c{C}}^m_1)^T& (\textup{\c{D}}^m_1)^T \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+(\textup{\c{C}}^1_{m-1})^T & (\textup{\c{D}}^1_{m-1})^T & (\textup{\c{C}}^2_{m-1})^T & (\textup{\c{D}}^2_{m-1})^T & \ldots & (\textup{\c{C}}^m_{m-1})^T & (\textup{\c{D}}^m_{m-1})^T \\
+e_{0}^T & -e_1^T & 0 & 0 & \ldots & 0 & 0  \\
+0 & 0 & e_{1}^T & -e_2^T & \ldots & 0 & 0  \\
+\vdots & \vdots & \vdots &  \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \ldots & e_{m-1}^T & -e_{m}^T 
+\end{bmatrix}}_\text{$2mn \times 2mn$}
+\underbrace{
+\begin{bmatrix}
+\vec{f^1}(\lambda) \\ \vec{g^1}(\lambda) \\
+\vec{f^2}(\lambda) \\ \vec{g^2}(\lambda) \\
+\vdots \\
+\vec{f^m}(\lambda) \\ \vec{g^m}(\lambda) 
+\end{bmatrix}}_\text{$2mn \times 1$} & \nonumber\\
+&= \begin{bmatrix}
+(\textup{\c{S}}^1_0)^T e_{0}^T & (\textup{\c{T}}^1_0)^Te_{1}^T & (\textup{\c{S}}^2_0)^T e_{1}^T& (\textup{\c{T}}^2_0)^T e_{2}^T & \ldots & (\textup{\c{S}}^m_0)^T e_{m-1}^T& (\textup{\c{T}}^m_0)^Te_{m}^T \\
+(\textup{\c{S}}^1_1)^T e_{0}^T &  (\textup{\c{T}}^1_1)^Te_{1}^T & (\textup{\c{S}}^2_1)^T e_{1}^T& (\textup{\c{T}}^2_1)^T e_{2}^T& \ldots  & (\textup{\c{S}}^m_1)^T e_{m-1}^T& (\textup{\c{T}}^m_1)^Te_{m}^T \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+(\textup{\c{S}}^1_{m-1})^T e_{0}^T& (\textup{\c{T}}^1_{m-1})^Te_{1}^T & (\textup{\c{S}}^2_{m-1})^T e_{1}^T& (\textup{\c{T}}^2_{m-1})^T e_{2}^T& \ldots & (\textup{\c{S}}^m_{m-1})^T e_{m-1}^T & (\textup{\c{T}}^m_{m-1})^T e_{m}^T \\
+I^T e_{0}^T & -I^Te_1^T & 0 & 0 & \ldots & 0 & 0  \\
+0 & 0 & I^T e_{1}^T & -I^Te_2^T & \ldots & 0 & 0  \\
+\vdots & \vdots & \vdots &  \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \ldots & I^Te_{m-1}^T & -I^Te_{m}^T 
+\end{bmatrix}
+\begin{bmatrix}
+\vec{f^1}(\lambda) \\ \vec{g^1}(\lambda) \\
+\vec{f^2}(\lambda) \\ \vec{g^2}(\lambda) \\
+\vdots \\
+\vec{f^m}(\lambda) \\ \vec{g^m}(\lambda) 
+\end{bmatrix}& \nonumber \\
+&= \underbrace{\begin{bmatrix}
+(\textup{\c{S}}^1_0)^T & (\textup{\c{T}}^1_0)^T  & (\textup{\c{S}}^2_0)^T & (\textup{\c{T}}^2_0)^T & \ldots & (\textup{\c{S}}^m_0)^T & (\textup{\c{T}}^m_0)^T \\
+(\textup{\c{S}}^1_1)^T &  (\textup{\c{T}}^1_1)^T & (\textup{\c{S}}^2_1)^T & (\textup{\c{T}}^2_1)^T & \ldots  & (\textup{\c{S}}^m_1)^T & (\textup{\c{T}}^m_1)^T \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+(\textup{\c{S}}^1_{m-1})^T & (\textup{\c{T}}^1_{m-1})^T & (\textup{\c{S}}^2_{m-1})^T & (\textup{\c{T}}^2_{m-1})^T & \ldots & (\textup{\c{S}}^m_{m-1})^T & (\textup{\c{T}}^m_{m-1})^T \\
+I^T & -I^T & 0 & 0 & \ldots & 0 & 0  \\
+0 & 0 & I^T & -I^T & \ldots & 0 & 0  \\
+\vdots & \vdots & \vdots &  \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \ldots & I^T & -I^T
+\end{bmatrix}}_\text{$2mn\times 2mn$}& \nonumber \\
+&\hspace{5cm}\underbrace{\begin{bmatrix}
+e^T_0 & & & & & & & & 0 \\
+& e^T_1 & & & & & & & \\
+& & e^T_1 & & & & & & \\
+& & & e^T_2 & & & & & \\
+& & & & \ddots & & & & \\
+& & & & & & e^T_{m-1} & & \\
+& & & & & & & e^T_{m-1} & \\
+0& & & & & & & & e^T_{m}
+\end{bmatrix}}_\text{$2mn \times 2mn$}\underbrace{\begin{bmatrix}
+\vec{f^1}(\lambda) \\ \vec{g^1}(\lambda) \\
+\vec{f^2}(\lambda) \\ \vec{g^2}(\lambda) \\
+\vdots \\
+\vec{f^m}(\lambda) \\ \vec{g^m}(\lambda) 
+\end{bmatrix}}_\text{$2mn\times 1$}& \nonumber\\
+&=\underbrace{\begin{bmatrix}
+(\textup{\c{S}}^1_0)^T & (\textup{\c{T}}^1_0)^T  & (\textup{\c{S}}^2_0)^T & (\textup{\c{T}}^2_0)^T & \ldots & (\textup{\c{S}}^m_0)^T & (\textup{\c{T}}^m_0)^T \\
+(\textup{\c{S}}^1_1)^T &  (\textup{\c{T}}^1_1)^T & (\textup{\c{S}}^2_1)^T & (\textup{\c{T}}^2_1)^T & \ldots  & (\textup{\c{S}}^m_1)^T & (\textup{\c{T}}^m_1)^T \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+(\textup{\c{S}}^1_{m-1})^T & (\textup{\c{T}}^1_{m-1})^T & (\textup{\c{S}}^2_{m-1})^T & (\textup{\c{T}}^2_{m-1})^T & \ldots & (\textup{\c{S}}^m_{m-1})^T & (\textup{\c{T}}^m_{m-1})^T \\
+I^T & -I^T & 0 & 0 & \ldots & 0 & 0  \\
+0 & 0 & I^T & -I^T & \ldots & 0 & 0  \\
+\vdots & \vdots & \vdots &  \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \ldots & I^T & -I^T
+\end{bmatrix}}_\text{$2mn\times 2mn$}
+\underbrace{\begin{bmatrix}
+e^T_0\vec{f^1}(\lambda) \\ e^T_1\vec{g^1}(\lambda) \\
+e^T_1\vec{f^2}(\lambda) \\ e^T_2\vec{g^2}(\lambda) \\
+\vdots \\
+e^T_{m-1}\vec{f^m}(\lambda) \\ e^T_m\vec{g^m}(\lambda) 
+\end{bmatrix}}_\text{$2mn\times 1$},& \label{DtN.A-eqn2}
+\end{align}
+where $I$ is the $n \times n$ identity matrix. We finally rewrite the system \eqref{DtN.B-Bform} as follows:
+\begin{equation}\label{DtN.A-Aform}
+\begin{aligned}
+\mathcal{A}
+\underbrace{\begin{bmatrix}
+e^T_0\vec{f^1}(\lambda) \\ e^T_1\vec{g^1}(\lambda) \\
+e^T_1\vec{f^2}(\lambda) \\ e^T_2\vec{g^2}(\lambda) \\
+\vdots \\
+e^T_{m-1}\vec{f^m}(\lambda) \\ e^T_m\vec{g^m}(\lambda) 
+\end{bmatrix}}_\text{$2mn\times 1$} 
+= 
+\underbrace{ \begin{bmatrix} h_0(\lambda) \\ \vdots \\ h_{mn-1}(\lambda)\\ \vec{\reallywidehat{q^1_0}}(\lambda) \\ \vec{\reallywidehat{q^2_0}}(\lambda) \\ \vdots \\  \vec{\reallywidehat{q^{m-1}_0}}(\lambda) \\ \vec{\reallywidehat{q^m_0}}(\lambda) \end{bmatrix}}_\text{$2mn \times 1$} 
+-  e^{a\lambda^n t} 
+\underbrace{ \begin{bmatrix} 0 \\ \vdots \\ 0 \\ \vec{\reallywidehat{q^1_t}}(\lambda) \\ \vec{\reallywidehat{q^2_t}}(\lambda) \\ \vdots \\ \vec{\reallywidehat{q^{m-1}_t}}(\lambda) \\ \vec{\reallywidehat{q^m_t}}(\lambda) \end{bmatrix}}_\text{$2mn\times 1$},&
+\end{aligned}
+\end{equation}
+where
+\[ 
+\mathcal{A}
+= \underbrace{\begin{bmatrix}
+(\textup{\c{S}}^1_0) & (\textup{\c{S}}^1_1) & \ldots & (\textup{\c{S}}^1_{m-1}) & I & 0 & \ldots & 0 & 0 \\
+(\textup{\c{T}}^1_0) & (\textup{\c{T}}^1_1) & \ldots & (\textup{\c{T}}^1_{m-1}) & -I & 0 & \ldots & 0 & 0 \\
+(\textup{\c{S}}^2_0) & (\textup{\c{S}}^2_1) & \ldots & (\textup{\c{S}}^2_{m-1}) & 0 & I & \ldots & 0 & 0 \\
+(\textup{\c{T}}^2_0) & (\textup{\c{T}}^2_1) & \ldots & (\textup{\c{T}}^2_{m-1}) & 0 & -I & \ldots & 0 & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+(\textup{\c{S}}^m_0) & (\textup{\c{S}}^m_1) & \ldots & (\textup{\c{S}}^m_{m-1}) & 0 & 0 & \ldots & 0 & I \\
+(\textup{\c{T}}^m_0) & (\textup{\c{T}}^m_1) & \ldots & (\textup{\c{T}}^m_{m-1}) & 0 & 0 & \ldots & 0 & -I 
+\end{bmatrix}^T}_\text{$2mn\times 2mn$}\]
+is a block matrix where each block is $n \times n.$ The system \eqref{DtN.A-Aform} has the advantage that the main matrix is easier to compute. We refer to the system \eqref{DtN.A-Aform} as the \emph{D-to-N map in $\mathcal{A}$ form}.
+
+% \clearpage
+\bibliographystyle{amsplain}
+{\small\bibliography{references}}
+
+\end{document}

@@ -1,0 +1,4289 @@
+Last login: Sun Aug  4 17:40:06 on ttys002
+thegreatsulya:~ thegreatsulya$ exec '/Applications/Julia-1.1.app/Contents/Resources/julia/bin/julia'
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.1.1 (2019-05-16)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
+
+julia> include("/Users/ww/Desktop/SRP/summer-research-project/Work_in_Julia/Code_for_the_Multipoint_problem/Adjoint_Multipoint_Units_Tests_v1.jl")
+ERROR: could not open file /Users/ww/Desktop/SRP/summer-research-project/Work_in_Julia/Code_for_the_Multipoint_problem/Adjoint_Multipoint_Units_Tests_v1.jl
+Stacktrace:
+ [1] include at ./boot.jl:326 [inlined]
+ [2] include_relative(::Module, ::String) at ./loading.jl:1038
+ [3] include(::Module, ::String) at ./sysimg.jl:29
+ [4] include(::String) at ./client.jl:403
+ [5] top-level scope at none:0
+
+julia> include("/Users/ww/Desktop/SRP/summer-research-project/Work_in_Julia/Code_for_the_Multipoint_problem/Adjoint_Multipoint_Unit_Tests_v1.jl")
+Test 1
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+Test 2
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+Test 3
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+Test 4
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+Test 5
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+Test 6
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+Test 7
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+Test 8
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+Test 9
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+Test 10
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 2
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 2
+Passed!
+true
+Test 1
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+Test 2
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+Test 3
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+Test 4
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+Test 5
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+Test 6
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+Test 7
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+Test 8
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+Test 9
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+Test 10
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 3
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 3
+Passed!
+true
+Test 1
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+Test 2
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+Test 3
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+Test 4
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+Test 5
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+Test 6
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+Test 7
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+Test 8
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+Test 9
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+Test 10
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 4
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 4
+Passed!
+true
+Test 1
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+Test 2
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+Test 3
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+Test 4
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+Test 5
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+Test 6
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+Test 7
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+Test 8
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+Test 9
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+Test 10
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 5
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 5
+Passed!
+true
+Test 1
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+Test 2
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+Test 3
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+Test 4
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+Test 5
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+Test 6
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+Test 7
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+Test 8
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+Test 9
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+Test 10
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 6
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 6
+Passed!
+true
+Test 1
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+Test 2
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+Test 3
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+Test 4
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+Test 5
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+Test 6
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+Test 7
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+Test 8
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+Test 9
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+Test 10
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 7
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 7
+Passed!
+true
+Test 1
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+Test 2
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+Test 3
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+Test 4
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+Test 5
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+Test 6
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+Test 7
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+Test 8
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+Test 9
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+Test 10
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 8
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 8
+Passed!
+true
+Test 1
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+Test 2
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+Test 3
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+Test 4
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+Test 5
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+Test 6
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+Test 7
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+Test 8
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+Test 9
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+Test 10
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 9
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 9
+Passed!
+true
+Test 1
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+Test 2
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+Test 3
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+Test 4
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+Test 5
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+Test 6
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+Test 7
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+Test 8
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+Test 9
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+Test 10
+Testing the algorithm to generate valid adjoint U+: Constant p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Variable p_k
+Testing: order of L = 10
+Passed!
+Testing the algorithm to generate valid adjoint U+: Constant or variable p_k
+Testing: order of L = 10
+Passed!
+true
+Test 1
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 2
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 3
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 4
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 5
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 6
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 7
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 8
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 9
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 10
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+true
+Test 1
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 2
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 3
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 4
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 5
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 6
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 7
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 8
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 9
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 10
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+true
+Test 1
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 2
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 3
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 4
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 5
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 6
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 7
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 8
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 9
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 10
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+true
+Test 1
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 2
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 3
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 4
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 5
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 6
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 7
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 8
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 9
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 10
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+true
+Test 1
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 2
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 3
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 4
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 5
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 6
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 7
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 8
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 9
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 10
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+true
+Test 1
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 2
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 3
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 4
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 5
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 6
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 7
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 8
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 9
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 10
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+true
+Test 1
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 2
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 3
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 4
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 5
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 6
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 7
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 8
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 9
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 10
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+true
+Test 1
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 2
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 3
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 4
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 5
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 6
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 7
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 8
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 9
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 10
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+true
+Test 1
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 2
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 3
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 4
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 5
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 6
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 7
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 8
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 9
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+Test 10
+Testing definition of SymLinearDifferentialOperator: symP_k are Function
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are constant
+Passed!
+Testing definition of SymLinearDifferentialOperator: symP_k are SymPy.Sym and Number
+Passed!
+Testing StructDefinitionError: symP_k should be SymPy.Sym or Number
+Passed!
+Testing StructDefinitionError: Only one free symbol is allowed in symP_k
+Passed!
+Testing StructDefinitionError: Interval must consist of numbers
+Passed!
+Testing StructDefinitionError: Terms in interval must be strictly increasing
+Passed!
+true
+Test 1
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+Test 2
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+Test 3
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+Test 4
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+Test 5
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+Test 6
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+Test 7
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+Test 8
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+Test 9
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+Test 10
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Failed!
+false
+Test 1
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 2
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 3
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 4
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 5
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 6
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 7
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 8
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 9
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 10
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+true
+Test 1
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 2
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 3
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 4
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 5
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 6
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 7
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 8
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 9
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 10
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+true
+Test 1
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 2
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 3
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 4
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 5
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 6
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 7
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 8
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 9
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 10
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+true
+Test 1
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 2
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 3
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 4
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 5
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 6
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 7
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 8
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 9
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 10
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+true
+Test 1
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 2
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 3
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 4
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 5
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 6
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 7
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 8
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 9
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 10
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+true
+Test 1
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 2
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 3
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 4
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 5
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 6
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 7
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 8
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 9
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 10
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+true
+Test 1
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 2
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 3
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 4
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 5
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 6
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 7
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 8
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 9
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 10
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+true
+Test 1
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 2
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 3
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 4
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 5
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 6
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 7
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 8
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 9
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+Test 10
+Testing definition of LinearDifferentialOperator: p_k are Function
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are Constants
+Passed!
+Testing definition of LinearDifferentialOperator: p_k are mixed
+Passed!
+Testing StructDefinitionError: p_k should be Function or Number
+Passed!
+Testing StructDefinitionError: Number of p_k and symP_k do not match
+Passed!
+Testing StructDefinitionError: Intervals of L and symL do not match
+Passed!
+true
+Test 1
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 2
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 3
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 4
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 5
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 6
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 7
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 8
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 9
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 10
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+true
+Test 1
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 2
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 3
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 4
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 5
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 6
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 7
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 8
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 9
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 10
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+true
+Test 1
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 2
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 3
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 4
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 5
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 6
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 7
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 8
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 9
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 10
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+true
+Test 1
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 2
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 3
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 4
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 5
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 6
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 7
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 8
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 9
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 10
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+true
+Test 1
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 2
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 3
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 4
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 5
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 6
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 7
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 8
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 9
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 10
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+true
+Test 1
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 2
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 3
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 4
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 5
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 6
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 7
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 8
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 9
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 10
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+true
+Test 1
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 2
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 3
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 4
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 5
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 6
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 7
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 8
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 9
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 10
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+true
+Test 1
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 2
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 3
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 4
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 5
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 6
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 7
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 8
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 9
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 10
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+true
+Test 1
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 2
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 3
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 4
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 5
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 6
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 7
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 8
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 9
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+Test 10
+Testing the definition of VectorMultipointForm
+Passed!
+Testing StructDefinitionError: Entries of M_i, N_i should be Number
+Passed!
+Testing StructDefinitionError: M_i, N_i dimensions do not match
+Passed!
+Testing StructDefinitionError: Boundary operators not linearly independent
+Passed!
+true
+
+julia> 
