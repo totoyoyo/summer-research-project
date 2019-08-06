@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.10.0 (TeX Live 2019)  (format=lualatex 2019.7.29)  6 AUG 2019 18:22
+This is LuaTeX, Version 1.10.0 (TeX Live 2019)  (format=lualatex 2019.7.29)  7 AUG 2019 00:13
  restricted system commands enabled.
 **Sultan_poster.tex
 (./Sultan_poster.tex
@@ -48,7 +48,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.361 seconds
+luaotfload | main : initialization completed in 0.273 seconds
 (/usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2018/12/02 v3.55 A class for typesetting presentations
 (/usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
@@ -2384,13 +2384,13 @@ Package logreq Info: Writing requests to 'Sultan_poster.run.xml'.
 Here is how much of LuaTeX's memory you used:
  38923 strings out of 494291
  195338,1373583 words of node,token memory allocated
- 92846 words of node memory still in use:
-   844 hlist, 133 vlist, 78 rule, 548 disc, 101 local_par, 187 math, 2104 glue, 
-1327 kern, 269 penalty, 6470 glyph, 1337 attribute, 95 glue_spec, 1337 attribute
+ 92863 words of node memory still in use:
+   844 hlist, 133 vlist, 78 rule, 548 disc, 101 local_par, 187 math, 2105 glue, 
+1329 kern, 269 penalty, 6470 glyph, 1337 attribute, 95 glue_spec, 1337 attribute
 _list, 16 write, 43 special, 160 pdf_literal, 8 pdf_start_link, 8 pdf_end_link, 
 6 pdf_dest, 8 pdf_action, 300 pdf_colorstack, 2 pdf_setmatrix, 2 pdf_save, 2 pdf
 _restore nodes
-   avail lists: 1:5,2:386,3:507,4:341,5:1387,6:102,7:8874,8:49,9:1091,10:28,11:5
+   avail lists: 1:7,2:386,3:507,4:341,5:1389,6:102,7:8875,8:49,9:1091,10:28,11:5
 54
  41084 multiletter control sequences out of 65536+600000
  173 fonts using 33246687 bytes
@@ -2412,7 +2412,7 @@ r10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
 fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/lo
 cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
 /local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Sultan_poster.pdf (1 page, 186338 bytes).
+Output written on Sultan_poster.pdf (1 page, 186345 bytes).
 
 PDF statistics: 126 PDF objects out of 1000 (max. 8388607)
  84 compressed objects within 1 object stream
