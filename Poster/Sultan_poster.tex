@@ -36,10 +36,22 @@
 Given an operator, its adjoint is a linear transformation that can be used to characterise a wide range of phenomena in mathematics and physics. In this project we seek to characterise an adjoint of an ordinary differential operator with multipoint homogeneous conditions. Extending the ideas of Linfan Xiao, we show that the operator and its adjoint satisfy the multipoint form formula. In doing so, we provide an explicit construction of adjoint multipoint conditions, and provide an explicit checking test to determine whether a given set of multipoint conditions satisfies the adjoint equation. Finally, we implement a method of deriving the adjoint multipoint conditions in programming language julia, thus providing a fast way to compute the adjoint.
 \end{block}
 
+\begin{block}{Multipoint Conditions}
+\justifying
+Consider an interval $[0,1],$ and suppose that we want specify the behaviour of $q(x)$ on this interval not just at the endpoints but also at finitely many points in the interior. Then, we can represent one such specification by an expression
+\[ \alpha_{ijl} q_l^{(j)}(x_{l-1}) + \beta_{ijl} q_l^{(j)}(x_{l}), \]
+where $x_{l-1}, x_l$ are two adjacent points, $q_l$ is the function $q$ but restricted to the interval $(x_{l-1}, x_l),$ and $q_l^{(j)}$ is the $j^{\text{th}}$ derivative of $q_l.$ Combining all such specifications yields an expression of the form
+\begin{equation*}
+\sum^{k}_{l=1} \sum^{n-1}_{j=0}[\alpha_{jl} q_l^{(j)}(x_{l-1}) + \beta_{jl} q_l^{(j)}(x_{l})]
+\end{equation*}
+which we call a \textbf{multipoint form}. Then, requiring that a multipoint form be equal to some number, and combining these equations yileds one vector equation, which we term as a \textbf{multipoint condition}. The image below provides an intuitive idea of the multipoint conditions. 
+\vskip2ex
+\begin{center}\includegraphics[width=0.7\textwidth]{figures/BC-MC-NC-010.mps}\end{center}
+\end{block}
 \begin{block}{Formulation of the Problem}
 Consider a closed interval $[a,b].$ Fix $n\in\mathbb{N},$ and let the differential operator be defined as
 \begin{equation}\label{operatorL}
-L  := \sum^n_{k=0} a_k(t)\left( \frac{d}{dt}\right)^k, \mbox{ where } a_k(t) \in C^{\infty}[a,b] \mbox{ and } a_n(t) \neq 0~ \forall t \in [a,b].
+L  := \sum^n_{k=0} a_k(x)\left( \frac{d}{dx}\right)^k, \mbox{ where } a_k(x) \in C^{\infty}[a,b] \mbox{ and } a_n(x) \neq 0~ \forall x \in [a,b].
 \end{equation} 
 Fix $k \in \mathbb{N},$ and let $\{ a = x_0 < x_1 < \ldots < x_k = b\}$ be a partition of $[a,b].$ Consider a homogeneous multipoint value problem (MVP)
 \[ \pi: Lq = 0, \qquad Uq = \vec{0},\]
@@ -61,7 +73,17 @@ where $\overline{a_k}(t)$ is the complex conjugate of $a_k(t), ~ k = 0, \ldots, 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+}
+%\begin{figure}
+%\centering
+%\includegraphics[width=.8\textwidth]{./figures/fluidDomain}
+%\end{figure}
 
+% = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+% Second Column
+% = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+\newColumn{.31\textwidth}{	
 \begin{block}{Multipoint Form Formula}
 \begin{defn}
 If $U = (U_1, \ldots, U_m)$ is any vector multipoint form with $\mathrm{rank}(U) = m,$ and $U_c = (U_{m+1}, \ldots, U_{2nk})$ is a vector multipoint form with $\mathrm{rank}(U_c) = 	2nk-m$ such that $\mathrm{rank}(U_{1}, \ldots, U_{2nk}) = 2nk,$ then $U$ and $U_c$ are \textbf{complementary vector multipoint forms}. 
@@ -74,19 +96,9 @@ Given any vector multipoint form $U$ of rank $m,$ and any complementary vector f
 \end{equation}
 \end{thm}
 \end{block}
-}
-%\begin{figure}
-%\centering
-%\includegraphics[width=.8\textwidth]{./figures/fluidDomain}
-%\end{figure}
 
-% = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-% Second Column
-% = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-\newColumn{.31\textwidth}{	
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-          % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 \begin{block}{Definition of the Adjoint}
 Theorem \ref{P2.BFF-theorem} allows us to define an adjoint vector multipoint form. Namely, 
 
@@ -152,12 +164,6 @@ The above notation allows to devise the following theorem.
 The boundary condition $U^+g = \vec{0}$ is adjoint to $Uf = \vec{0}$ if and only if \[ \sum^k_{l=1} M_lF^{-1}(x_{l-1})P_l = \sum^k_{l=1} N_l F^{-1}(x_l)Q_l, \] where $F(t)$ is the $n\times n$ boundary matrix.  
 \end{thm}
 \end{block}
-
-\begin{block}{Implementation in Julia}
-\justifying
-The proof of Theorem \ref{P2.BFF-theorem} provides an explicit way to construct the matrices $P_l, Q_l$ in \eqref{AdjointConditions}, which we use in defining a function $\textit{get\textunderscore adjointU}.$ Furthermore, we use Theorem \ref{P2.CA-theorem} to define a function $\textit{check\textunderscore adjointU}$, to check whether the multipoint conditions obtained from $\textit{get\textunderscore adjointU}$ satisfy the adjoint equation. 
-\end{block}
-
 }
 % = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 % Third Column
@@ -165,7 +171,10 @@ The proof of Theorem \ref{P2.BFF-theorem} provides an explicit way to construct 
 \newColumn{.31\textwidth}{
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 	
-\begin{block}{Implementation in Julia (cont.)}
+\begin{block}{Implementation in Julia}
+\justifying
+The proof of Theorem \ref{P2.BFF-theorem} provides an explicit way to construct the matrices $P_l, Q_l$ in \eqref{AdjointConditions}, which we use in defining a function $\textit{get\textunderscore adjointU}.$ Furthermore, we use Theorem \ref{P2.CA-theorem} to define a function $\textit{check\textunderscore adjointU}$, to check whether the multipoint conditions obtained from $\textit{get\textunderscore adjointU}$ satisfy the adjoint equation. 
+\vskip1ex
 \begin{algorithm}[H]
 \normalsize
 \DontPrintSemicolon

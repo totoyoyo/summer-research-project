@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.10.0 (TeX Live 2019)  (format=lualatex 2019.7.29)  2 AUG 2019 11:13
+This is LuaTeX, Version 1.10.0 (TeX Live 2019)  (format=lualatex 2019.7.29)  6 AUG 2019 18:22
  restricted system commands enabled.
 **Sultan_poster.tex
 (./Sultan_poster.tex
@@ -48,7 +48,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.094 seconds
+luaotfload | main : initialization completed in 0.361 seconds
 (/usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2018/12/02 v3.55 A class for typesetting presentations
 (/usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
@@ -2319,38 +2319,40 @@ LaTeX Font Warning: Font shape `TU/Raleway-SemiBold.otf(0)/sb/n' undefined
 
 LaTeX Font Info:    Calculating math sizes for size <46.58> on input line 25.
 LaTeX Font Info:    Font shape `TU/lato-TLF/m/n' will be
-(Font)              scaled to size 29.75273pt on input line 208.
+(Font)              scaled to size 29.75273pt on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/l/n' will be
-(Font)              scaled to size 29.75273pt on input line 208.
+(Font)              scaled to size 29.75273pt on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/l/n' will be
-(Font)              scaled to size 24.80315pt on input line 208.
-LaTeX Font Info:    Calculating math sizes for size <26.96> on input line 208.
+(Font)              scaled to size 24.80315pt on input line 217.
+LaTeX Font Info:    Calculating math sizes for size <26.96> on input line 217.
+LaTeX Font Info:    Font shape `TU/lato-TLF/l/n' will be
+(Font)              scaled to size 17.36212pt on input line 217.
+LaTeX Font Info:    Font shape `TU/lato-TLF/l/n' will be
+(Font)              scaled to size 12.40157pt on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/bx/n' will be
-(Font)              scaled to size 24.80315pt on input line 208.
+(Font)              scaled to size 24.80315pt on input line 217.
+File: figures/BC-MC-NC-010.mps Graphic file (type mps)
+[MP to PDF] (./figures/BC-MC-NC-010.mps)
+LaTeX Font Info:    Calculating math sizes for size <32.34> on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/l/it' will be
-(Font)              scaled to size 24.80315pt on input line 208.
+(Font)              scaled to size 24.80315pt on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/bx/it' will be
-(Font)              scaled to size 24.80315pt on input line 208.
+(Font)              scaled to size 24.80315pt on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/l/it' will be
-(Font)              scaled to size 29.75273pt on input line 208.
-LaTeX Font Info:    Calculating math sizes for size <32.34> on input line 208.
-LaTeX Font Info:    Font shape `TU/lato-TLF/l/n' will be
-(Font)              scaled to size 17.36212pt on input line 208.
-LaTeX Font Info:    Font shape `TU/lato-TLF/l/n' will be
-(Font)              scaled to size 12.40157pt on input line 208.
+(Font)              scaled to size 29.75273pt on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/bx/n' will be
-(Font)              scaled to size 29.75273pt on input line 208.
+(Font)              scaled to size 29.75273pt on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/l/n' will be
-(Font)              scaled to size 20.82681pt on input line 208.
+(Font)              scaled to size 20.82681pt on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/l/n' will be
-(Font)              scaled to size 14.87636pt on input line 208.
+(Font)              scaled to size 14.87636pt on input line 217.
 LaTeX Font Info:    Font shape `TU/lato-TLF/bx/it' will be
-(Font)              scaled to size 29.75273pt on input line 208.
+(Font)              scaled to size 29.75273pt on input line 217.
 File: images/ync-logo.png Graphic file (type png)
 <use images/ync-logo.png>
-Package luatex.def Info: images/ync-logo.png  used on input line 208.
+Package luatex.def Info: images/ync-logo.png  used on input line 217.
 (luatex.def)             Requested size: 181.42737pt x 171.89175pt.
-[1{/Users/ww/Library/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ [1{/Users/ww/Library/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 <./images/ync-logo.png>]
 \tf@nav=\write7
@@ -2362,11 +2364,12 @@ Package luatex.def Info: images/ync-logo.png  used on input line 208.
 \tf@snm=\write9
 
 \openout9 = Sultan_poster.snm
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 211.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
- (./Sultan_poster.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 211.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+
+(./Sultan_poster.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
 Package rerunfilecheck Info: File `Sultan_poster.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2379,19 +2382,19 @@ Package logreq Info: Writing requests to 'Sultan_poster.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38875 strings out of 494291
+ 38923 strings out of 494291
  195338,1373583 words of node,token memory allocated
- 83916 words of node memory still in use:
-   783 hlist, 124 vlist, 78 rule, 490 disc, 97 local_par, 169 math, 1928 glue, 1
-199 kern, 252 penalty, 5733 glyph, 1266 attribute, 95 glue_spec, 1266 attribute_
-list, 16 write, 160 pdf_literal, 8 pdf_start_link, 8 pdf_end_link, 6 pdf_dest, 8
- pdf_action, 298 pdf_colorstack, 1 pdf_setmatrix, 1 pdf_save, 1 pdf_restore node
-s
-   avail lists: 1:5,2:386,3:444,4:339,5:1259,6:98,7:7943,8:49,9:1021,10:27,11:49
-6
- 41051 multiletter control sequences out of 65536+600000
- 171 fonts using 33122167 bytes
- 69i,32n,109p,1137b,1595s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 92846 words of node memory still in use:
+   844 hlist, 133 vlist, 78 rule, 548 disc, 101 local_par, 187 math, 2104 glue, 
+1327 kern, 269 penalty, 6470 glyph, 1337 attribute, 95 glue_spec, 1337 attribute
+_list, 16 write, 43 special, 160 pdf_literal, 8 pdf_start_link, 8 pdf_end_link, 
+6 pdf_dest, 8 pdf_action, 300 pdf_colorstack, 2 pdf_setmatrix, 2 pdf_save, 2 pdf
+_restore nodes
+   avail lists: 1:5,2:386,3:507,4:341,5:1387,6:102,7:8874,8:49,9:1091,10:28,11:5
+54
+ 41084 multiletter control sequences out of 65536+600000
+ 173 fonts using 33246687 bytes
+ 69i,32n,109p,1137b,1625s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/local/texlive/2019/texmf-dist/fonts/truetype/typoland/lato/Lato-BoldItalic
 .ttf></usr/local/texlive/2019/texmf-dist/fonts/opentype/public/lm/lmroman17-regu
 lar.otf></usr/local/texlive/2019/texmf-dist/fonts/truetype/typoland/lato/Lato-Li
@@ -2402,16 +2405,17 @@ usr/local/texlive/2019/texmf-dist/fonts/opentype/impallari/raleway/Raleway-Regul
 ar.otf></usr/local/texlive/2019/texmf-dist/fonts/opentype/impallari/raleway/Rale
 way-SemiBold.otf></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri12.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
-fb>
-Output written on Sultan_poster.pdf (1 page, 169848 bytes).
+m/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
+.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/lo
+cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Sultan_poster.pdf (1 page, 186338 bytes).
 
-PDF statistics: 118 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+PDF statistics: 126 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
  9 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
